@@ -4,67 +4,67 @@ import styles from './Header.module.css'
 function Header() {
   return (
     <nav>
-      <ul>
-        <li>
+      <ul className={styles.menu}>
+        <li className={styles.page}>
           <NavLink
             to="/home"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             [logo.img]
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/authentication"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Login/Signin
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/search"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Search
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/chat"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Chat
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/writeStory"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             New Story
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/profile"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Profile
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/settings"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Settings
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/readStory"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             (Reading)
           </NavLink>
         </li>
-        <li>
+        <li className={styles.page}>
           <NavLink
             to="/"
-            className={({ isActive }) => isActive ? styles.navLinkActive : styles.navLink}>
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             (Splash)
           </NavLink>
         </li>

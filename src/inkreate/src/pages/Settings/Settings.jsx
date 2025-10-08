@@ -6,7 +6,7 @@ function Settings() {
     <>
         Settings
     </>
-  );
+  )
 }
 
-export default Settings;
+export default Settings

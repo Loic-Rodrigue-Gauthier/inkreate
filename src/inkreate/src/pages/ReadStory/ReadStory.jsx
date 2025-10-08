@@ -6,7 +6,7 @@ function ReadStory() {
     <>
         ReadStory
     </>
-  );
+  )
 }
 
-export default ReadStory;
+export default ReadStory

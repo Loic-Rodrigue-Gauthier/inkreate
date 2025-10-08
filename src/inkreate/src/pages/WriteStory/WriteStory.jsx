@@ -6,7 +6,7 @@ function WriteStory() {
     <>
         WriteStory
     </>
-  );
+  )
 }
 
-export default WriteStory;
+export default WriteStory

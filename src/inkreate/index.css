@@ -1,4 +1,29 @@
-:root {
+*
+{
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body
+{
+    margin: 0;
     background-color: black;
     color: white;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+header
+{
+    background-color: darkgray;
+}
+
+main
+{
+    margin: auto;
+    width: 80%;
+    background-color: gray;
 }

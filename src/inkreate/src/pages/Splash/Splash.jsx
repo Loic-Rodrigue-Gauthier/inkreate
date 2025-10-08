@@ -9,4 +9,4 @@ function Splash() {
   )
 }
 
-export default Splash;
+export default Splash

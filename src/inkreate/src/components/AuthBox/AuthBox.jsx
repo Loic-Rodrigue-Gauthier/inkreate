@@ -1,0 +1,117 @@
+import { useState } from 'react';
+import styles from './AuthBox.module.css'
+
+function Signin() {
+  const [inputs, setInputs] = useState({});
+
+  const updateValue = (e) => {
+    setInputs(values => ({...values, [e.target.name]: e.target.value}))
+  }
+
+  function submitForm(e) {
+    e.preventDefault()
+    // DB code here
+  }
+
+  return (
+    <form onSubmit={submitForm}>
+      <label>Username:
+        <input
+          type="text" 
+          name="username" 
+          value={inputs.username}
+          onChange={updateValue}
+        />
+      </label>
+      <label>Email:
+        <input
+          type="text" 
+          name="email" 
+          value={inputs.email}
+          onChange={updateValue}
+        />
+      </label>
+      <label>Date of birth:
+        <input
+          type="text" 
+          name="birthdate" 
+          value={inputs.birthdate}
+          onChange={updateValue}
+        />
+      </label>
+      <label>Password:
+        <input
+          type="text" 
+          name="password" 
+          value={inputs.password}
+          onChange={updateValue}
+        />
+      </label>
+      <button type="submit">Sign In</button>
+    </form>
+  )
+}
+
+function Login() {
+  const [inputs, setInputs] = useState({});
+
+  const updateValue = (e) => {
+    setInputs(values => ({...values, [e.target.name]: e.target.value}))
+  }
+
+  function submitForm(e) {
+    e.preventDefault()
+    // DB code here
+  }
+
+  return (
+    <form onSubmit={submitForm}>
+      <label>Email:
+        <input
+          type="text" 
+          name="email" 
+          value={inputs.email}
+          onChange={updateValue}
+        />
+      </label>
+      <label>Password:
+        <input
+          type="text" 
+          name="password" 
+          value={inputs.password}
+          onChange={updateValue}
+        />
+      </label>
+      <button type="submit">Log In</button>
+    </form>
+  )
+}
+
+function AuthBox() {
+  const [activeTab, setActiveTab] = useState('login');
+
+  return (
+    <div className={styles.component}>
+      <nav>
+          <button
+          className={activeTab === 'login' ? styles.active : styles.tab}
+          onClick={() => setActiveTab('login')}
+          >
+            Login
+          </button>
+          <button
+          className={activeTab === 'signin' ? styles.active : styles.tab}
+          onClick={() => setActiveTab('signin')}
+          >
+            Signin
+          </button>
+      </nav>
+      <div>
+        {activeTab === 'login' && <Login />}
+        {activeTab === 'signin' && <Signin />}
+      </div>
+    </div>
+  )
+}
+
+export default AuthBox
