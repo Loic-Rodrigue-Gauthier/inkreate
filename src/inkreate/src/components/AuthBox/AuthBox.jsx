@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './AuthBox.module.css'
 
 function Signin() {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({})
+  const navigate = useNavigate()
 
   const updateValue = (e) => {
     setInputs(values => ({...values, [e.target.name]: e.target.value}))
@@ -11,6 +13,7 @@ function Signin() {
   function submitForm(e) {
     e.preventDefault()
     // DB code here
+    navigate('/home')
   }
 
   return (
@@ -53,7 +56,8 @@ function Signin() {
 }
 
 function Login() {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({})
+  const navigate = useNavigate()
 
   const updateValue = (e) => {
     setInputs(values => ({...values, [e.target.name]: e.target.value}))
@@ -62,6 +66,7 @@ function Login() {
   function submitForm(e) {
     e.preventDefault()
     // DB code here
+    navigate('/home')
   }
 
   return (
@@ -92,16 +97,17 @@ function AuthBox() {
 
   return (
     <div className={styles.component}>
+      <div>[logo.img] InKreate</div>
       <nav>
           <button
-          className={activeTab === 'login' ? styles.active : styles.tab}
-          onClick={() => setActiveTab('login')}
+            className={activeTab === 'login' ? styles.active : styles.tab}
+            onClick={() => setActiveTab('login')}
           >
             Login
           </button>
           <button
-          className={activeTab === 'signin' ? styles.active : styles.tab}
-          onClick={() => setActiveTab('signin')}
+            className={activeTab === 'signin' ? styles.active : styles.tab}
+            onClick={() => setActiveTab('signin')}
           >
             Signin
           </button>
