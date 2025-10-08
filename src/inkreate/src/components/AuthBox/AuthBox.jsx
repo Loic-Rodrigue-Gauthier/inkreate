@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './AuthBox.module.css'
+import viteLogo from '../../assets/vite.svg'
 
 function Signin() {
   const [inputs, setInputs] = useState({})
@@ -13,7 +14,7 @@ function Signin() {
   function submitForm(e) {
     e.preventDefault()
     // DB code here
-    navigate('/home')
+    navigate("/home")
   }
 
   return (
@@ -66,7 +67,7 @@ function Login() {
   function submitForm(e) {
     e.preventDefault()
     // DB code here
-    navigate('/home')
+    navigate("/home")
   }
 
   return (
@@ -97,7 +98,10 @@ function AuthBox() {
 
   return (
     <div className={styles.component}>
-      <div>[logo.img] InKreate</div>
+      <div>
+        <img src={viteLogo} alt="viteLogo" />
+        <h1>InKreate</h1>
+      </div>
       <nav>
           <button
             className={activeTab === 'login' ? styles.active : styles.tab}

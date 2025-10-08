@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import styles from './Header.module.css'
+import viteLogo from '../../assets/vite.svg'
 
 function Header() {
   return (
@@ -9,7 +10,7 @@ function Header() {
           <NavLink
             to="/home"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            [logo.img]
+            <img src={viteLogo} alt="viteLogo" />
           </NavLink>
         </li>
         <li className={styles.page}>
