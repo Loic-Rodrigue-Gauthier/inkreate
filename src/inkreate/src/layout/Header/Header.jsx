@@ -15,13 +15,6 @@ function Header() {
         </li>
         <li className={styles.page}>
           <NavLink
-            to="/authentication"
-            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            Login/Signin
-          </NavLink>
-        </li>
-        <li className={styles.page}>
-          <NavLink
             to="/search"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Search
@@ -67,6 +60,13 @@ function Header() {
             to="/"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             (Splash)
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
+            to="/authentication"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            Login/Signin
           </NavLink>
         </li>
       </ul>

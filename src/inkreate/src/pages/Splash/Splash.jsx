@@ -14,71 +14,53 @@ function Splash() {
   }
 
   return (
-      <>
-        <div>
-          <img src={viteLogo} alt="viteLogo" />
-          <h1>InKreate</h1>
-        </div>
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis.</h3>
-        <button onClick={goToPage}>Start Writing!</button>
-        <section>
-          <GlobalStats number="10k+" desc="Lorem ipsum dolor sit amet." />
-          <GlobalStats number="25k+" desc="Lorem ipsum dolor sit amet." />
-          <GlobalStats number="500k+" desc="Lorem ipsum dolor sit amet." />
-        </section>
-        <h2>Section 1</h2>
-        <section>
-          <ImageTitleText
-            src={reactLogo}
-            title="Lorem ipsum dolor sit amet."
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </ImageTitleText>
-          <ImageTitleText
-            src={reactLogo}
-            title="Lorem ipsum dolor sit amet."
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </ImageTitleText>
-          <ImageTitleText
-            src={reactLogo}
-            title="Lorem ipsum dolor sit amet."
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </ImageTitleText>
-          <ImageTitleText
-            src={reactLogo}
-            title="Lorem ipsum dolor sit amet."
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </ImageTitleText>
-          <ImageTitleText
-            src={reactLogo}
-            title="Lorem ipsum dolor sit amet."
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </ImageTitleText>
-          <ImageTitleText
-            src={reactLogo}
-            title="Lorem ipsum dolor sit amet."
-          >
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </ImageTitleText>
-        </section>
-        <h2>Section 2</h2>
-        <section>
-          <NumberedTitleText number="1" title="Lorem ipsum dolor sit amet.">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </NumberedTitleText>
-          <NumberedTitleText number="2" title="Lorem ipsum dolor sit amet.">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </NumberedTitleText>
-          <NumberedTitleText number="3" title="Lorem ipsum dolor sit amet.">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
-          </NumberedTitleText>
-        </section>
-        <button onClick={goToPage}>Start Writing!</button>
-      </>
+    <>
+      <div>
+        <img src={viteLogo} alt="viteLogo" />
+        <h1>InKreate</h1>
+      </div>
+      <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis.</h3>
+      <button onClick={goToPage}>Start Writing!</button>
+      <section>
+        <GlobalStats number="10k+" desc="Lorem ipsum dolor sit amet." />
+        <GlobalStats number="25k+" desc="Lorem ipsum dolor sit amet." />
+        <GlobalStats number="500k+" desc="Lorem ipsum dolor sit amet." />
+      </section>
+      <h2>Section 1</h2>
+      <section>
+        <ImageTitleText src={reactLogo} title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </ImageTitleText>
+        <ImageTitleText src={reactLogo} title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </ImageTitleText>
+        <ImageTitleText src={reactLogo} title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </ImageTitleText>
+        <ImageTitleText src={reactLogo} title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </ImageTitleText>
+        <ImageTitleText src={reactLogo} title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </ImageTitleText>
+        <ImageTitleText src={reactLogo} title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </ImageTitleText>
+      </section>
+      <h2>Section 2</h2>
+      <section>
+        <NumberedTitleText number="1" title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </NumberedTitleText>
+        <NumberedTitleText number="2" title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </NumberedTitleText>
+        <NumberedTitleText number="3" title="Lorem ipsum dolor sit amet.">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit tempore natus omnis illum. Distinctio perferendis temporibus obcaecati delectus, numquam ad!</p>
+        </NumberedTitleText>
+      </section>
+      <button onClick={goToPage}>Start Writing!</button>
+    </>
   )
 }
 

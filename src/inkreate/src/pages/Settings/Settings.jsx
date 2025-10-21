@@ -1,10 +1,11 @@
 
+import SettingsTabs from '../../components/SettingsTabs/SettingsTabs'
 import styles from './Settings.module.css'
 
 function Settings() {
   return (
     <>
-        Settings
+      <SettingsTabs />
     </>
   )
 }
