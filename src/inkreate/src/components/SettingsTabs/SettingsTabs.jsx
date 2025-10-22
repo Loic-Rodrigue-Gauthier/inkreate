@@ -1,14 +1,17 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useRef } from 'react'
+import CheckboxOption from '../CheckboxOption/CheckboxOption'
 import styles from './SettingsTabs.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
 
-function Display() {
-  const [inputs, setInputs] = useState({theme:"Light", language:"English"})
+function Privacy() {
+  const [inputs, setInputs] = useState({})
+  const formRef = useRef(null)
 
   const updateValue = (e) => {
-    setInputs(values => ({...values, [e.target.name]: e.target.value}))
+    const { name, value } = e.target
+    setInputs(values => ({...values, [name]: value}))
+    formRef.current.requestSubmit()
   }
 
   function submitForm(e) {
@@ -19,7 +22,91 @@ function Display() {
 
   return (
     <div>
-      <form onSubmit={submitForm}>
+      <form
+        onSubmit={submitForm}
+        ref={formRef}
+      >
+        <label>Profile:
+          <select 
+            name="profile"
+            value={inputs.profile}
+            onChange={updateValue}
+          >
+            <option value="Public">Public</option>
+            <option value="Followers">Followers</option>
+            <option value="Private">Private</option>
+          </select>
+        </label>
+        <label>Stories:
+          <select 
+            name="stories"
+            value={inputs.stories}
+            onChange={updateValue}
+          >
+            <option value="Public">Public</option>
+            <option value="Followers">Followers</option>
+            <option value="Private">Private</option>
+          </select>
+        </label>
+        <label>Who?:
+          <select 
+            name="chat"
+            value={inputs.chat}
+            onChange={updateValue}
+          >
+            <option value="Anyone">Anyone</option>
+            <option value="Followers">Followers</option>
+            <option value="No One">No One</option>
+          </select>
+        </label>
+        <label>Status:
+          <select 
+            name="status"
+            value={inputs.status}
+            onChange={updateValue}
+          >
+            <option value="Visible">Visible</option>
+            <option value="Invisible">Invisible</option>
+          </select>
+        </label>
+      </form>
+    </div>
+  )
+}
+
+function Notifications() {
+  return (
+    <>
+      <CheckboxOption src={reactLogo} title="Lorem" desc="Lorem ipsum dolor sit amet." option="1" />
+      <CheckboxOption src={viteLogo} title="Lorem" desc="Lorem ipsum dolor sit amet." option="2" />
+      <CheckboxOption src={reactLogo} title="Lorem" desc="Lorem ipsum dolor sit amet." option="3" />
+      <CheckboxOption src={viteLogo} title="Lorem" desc="Lorem ipsum dolor sit amet." option="4" />
+    </>
+  )
+}
+
+function Display() {
+  const [inputs, setInputs] = useState({theme:"Light", language:"English"})
+  const formRef = useRef(null)
+
+  const updateValue = (e) => {
+    const { name, value } = e.target
+    setInputs(values => ({...values, [name]: value}))
+    formRef.current.requestSubmit()
+  }
+
+  function submitForm(e) {
+    e.preventDefault()
+    // DB code here
+
+  }
+
+  return (
+    <div>
+      <form
+        onSubmit={submitForm}
+        ref={formRef}
+      >
         <label>Theme:
           <select 
             name="theme"
@@ -41,10 +128,6 @@ function Display() {
             <option value="French">French</option>
           </select>
         </label>
-        <button type="submit">
-          <img src={viteLogo} alt="i" />
-          Save Changes
-        </button>
       </form>
     </div>
   )
@@ -170,7 +253,8 @@ function SettingsTabs() {
       <div>
         {activeTab === 'profile' && <Profile />}
         {activeTab === 'display' && <Display />}
-        {/* {activeTab === 'signin' && <Signin />} */}
+        {activeTab === 'notifications' && <Notifications />}
+        {activeTab === 'privacy' && <Privacy />}
       </div>
     </div>
   )

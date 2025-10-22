@@ -1,14 +1,14 @@
 
 import styles from './StoryThumbnail.module.css'
 
-function StoryThumbnail({src, alt='image', title, children, tags, authors, segments, views, comments, rating, updated}) {
+function StoryThumbnail({src, alt='image', title, desc, tags, authors, segments, views, comments, rating, updated}) {
   return (
     <div className={styles.box}>
       <div>
         <img src={src} alt={alt} />
       </div>
       <h3>{title}</h3>
-      <div>{children}</div>
+      <div>{desc}</div>
       <div>
         {tags.map((item, index) =>
           <div key={index}>{item}</div>
@@ -26,7 +26,11 @@ function StoryThumbnail({src, alt='image', title, children, tags, authors, segme
         <div>💬 {comments}</div>
         <div>⭐ {rating}</div>
       </div>
-      <div>🕓 Updated {updated} ago</div>
+      <div>
+        <div>🕓 Updated {updated} ago</div>
+        {/* <button>❤️</button>
+        <button>🔖</button> */}
+      </div>
     </div>
   )
 }

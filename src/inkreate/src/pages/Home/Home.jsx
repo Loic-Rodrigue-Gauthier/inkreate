@@ -7,8 +7,10 @@ import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
 
 function Home() {
+  // temp_test
   const aut_list = [reactLogo, viteLogo]
   const tag_list = ["tag1", "tag2", "tag3"]
+  //
 
   return (
     <>
@@ -22,26 +24,20 @@ function Home() {
       <h2>Section 1</h2>
       <section>
         <StoryThumbnail
-          src={viteLogo} alt='image' title="Lorem ipsum dolor sit amet."
+          src={viteLogo} alt='image' title="Lorem ipsum dolor sit amet." desc="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, laudantium."
           tags={tag_list} authors={aut_list} segments="23" views="1250"
           comments="89" rating="4.8" updated="2 hours"
-        >
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, natus?</p>
-        </StoryThumbnail>
+        />
         <StoryThumbnail
-          src={viteLogo} alt='image' title="Lorem ipsum dolor sit amet."
+          src={viteLogo} alt='image' title="Lorem ipsum dolor sit amet." desc="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, laudantium."
           tags={tag_list} authors={aut_list} segments="15" views="1100"
           comments="92" rating="4.7" updated="1 day"
-        >
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, natus?</p>
-        </StoryThumbnail>
+        />
         <StoryThumbnail
-          src={viteLogo} alt='image' title="Lorem ipsum dolor sit amet."
+          src={viteLogo} alt='image' title="Lorem ipsum dolor sit amet." desc="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, laudantium."
           tags={tag_list} authors={aut_list} segments="18" views="892"
           comments="64" rating="4.6" updated="4 hours"
-        >
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, natus?</p>
-        </StoryThumbnail>
+        />
       </section>
       <h2>Section 2</h2>
       <section>
