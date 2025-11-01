@@ -1,0 +1,51 @@
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
+import SearchContact from '../SearchContact/SearchContact'
+import ChatContact from '../ChatContact/ChatContact'
+import styles from './ChatContactList.module.css'
+import reactLogo from '../../assets/react.svg'
+import viteLogo from '../../assets/vite.svg'
+
+function ChatContactList({ isOpen, onClose, onConfirm }) {
+  const [selectedContacts, setSelectedContacts] = useState([])
+  const contacts = [
+    { src: viteLogo, username: "FollowedUser1", status: "Online"},
+    { src: reactLogo, username: "FollowedUser2", status: "Offline"},
+  ]
+
+  if (!isOpen) return null
+
+  const toggleContact = (contact) => {
+    setSelectedContacts((prev) => {
+      const exists = prev.find((c) => c.username === contact.username)
+      return exists ? prev.filter((c) => c.username !== contact.username) : [...prev, contact]
+    })
+  }
+
+  const confirmSelection = () => {
+    onConfirm(selectedContacts)
+  }
+
+  return createPortal(
+    <div>
+      <SearchContact />
+      <div>
+        {contacts.map((contact, index) => (
+          <ChatContact
+            key={index}
+            onClick={() => toggleContact(contact)}
+            className={
+              selectedContacts.find((c) => c.username === contact.username) ? 'contact selected' : 'contact'
+            }
+            {...contact}
+          />
+        ))}
+      </div>
+      <button onClick={confirmSelection}>Confirm</button>
+      <button onClick={onClose}>Cancel</button>
+    </div>,
+    document.body
+  )
+}
+
+export default ChatContactList
