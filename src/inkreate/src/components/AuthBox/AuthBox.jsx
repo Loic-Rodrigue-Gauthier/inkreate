@@ -94,7 +94,7 @@ function Login() {
 }
 
 function AuthBox() {
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState('login')
 
   return (
     <div className={styles.component}>

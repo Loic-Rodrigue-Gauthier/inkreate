@@ -1,10 +1,11 @@
 
 import styles from './ActiveChat.module.css'
 
-function ActiveChat({src, alt='image', username, messageNumbers, lastMessage, timestamp}) {
+function ActiveChat({onClick, isSelected, src, alt='image', username, messageNumbers, lastMessage, timestamp}) {
   return (
     <div
-      className={styles.box}>
+      onClick={onClick}
+      className={isSelected ? styles.selected : styles.box}>
       <div>
         <img src={src} alt={alt} />
       </div>

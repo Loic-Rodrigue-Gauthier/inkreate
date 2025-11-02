@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import SearchContact from '../SearchContact/SearchContact'
 import ChatContact from '../ChatContact/ChatContact'
@@ -12,6 +12,10 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
     { src: viteLogo, username: "FollowedUser1", status: "Online"},
     { src: reactLogo, username: "FollowedUser2", status: "Offline"},
   ]
+
+  useEffect(() => {
+    if (!isOpen) setSelectedContacts([])
+  }, [isOpen])
 
   if (!isOpen) return null
 
@@ -34,9 +38,7 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
           <ChatContact
             key={index}
             onClick={() => toggleContact(contact)}
-            className={
-              selectedContacts.find((c) => c.username === contact.username) ? 'contact selected' : 'contact'
-            }
+            isSelected={selectedContacts.find((c) => c.username === contact.username)}
             {...contact}
           />
         ))}

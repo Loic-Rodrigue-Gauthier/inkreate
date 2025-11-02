@@ -1,10 +1,12 @@
 
 import styles from './ChatContact.module.css'
 
-function ChatContact({src, alt='image', username, status = null}) {
+function ChatContact({onClick = null, isSelected = null, src, alt='image', username, status = null}) {
   return (
     <div
-      className={styles.box}>
+      onClick={onClick}
+      className={isSelected ? styles.selected : styles.box}
+    >
       <div>
         <img src={src} alt={alt} />
       </div>

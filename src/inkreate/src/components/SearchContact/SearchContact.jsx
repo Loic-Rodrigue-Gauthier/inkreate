@@ -6,8 +6,7 @@ function SearchContact() {
   const formRef = useRef(null)
 
   const updateValue = (e) => {
-    const value = e.target.value
-    setValue(value)
+    setValue(e.target.value)
     formRef.current.requestSubmit()
   }
 

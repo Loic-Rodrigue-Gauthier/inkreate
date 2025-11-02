@@ -2,3 +2,9 @@
 {
     width: 500px;
 }
+
+.selected
+{
+    composes: box;
+    background-color: green;
+}
