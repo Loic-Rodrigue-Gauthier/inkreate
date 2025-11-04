@@ -8,6 +8,13 @@ function Header() {
       <ul className={styles.menu}>
         <li className={styles.page}>
           <NavLink
+            to="/"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            (Splash)
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
             to="/home"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             <img src={viteLogo} alt="viteLogo" />
@@ -22,9 +29,9 @@ function Header() {
         </li>
         <li className={styles.page}>
           <NavLink
-            to="/chat"
+            to="/readStory"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            Chat
+            (Reading)
           </NavLink>
         </li>
         <li className={styles.page}>
@@ -36,6 +43,20 @@ function Header() {
         </li>
         <li className={styles.page}>
           <NavLink
+            to="/chat"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            💬
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
+            to="/settings"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            ⚙️
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
             to="/profile"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             Profile
@@ -43,30 +64,9 @@ function Header() {
         </li>
         <li className={styles.page}>
           <NavLink
-            to="/settings"
-            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            Settings
-          </NavLink>
-        </li>
-        <li className={styles.page}>
-          <NavLink
-            to="/readStory"
-            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            (Reading)
-          </NavLink>
-        </li>
-        <li className={styles.page}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            (Splash)
-          </NavLink>
-        </li>
-        <li className={styles.page}>
-          <NavLink
             to="/authentication"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            Login/Signin
+            (Login/Signin)
           </NavLink>
         </li>
       </ul>

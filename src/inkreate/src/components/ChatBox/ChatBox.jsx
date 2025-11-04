@@ -5,16 +5,12 @@ import styles from './ChatBox.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
 
-function ChatBox({chatId}) {
+function ChatBox({chatId, userList}) {
   const [value, setValue] = useState()
-  const user_chat = [
-    { id: 72, src: viteLogo, username: "FollowedUser3"},
-    { id: 63, src: reactLogo, username: "FollowedUser4"},
-  ]
-  const chat_messages = [
+  const [chatMess, setChatMess] = useState([
     { id: 72, src: viteLogo, username: "FollowedUser3", message: "Lorem ipsum dolor sit amet...", timestamp: "10:10"},
     { id: 63, src: reactLogo, username: "FollowedUser4", message: "Lorem ipsum dolor sit amet...", timestamp: "20:20"},
-  ]
+  ])
 
   const updateValue = (e) => {
     setValue(e.target.value)
@@ -24,12 +20,15 @@ function ChatBox({chatId}) {
     e.preventDefault()
     // DB code here
 
+    const newMess = { id: chatId, src: null, username: "LoggedInUser", message: value, timestamp: "just now"}
+    setChatMess(prev => [...prev, newMess])
+    setValue("")
   }
 
   return (
     <div>
       <div>
-        {user_chat
+        {userList
           .filter((user) => user.id === chatId)
           .map((user, index) => (
             <ChatContact
@@ -39,7 +38,7 @@ function ChatBox({chatId}) {
           ))}
       </div>
       <div>
-        {chat_messages
+        {chatMess
           .filter((message) => message.id === chatId)
           .map((message, index) => (
             <ChatBubble

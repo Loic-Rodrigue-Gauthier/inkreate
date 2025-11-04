@@ -26,10 +26,6 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
     })
   }
 
-  const confirmSelection = () => {
-    onConfirm(selectedContacts)
-  }
-
   return createPortal(
     <div>
       <SearchContact />
@@ -43,7 +39,7 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
           />
         ))}
       </div>
-      <button onClick={confirmSelection}>Confirm</button>
+      <button onClick={() => onConfirm(selectedContacts)}>Confirm</button>
       <button onClick={onClose}>Cancel</button>
     </div>,
     document.body
