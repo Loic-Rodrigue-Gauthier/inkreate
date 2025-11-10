@@ -1,7 +1,7 @@
 
 import styles from './SegmentImageText.module.css'
 
-function SegmentImageText({src, alt='image', img_title, txt_title, inputs, updateValue, updateImage}) {
+function SegmentImageText({src, alt='image', img_title, txt_title, name, inputs, updateValue, updateImage}) {
   return (
     <div className={styles.box}>
       <h3>{img_title}</h3>
@@ -10,8 +10,8 @@ function SegmentImageText({src, alt='image', img_title, txt_title, inputs, updat
       </div>
       <h3>{txt_title}</h3>
       <textarea
-        name="desc"
-        value={inputs.desc}
+        name={name}
+        value={inputs[name]}
         onChange={updateValue}
       />
     </div>
