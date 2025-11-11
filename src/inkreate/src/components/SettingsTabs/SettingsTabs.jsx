@@ -215,7 +215,7 @@ function Profile() {
 }
 
 function SettingsTabs() {
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('profile')
 
   return (
     <div className={styles.component}>

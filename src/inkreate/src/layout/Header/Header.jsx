@@ -15,6 +15,13 @@ function Header() {
         </li>
         <li className={styles.page}>
           <NavLink
+            to="/readStory"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            (Reading)
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
             to="/home"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             <img src={viteLogo} alt="viteLogo" />
@@ -29,9 +36,16 @@ function Header() {
         </li>
         <li className={styles.page}>
           <NavLink
-            to="/readStory"
+            to="/bookmarked"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
-            (Reading)
+            Continue Reading
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
+            to="/readLater"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            Planned to Read
           </NavLink>
         </li>
         <li className={styles.page}>
@@ -39,6 +53,13 @@ function Header() {
             to="/writeStory"
             className={({ isActive }) => isActive ? styles.active : styles.navLink}>
             New Story
+          </NavLink>
+        </li>
+        <li className={styles.page}>
+          <NavLink
+            to="/activity"
+            className={({ isActive }) => isActive ? styles.active : styles.navLink}>
+            👨‍💼
           </NavLink>
         </li>
         <li className={styles.page}>

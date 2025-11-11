@@ -43,10 +43,13 @@ function App() {
           <Route path="/authentication" element={<Authentication />} />
         </Route>
         <Route element={<MainLayout />}>
+          <Route path="/readStory" element={<ReadStory />} />
           <Route path="/home" element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/readStory" element={<ReadStory />} />
+          {/* <Route path="/bookmarked" element={<??? />} /> */}
+          {/* <Route path="/readLater" element={<??? />} /> */}
           <Route path="/writeStory" element={<WriteStory />} />
+          {/* <Route path="/activity" element={<??? />} /> */}
           <Route path="/chat" element={<Chat />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
