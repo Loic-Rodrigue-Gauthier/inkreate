@@ -160,7 +160,7 @@ function WriteStory() {
         }
       </section>
       <section>
-        {/* CONVERT below section into Segment Component TO-DO*/}
+        {/* CONVERT below section into NewSegment Component TO-DO*/}
         <SegmentImageText
           src={segmentImage}
           img_title="First Segment"
