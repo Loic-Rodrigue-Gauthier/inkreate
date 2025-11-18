@@ -5,6 +5,7 @@ import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
 import DiscardableChip from '../../components/DiscardableChip/DiscardableChip'
 import ChatContactList from '../../components/ChatContactList/ChatContactList'
+import NewSegment from '../../components/NewSegment/NewSegment'
 
 function WriteStory() {
   const [inputs, setInputs] = useState({visibility: "Anyone"})
@@ -12,10 +13,8 @@ function WriteStory() {
   const [isFollowers, setIsFollowers] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [thumbnail, setThumbnail] = useState(reactLogo)
-  const [segmentImage, setSegmentImage] = useState(viteLogo)
   const [tagList, setTagList] = useState([])
   const [userList, setUserList] = useState([])
-  const [choiceList, setChoiceList] = useState([])
 
   const updateValue = (e) => {
     setInputs(values => ({...values, [e.target.name]: e.target.value}))
@@ -41,22 +40,12 @@ function WriteStory() {
     setThumbnail(viteLogo)
   }
 
-  const updateSegmentImage = () => {
-    // Windows Open file prompt...
-
-    setSegmentImage(reactLogo)
-  }
-
   const removeTag = (text) => {
     setTagList(prev => prev.filter((tag) => tag.text != text))
   }
 
   const removeUser = (username) => {
     setUserList(prev => prev.filter((user) => user.username != username))
-  }
-
-  const removeChoice = (text) => {
-    setChoiceList(prev => prev.filter((choice) => choice.text != text))
   }
 
   const addUsers = (selectedContacts) => {
@@ -67,15 +56,6 @@ function WriteStory() {
       return [...prev, ...updatedList]
     })
     setIsOpen(false)
-  }
-
-  const addChoices = () => {
-    const newChoice = { text: selected.choice }
-    setChoiceList(prev => {
-      const exists = prev.some(choice => choice.text === newChoice.text)
-      return exists ? prev : [...prev, newChoice]
-    })
-    setSelected(prev => ({...prev, choice: ""}))
   }
 
   const createStory = () => {
@@ -160,40 +140,13 @@ function WriteStory() {
         }
       </section>
       <section>
-        {/* CONVERT below section into NewSegment Component TO-DO*/}
-        <SegmentImageText
-          src={segmentImage}
-          img_title="First Segment"
-          name="paragraph"
-          inputs={inputs}
-          updateValue={updateValue}
-          updateImage={updateSegmentImage}
+        <NewSegment
+          isPortal={false}
+          isFirst={true}
+
+          // data to export here!
+          
         />
-        <label>Add choice:
-          <input
-            type="text" 
-            name="choice" 
-            value={selected.choice}
-            onChange={updateSelected}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault()
-                addChoices()
-              }
-            }}
-          />
-        </label>
-        <div>
-          {choiceList
-          .map((choice, index) => (
-            <DiscardableChip
-              key={index}
-              src={choice.src}
-              text={choice.text}
-              removeChip={removeChoice}
-            />
-          ))}
-        </div>
       </section>
       <button onClick={createStory}>Publish Story</button>
     </>

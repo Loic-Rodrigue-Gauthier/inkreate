@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import styles from './ReadStory.module.css'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '../../assets/vite.svg'
 import ChatContact from '../../components/ChatContact/ChatContact'
 import ChatBubble from '../../components/ChatBubble/ChatBubble'
 import StoryOverview from '../../components/StoryOverview/StoryOverview'
+import styles from './ReadStory.module.css'
+import reactLogo from '../../assets/react.svg'
+import viteLogo from '../../assets/vite.svg'
+import SegmentThumbnailList from '../../components/SegmentThumbnailList/SegmentThumbnailList'
 
 function ReadStory() {
   const [isChoiceOpen, setIsChoiceOpen] = useState(false)
@@ -15,6 +16,7 @@ function ReadStory() {
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [comment, setComment] = useState("")
   const [commentSection, setCommentSection] = useState([])
+  const [selectedChoice, setSelectedChoice] = useState()
   const segment = {
     id: 123,
     src: reactLogo,
@@ -63,6 +65,7 @@ function ReadStory() {
     // DB code here...
     
     setIsOverviewOpen(false)
+    setIsChoiceOpen(false)
   }
   
   return (
@@ -75,15 +78,21 @@ function ReadStory() {
         .map((choice, index) => (
           <button
             key={index}
-            onClick={() => setIsChoiceOpen(true)}
+            onClick={() => {
+              setSelectedChoice(choice.id)
+              setIsChoiceOpen(true)
+            }}
           >
             {choice.text}
           </button>
         ))}
       </div>
-
-      {/* HERE: segmentthumblist portal COM + segmentthumb COM (based on storythumb) + addsegment COM (based on part of writestory) */}
-      
+      <SegmentThumbnailList
+        isOpen={isChoiceOpen}
+        onClose={() => setIsChoiceOpen(false)}
+        segID={updateSegment}
+        choiceID={selectedChoice}
+      />
       <button onClick={previousPage}>⬅️ Back</button>
       <button onClick={() => setIsOverviewOpen(true)}>📑 Table of Contents</button>
       <StoryOverview
