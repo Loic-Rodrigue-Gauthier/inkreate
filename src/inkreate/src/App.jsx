@@ -9,6 +9,9 @@ import WriteStory from './pages/WriteStory/WriteStory.jsx'
 import Profile from './pages/Profile/Profile.jsx'
 import Settings from './pages/Settings/Settings.jsx'
 import ReadStory from './pages/ReadStory/ReadStory.jsx'
+import Bookmarked from './pages/Bookmarked/Bookmarked.jsx'
+import ReadLater from './pages/ReadLater/ReadLater.jsx'
+import Activity from './pages/Activity/Activity.jsx'
 
 function MainLayout() {
   return (
@@ -46,10 +49,10 @@ function App() {
           <Route path="/readStory" element={<ReadStory />} />
           <Route path="/home" element={<Home />} />
           <Route path="/search" element={<Search />} />
-          {/* <Route path="/bookmarked" element={<??? />} /> */}
-          {/* <Route path="/readLater" element={<??? />} /> */}
+          <Route path="/bookmarked" element={<Bookmarked />} />
+          <Route path="/readLater" element={<ReadLater />} />
           <Route path="/writeStory" element={<WriteStory />} />
-          {/* <Route path="/activity" element={<??? />} /> */}
+          <Route path="/activity" element={<Activity />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />

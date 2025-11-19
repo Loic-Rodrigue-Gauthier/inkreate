@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import DiscardableChip from '../DiscardableChip/DiscardableChip'
 import SegmentImageText from '../SegmentImageText/SegmentImageText'
@@ -6,13 +6,11 @@ import styles from './NewSegment.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
 
-function NewSegment({isPortal, isFirst}) {
+function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, choiceID}) {
   const [inputs, setInputs] = useState({})
   const [selected, setSelected] = useState({})
   const [segmentImage, setSegmentImage] = useState(viteLogo)
   const [choiceList, setChoiceList] = useState([])
-  
-  // make global state with all info above to ship as prop (and use in create below)!
 
   const updateValue = (e) => {
     setInputs(values => ({...values, [e.target.name]: e.target.value}))
@@ -27,6 +25,17 @@ function NewSegment({isPortal, isFirst}) {
 
     setSegmentImage(reactLogo)
   }
+
+  useEffect(() => {
+    if (!isFirst) return
+
+    setSegData(prev => ({
+      ...prev,
+      paragraph: inputs.paragraph || "",
+      segmentImage,
+      choices: [...choiceList],
+    }));
+  }, [inputs, choiceList, segmentImage, isFirst])
 
   const removeChoice = (text) => {
     setChoiceList(prev => prev.filter((choice) => choice.text != text))
@@ -44,13 +53,20 @@ function NewSegment({isPortal, isFirst}) {
   const createSegment = () => {
     // DB code here...
 
+    setInputs({})
+    setSegmentImage(viteLogo)
+    setChoiceList([])
+    onClose()
   }
 
   const component = (
     <div>
+      {isPortal &&
+        <button onClick={onClose}>❌</button>
+      }
       <SegmentImageText
         src={segmentImage}
-        img_title="First Segment"
+        img_title="New Segment"
         name="paragraph"
         inputs={inputs}
         updateValue={updateValue}
@@ -86,6 +102,10 @@ function NewSegment({isPortal, isFirst}) {
       }
     </div>
   )
+  
+  if (isPortal) {
+    if (!isOpen) return null
+  }
 
   return isPortal ? createPortal(component, document.body) : component
 }

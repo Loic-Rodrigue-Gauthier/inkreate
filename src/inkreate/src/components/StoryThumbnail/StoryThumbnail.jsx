@@ -1,7 +1,7 @@
 
 import styles from './StoryThumbnail.module.css'
 
-function StoryThumbnail({src, alt='image', title, desc, tags, authors, segments, views, comments, rating, updated}) {
+function StoryThumbnail({src, alt='image', title, desc, tags, authors, segments, views, comments, rating, updated, favorited, bookmarked}) {
   return (
     <div className={styles.box}>
       <div>
@@ -28,8 +28,8 @@ function StoryThumbnail({src, alt='image', title, desc, tags, authors, segments,
       </div>
       <div>
         <div>🕓 Updated {updated} ago</div>
-        {/* <button>❤️</button>
-        <button>🔖</button> */}
+        <div>❤️ {favorited}</div>
+        <div>🔖 {bookmarked}</div>
       </div>
     </div>
   )

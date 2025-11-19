@@ -4,9 +4,11 @@ import SegmentThumbnail from '../SegmentThumbnail/SegmentThumbnail'
 import styles from './SegmentThumbnailList.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
+import NewSegment from '../NewSegment/NewSegment'
 
 function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
   const [page, setPage] = useState(1)
+  const [isSegmentOpen, setIsSegmentOpen] = useState(false)
   const segments = [
     {
       id: 1,
@@ -97,10 +99,14 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
           <button onClick={nextPage}>Next ➡️</button>
         }
       </div>
-      <button >Add Segment ➕</button>
-
-      {/* newsegment portal here! */}
-
+      <button onClick={() => setIsSegmentOpen(true)}>Add Segment ➕</button>
+      <NewSegment
+        isPortal={true}
+        isFirst={false}
+        isOpen={isSegmentOpen}
+        onClose={() => setIsSegmentOpen(false)}
+        choiceID={choiceID}
+      />
     </div>,
     document.body
   )

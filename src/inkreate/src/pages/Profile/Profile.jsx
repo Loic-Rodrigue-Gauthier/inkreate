@@ -6,6 +6,7 @@ import ContributionList from '../../components/ContributionList/ContributionList
 import styles from './Profile.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
+import ChatContact from '../../components/ChatContact/ChatContact'
 
 function Profile() {
   const [activeTab, setActiveTab] = useState('contributions')
@@ -33,7 +34,32 @@ function Profile() {
     {title: "Story 666", segment: "2", choice: "Choice 48", paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, optio..."},
     {title: "Story 12", segment: "956", choice: "Choice 6", paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, optio..."},
   ]
+  const following = [
+    { src: viteLogo, username: "Username3"},
+    { src: reactLogo, username: "Username4"},
+  ]
+  const followers = [
+    { src: reactLogo, username: "Username1"},
+    { src: viteLogo, username: "Username2"},
+  ]
   //
+
+  const [activeSubTab, setActiveSubTab] = useState('following')
+  const [relations, setRelations] = useState(following)
+
+  function displayFollowing() {
+    setActiveSubTab('following')
+    // DB code here
+
+    setRelations(following)
+  }
+
+  function displayFollowers() {
+    setActiveSubTab('followers')
+    // DB code here
+
+    setRelations(followers)
+  }
 
   return (
     <>
@@ -69,11 +95,42 @@ function Profile() {
             <img src={reactLogo} alt="activity" />
             Activity
           </button>
+          <button
+            className={activeTab === 'relations' ? styles.active : styles.tab}
+            onClick={() => setActiveTab('relations')}
+          >
+            <img src={viteLogo} alt="relations" />
+            Relations
+          </button>
       </nav>
       <div>
         {activeTab === 'contributions' && <ContributionList contributions={contributions} />}
         {activeTab === 'favs' && <StoryThumbnailList stories={stories} />}
         {activeTab === 'activity' && <ActivityBoxList activity={activity}/>}
+        {activeTab === 'relations' &&
+          <div>
+            <nav>
+                <button
+                  className={activeSubTab === 'following' ? styles.active : styles.tab}
+                  onClick={() => displayFollowing()}
+                >
+                  Following
+                </button>
+                <button
+                  className={activeSubTab === 'followers' ? styles.active : styles.tab}
+                  onClick={() => displayFollowers()}
+                >
+                  Followers
+                </button>
+            </nav>
+            {relations.map((rel, index) => (
+              <ChatContact
+                key={index}
+                {...rel}
+              />
+            ))}
+          </div>
+        }
       </div>
     </>
   )

@@ -15,6 +15,7 @@ function WriteStory() {
   const [thumbnail, setThumbnail] = useState(reactLogo)
   const [tagList, setTagList] = useState([])
   const [userList, setUserList] = useState([])
+  const [segData, setSegData] = useState({})
 
   const updateValue = (e) => {
     setInputs(values => ({...values, [e.target.name]: e.target.value}))
@@ -143,9 +144,8 @@ function WriteStory() {
         <NewSegment
           isPortal={false}
           isFirst={true}
-
-          // data to export here!
-          
+          segData={segData}
+          setSegData={setSegData}
         />
       </section>
       <button onClick={createStory}>Publish Story</button>
