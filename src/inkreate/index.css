@@ -26,4 +26,23 @@ main
     margin: auto;
     width: 80%;
     background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button, select
+{
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+button:hover
+{
+    cursor: pointer;
+}
+
+textarea
+{
+    resize: none;
 }

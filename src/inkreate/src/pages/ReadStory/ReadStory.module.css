@@ -1,0 +1,76 @@
+.main
+{
+    width: 60%;
+    background-color: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.seg_pic
+{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.author_rating
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.choices, .seg_nav
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.choice_button
+{
+    padding: 10px 20px;
+}
+
+.nav_button
+{
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+}
+
+.rate_fave_book
+{
+    background-color: white;
+    padding: 5px 10px;
+    border: none;
+}
+
+.seg_stats
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.date_views
+{
+    display: flex;
+    gap: 20px;
+}
+
+.comment_area
+{
+    margin-top: 50px;
+    width: 65%;
+    height: 75px;
+}
+
+.comment_bubbles
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

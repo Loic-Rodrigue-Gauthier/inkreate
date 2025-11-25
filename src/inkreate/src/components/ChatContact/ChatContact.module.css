@@ -1,10 +1,22 @@
-.box
+.main
 {
-    width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .selected
 {
-    composes: box;
+    composes: main;
     background-color: green;
+}
+
+.pic
+{
+    width: 40px;
+}
+
+.user
+{
+    font-weight: bold;
 }

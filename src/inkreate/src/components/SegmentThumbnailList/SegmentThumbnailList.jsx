@@ -43,6 +43,17 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
       bookmarked: "723",
       comments: "5"
     },
+    {
+      id: 3,
+      src: reactLogo,
+      paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
+      timestamp: "3/15/2024",
+      views: "3250",
+      rating: "2.7",
+      favorited: "3.2k",
+      bookmarked: "723",
+      comments: "5"
+    },
   ]
   const numberOfPages = Math.ceil(segments.filter((segment) => segment.id === choiceID).length / 5)
 
@@ -64,49 +75,64 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
   if (!isOpen) return null
 
   return createPortal(
-    <div>
-      <button onClick={onClose}>❌</button>
-      <div>
-        {segments
-        .filter((segment) => segment.id === choiceID)
-        .map((segment, index) => (
-          <SegmentThumbnail
-            key={index}
-            {...segment}
-            thumbID={segID}
-          />
-        ))}
-      </div>
-      <div>
-        {page != 1 &&
-          <button onClick={previousPage}>⬅️ Back</button>
+    <div
+      className={styles.bg}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose()
         }
-        <select 
-          name="pages"
-          value={page}
-          onChange={(e) => {setPage(Number(e.target.value))}}
-        >
-          {Array.from({ length: numberOfPages }, (_, i) => (
-            <option
-              key={i}
-              value={i + 1}
-            >
-              {i + 1}
-            </option>
+      }}
+    >
+      <div className={styles.main}>
+        <div className={styles.header}>
+          <h2>Choose a segment!</h2>
+          <button
+            onClick={onClose}>
+            ❌
+          </button>
+        </div>
+        <div>
+          {segments
+          .filter((segment) => segment.id === choiceID)
+          .map((segment, index) => (
+            <SegmentThumbnail
+              key={index}
+              {...segment}
+              thumbID={segID}
+            />
           ))}
-        </select>
-        {page != numberOfPages &&
-          <button onClick={nextPage}>Next ➡️</button>
-        }
+        </div>
+        <div>
+          {page != 1 &&
+            <button onClick={previousPage}>⬅️ Back</button>
+          }
+          <select 
+            name="pages"
+            value={page}
+            onChange={(e) => {setPage(Number(e.target.value))}}
+          >
+            {Array.from({ length: numberOfPages }, (_, i) => (
+              <option
+                key={i}
+                value={i + 1}
+              >
+                {i + 1}
+              </option>
+            ))}
+          </select>
+          {page != numberOfPages &&
+            <button onClick={nextPage}>Next ➡️</button>
+          }
+        </div>
+        <button onClick={() => setIsSegmentOpen(true)}>Add Segment ➕</button>
+        <NewSegment
+          isPortal={true}
+          isFirst={false}
+          isOpen={isSegmentOpen}
+          onClose={() => setIsSegmentOpen(false)}
+          choiceID={choiceID}
+        />
       </div>
-      <button onClick={() => setIsSegmentOpen(true)}>Add Segment ➕</button>
-      <NewSegment
-        isPortal={true}
-        isFirst={false}
-        isOpen={isSegmentOpen}
-        onClose={() => setIsSegmentOpen(false)}
-        choiceID={choiceID}
-      />
     </div>,
     document.body
   )

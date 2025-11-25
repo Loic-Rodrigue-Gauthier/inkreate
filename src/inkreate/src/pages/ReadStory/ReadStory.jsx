@@ -5,6 +5,8 @@ import StoryOverview from '../../components/StoryOverview/StoryOverview'
 import styles from './ReadStory.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
+import bliss from '../../assets/bliss.jpg'
+import pfp from '../../assets/pfp.svg'
 import SegmentThumbnailList from '../../components/SegmentThumbnailList/SegmentThumbnailList'
 
 function ReadStory() {
@@ -19,11 +21,11 @@ function ReadStory() {
   const [selectedChoice, setSelectedChoice] = useState()
   const segment = {
     id: 123,
-    src: reactLogo,
+    src: bliss,
     title: "Segment Title",
     paragraph: "Paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quod, rem error incidunt modi labore iste tempore. Temporibus aperiam, ea voluptatem ullam odio esse! Dignissimos culpa ut quos hic quis? Vitae, laboriosam. Tenetur architecto quas aliquam alias reprehenderit est, iste, quidem, voluptas deleniti inventore eius ratione impedit beatae corporis accusantium!",
     choices: [{id: 1, text: "choice1"}, {id: 2, text: "choice2"}, {id: 3, text: "choice3"}],
-    author: {src: viteLogo, username: "Author"},
+    author: {src: pfp, username: "Author"},
     rating: "4.7",
     timestamp: "1/15/2025",
     views: "1250",
@@ -69,14 +71,19 @@ function ReadStory() {
   }
   
   return (
-    <>
-      <img src={segment.src} alt="" />
+    <div className={styles.main}>
+      <img
+        className={styles.seg_pic}
+        src={segment.src}
+        alt=""
+      />
       <h2>{segment.title}</h2>
       <div>{segment.paragraph}</div>
-      <div>
+      <div className={styles.choices}>
         {segment.choices
         .map((choice, index) => (
           <button
+            className={styles.choice_button}
             key={index}
             onClick={() => {
               setSelectedChoice(choice.id)
@@ -93,20 +100,26 @@ function ReadStory() {
         segID={updateSegment}
         choiceID={selectedChoice}
       />
-      <button onClick={previousPage}>⬅️ Back</button>
-      <button onClick={() => setIsOverviewOpen(true)}>📑 Table of Contents</button>
+      <div className={styles.seg_nav}>
+        <button className={styles.nav_button} onClick={previousPage}>⬅️</button>
+        <button className={styles.nav_button} onClick={() => setIsOverviewOpen(true)}>📑</button>
+      </div>
       <StoryOverview
         isOpen={isOverviewOpen}
         onClose={() => setIsOverviewOpen(false)}
         segID={updateSegment}
       />
-      <div>
+      <div className={styles.author_rating}>
         <ChatContact
           src={segment.author.src}
           username={segment.author.username}
         />
         {!isRating &&
-          <button onClick={() => setIsRating(true)}>{rating >=1 ? "✔️" : "⭐"} {segment.rating}</button>
+          <button
+            className={styles.rate_fave_book}
+            onClick={() => setIsRating(true)}>{rating >=1 ? "✔️ " : "⭐ "}
+            {segment.rating}
+          </button>
         }
         {isRating &&
           <select 
@@ -123,17 +136,27 @@ function ReadStory() {
           </select>
         }
       </div>
-      <div>
-        <div>
+      <div className={styles.seg_stats}>
+        <div className={styles.date_views}>
           <div>🕓 {segment.timestamp}</div>
           <div>👁️ {segment.views}</div>
         </div>
         <div>
-          <button onClick={() => setIsFavorited(isFavorited ? false : true)}>{isFavorited ? "✔️" : "❤️"} {segment.favorites}</button>
-          <button onClick={() => setIsBookmarked(isBookmarked ? false : true)}>{isBookmarked ? "✔️" : "🔖"} {segment.bookmarks}</button>
+          <button
+            className={styles.rate_fave_book}
+            onClick={() => setIsFavorited(isFavorited ? false : true)}>{isFavorited ? "✔️ " : "❤️ "}
+            {segment.favorites}
+          </button>
+          <button
+            className={styles.rate_fave_book}
+            onClick={() => setIsBookmarked(isBookmarked ? false : true)}>{isBookmarked ? "✔️ " : "🔖 "}
+            {segment.bookmarks}
+          </button>
         </div>
       </div>
       <textarea
+        className={styles.comment_area}
+        placeholder='Comment on this segment!'
         name="comment" 
         value={comment}
         onChange={updateComment}
@@ -141,7 +164,7 @@ function ReadStory() {
           if (e.key === "Enter") {
             e.preventDefault()
             
-            const newComment = { id: segment.id, src: reactLogo, username: "LoggedInUser", message: comment, timestamp: new Date().toLocaleDateString()}
+            const newComment = { id: segment.id, src: pfp, username: "LoggedInUser", message: comment, timestamp: new Date().toLocaleDateString()}
             setCommentSection(prev => [...prev, newComment])
             // DB code here...
 
@@ -150,7 +173,7 @@ function ReadStory() {
         }}
       />
       <h3>Comments ({commentSection.length})</h3>
-      <div>
+      <div className={styles.comment_bubbles}>
         {commentSection
         .filter((comment) => comment.id === segment.id)
         .map((comment, index) => (
@@ -160,7 +183,7 @@ function ReadStory() {
           />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
