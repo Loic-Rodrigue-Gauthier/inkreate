@@ -3,13 +3,12 @@ import { createPortal } from 'react-dom'
 import DiscardableChip from '../DiscardableChip/DiscardableChip'
 import SegmentImageText from '../SegmentImageText/SegmentImageText'
 import styles from './NewSegment.module.css'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '../../assets/vite.svg'
+import bliss from '../../assets/bliss.jpg'
 
 function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, choiceID}) {
   const [inputs, setInputs] = useState({})
   const [selected, setSelected] = useState({})
-  const [segmentImage, setSegmentImage] = useState(viteLogo)
+  const [segmentImage, setSegmentImage] = useState()
   const [choiceList, setChoiceList] = useState([])
 
   const updateValue = (e) => {
@@ -23,7 +22,7 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
   const updateSegmentImage = () => {
     // Windows Open file prompt...
 
-    setSegmentImage(reactLogo)
+    setSegmentImage(bliss)
   }
 
   useEffect(() => {
@@ -54,19 +53,17 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
     // DB code here...
 
     setInputs({})
-    setSegmentImage(viteLogo)
+    setSegmentImage()
     setChoiceList([])
     onClose()
   }
 
   const component = (
-    <div>
-      {isPortal &&
-        <button onClick={onClose}>❌</button>
-      }
+    <>
       <SegmentImageText
         src={segmentImage}
-        img_title="New Segment"
+        alt="Click to upload segment picture"
+        img_title={isPortal ? "" : "First Segment"}
         name="paragraph"
         inputs={inputs}
         updateValue={updateValue}
@@ -74,6 +71,7 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
       />
       <label>Add choice:
         <input
+          className={styles.choice_input}
           type="text" 
           name="choice" 
           value={selected.choice}
@@ -86,7 +84,7 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
           }}
         />
       </label>
-      <div>
+      <div className={styles.chips}>
         {choiceList
         .map((choice, index) => (
           <DiscardableChip
@@ -98,16 +96,43 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
         ))}
       </div>
       {!isFirst &&
-        <button onClick={createSegment}>Publish Segment</button>
+        <button
+          onClick={createSegment}
+          className={styles.send_button}
+        >
+        Publish Segment
+        </button>
       }
-    </div>
+    </>
   )
   
   if (isPortal) {
     if (!isOpen) return null
   }
 
-  return isPortal ? createPortal(component, document.body) : component
+  return isPortal ? createPortal(
+                      <div
+                        className={styles.bg}
+                        onClick={(e) => {
+                          if (e.target === e.currentTarget) {
+                            onClose()
+                          }
+                        }}
+                      >
+                        <div className={styles.main_portal}>
+                          <div className={styles.header}>
+                            <h2>New Segment</h2>
+                            <button
+                              onClick={onClose}>
+                              ❌
+                            </button>
+                          </div>
+                          {component}
+                        </div>
+                      </div>, document.body)
+                  : <div className={styles.main}>
+                      {component}
+                    </div>
 }
 
 export default NewSegment

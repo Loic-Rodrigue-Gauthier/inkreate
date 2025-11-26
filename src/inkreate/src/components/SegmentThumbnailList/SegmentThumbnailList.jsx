@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import SegmentThumbnail from '../SegmentThumbnail/SegmentThumbnail'
-import styles from './SegmentThumbnailList.module.css'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '../../assets/vite.svg'
 import NewSegment from '../NewSegment/NewSegment'
+import styles from './SegmentThumbnailList.module.css'
+import bliss from '../../assets/bliss.jpg'
 
 function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
   const [page, setPage] = useState(1)
@@ -12,7 +11,7 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
   const segments = [
     {
       id: 1,
-      src: reactLogo,
+      src: bliss,
       paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
       timestamp: "1/15/2024",
       views: "1250",
@@ -23,7 +22,7 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
     },
     {
       id: 2,
-      src: viteLogo,
+      src: bliss,
       paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
       timestamp: "2/15/2024",
       views: "2250",
@@ -34,7 +33,7 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
     },
     {
       id: 3,
-      src: reactLogo,
+      src: bliss,
       paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
       timestamp: "3/15/2024",
       views: "3250",
@@ -45,7 +44,40 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
     },
     {
       id: 3,
-      src: reactLogo,
+      src: bliss,
+      paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
+      timestamp: "3/15/2024",
+      views: "3250",
+      rating: "2.7",
+      favorited: "3.2k",
+      bookmarked: "723",
+      comments: "5"
+    },
+    {
+      id: 3,
+      src: bliss,
+      paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
+      timestamp: "3/15/2024",
+      views: "3250",
+      rating: "2.7",
+      favorited: "3.2k",
+      bookmarked: "723",
+      comments: "5"
+    },
+    {
+      id: 3,
+      src: bliss,
+      paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
+      timestamp: "3/15/2024",
+      views: "3250",
+      rating: "2.7",
+      favorited: "3.2k",
+      bookmarked: "723",
+      comments: "5"
+    },
+    {
+      id: 3,
+      src: bliss,
       paragraph: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, itaque...",
       timestamp: "3/15/2024",
       views: "3250",
@@ -91,7 +123,7 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
             ❌
           </button>
         </div>
-        <div>
+        <div className={styles.segs}>
           {segments
           .filter((segment) => segment.id === choiceID)
           .map((segment, index) => (
@@ -102,9 +134,13 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
             />
           ))}
         </div>
-        <div>
+        <div className={styles.page_buttons}>
           {page != 1 &&
-            <button onClick={previousPage}>⬅️ Back</button>
+            <button
+              className={styles.back_next}
+              onClick={previousPage}>
+              ⬅️
+            </button>
           }
           <select 
             name="pages"
@@ -121,7 +157,11 @@ function SegmentThumbnailList({isOpen, onClose, segID, choiceID}) {
             ))}
           </select>
           {page != numberOfPages &&
-            <button onClick={nextPage}>Next ➡️</button>
+            <button
+              className={styles.back_next}
+              onClick={nextPage}>
+              ➡️
+            </button>
           }
         </div>
         <button onClick={() => setIsSegmentOpen(true)}>Add Segment ➕</button>

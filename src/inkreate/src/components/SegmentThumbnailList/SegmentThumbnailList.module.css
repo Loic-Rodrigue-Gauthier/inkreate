@@ -42,3 +42,26 @@
 {
     border-radius: 50px;
 }
+
+.segs
+{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.page_buttons
+{
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.back_next
+{
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+}

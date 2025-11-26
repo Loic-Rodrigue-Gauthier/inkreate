@@ -9,8 +9,8 @@
 
 .seg_pic
 {
-    width: 100%;
     border-radius: 10px;
+    /* height: 42.5%; */
 }
 
 .author_rating

@@ -5,18 +5,16 @@ function SegmentThumbnail({id, src, alt='image', paragraph, timestamp, views, ra
   return (
     <div
       onClick={() => thumbID(id)}
-      className={styles.box}
+      className={styles.main}
     >
-      <div>
-        <img src={src} alt={alt} />
-      </div>
-      <div>
-        <div>{paragraph}</div>
-        <div>
+      <img src={src} alt={alt} />
+      <div className={styles.text_content}>
+        <div className={styles.text}>{paragraph}</div>
+        <div className={styles.date_views}>
           <div>🕓 {timestamp}</div>
           <div>👁️ {views}</div>
         </div>
-        <div>
+        <div className={styles.stats}>
           <div>⭐ {rating}</div>
           <div>❤️ {favorited}</div>
           <div>🔖 {bookmarked}</div>
