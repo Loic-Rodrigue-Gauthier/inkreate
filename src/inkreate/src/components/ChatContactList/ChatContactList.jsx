@@ -5,6 +5,7 @@ import ChatContact from '../ChatContact/ChatContact'
 import styles from './ChatContactList.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
+import pfp from '../../assets/pfp.svg'
 
 function ChatContactList({ isOpen, onClose, onConfirm }) {
   const [selectedContacts, setSelectedContacts] = useState([])
@@ -27,20 +28,37 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
   }
 
   return createPortal(
-    <div>
-      <SearchContact />
-      <div>
-        {contacts.map((contact, index) => (
-          <ChatContact
-            key={index}
-            onClick={() => toggleContact(contact)}
-            isSelected={selectedContacts.find((c) => c.username === contact.username)}
-            {...contact}
-          />
-        ))}
+    <div
+      className={styles.bg}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose()
+        }
+      }}
+    >
+      <div className={styles.main}>
+        <div className={styles.header}>
+          <h2>Add users</h2>
+          <button
+            onClick={onClose}>
+            ❌
+          </button>
+        </div>
+        <div className={styles.search_contacts}>
+          <SearchContact />
+          <div className={styles.contacts}>
+            {contacts.map((contact, index) => (
+              <ChatContact
+                key={index}
+                onClick={() => toggleContact(contact)}
+                isSelected={selectedContacts.find((c) => c.username === contact.username)}
+                {...contact}
+              />
+            ))}
+          </div>
+          <button onClick={() => onConfirm(selectedContacts)}>Confirm selection</button>
+        </div>
       </div>
-      <button onClick={() => onConfirm(selectedContacts)}>Confirm</button>
-      <button onClick={onClose}>Cancel</button>
     </div>,
     document.body
   )

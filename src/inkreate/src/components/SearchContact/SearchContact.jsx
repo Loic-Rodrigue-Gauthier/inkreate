@@ -22,14 +22,16 @@ function SearchContact() {
         onSubmit={submitForm}
         ref={formRef}
       >
-        <label>🔍
+        <div>
+          <label className={styles.label}>🔍</label>
           <input
+            placeholder='Search user...'
             type="text" 
             name="name" 
             value={value}
             onChange={updateValue}
           />
-        </label>
+        </div>
       </form>
     </div>
   )

@@ -1,7 +1,7 @@
 
 import styles from './SegmentImageText.module.css'
 
-function SegmentImageText({src, alt='image', img_title, txt_title, name, inputs, updateValue, updateImage}) {
+function SegmentImageText({src, alt='Click to upload picture', img_title, txt_title, name, inputs, updateValue, updateImage}) {
   return (
     <div className={styles.main}>
       <h3>{img_title}</h3>

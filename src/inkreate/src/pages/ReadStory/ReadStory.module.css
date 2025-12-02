@@ -1,8 +1,7 @@
 .main
 {
-    width: 60%;
+    width: 900px;
     background-color: white;
-    margin: 20px;
     padding: 15px;
     border-radius: 10px;
 }

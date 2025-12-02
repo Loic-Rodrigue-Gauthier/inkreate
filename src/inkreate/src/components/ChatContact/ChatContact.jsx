@@ -7,12 +7,14 @@ function ChatContact({onClick = null, isSelected = null, src, alt='image', usern
       onClick={onClick}
       className={isSelected ? styles.selected : styles.main}
     >
-      <img
-        className={styles.pic}
-        src={src}
-        alt={alt}
-      />
-      <div className={styles.user}>{username}</div>
+      <div className={styles.img_name}>
+        <img
+          className={styles.pic}
+          src={src}
+          alt={alt}
+        />
+        <div className={styles.user}>{username}</div>
+      </div>
       <div>{status}</div>
     </div>
   )

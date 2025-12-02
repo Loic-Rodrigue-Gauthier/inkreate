@@ -1,13 +1,19 @@
-.main_portal
+.main
 {
-    width: 650px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 680px;
+}
+
+.main_portal
+{
+    composes: main;
     background-color: white;
     padding: 15px;
     border-radius: 10px;
     max-height: calc(100% - 30px);
+    border: 2px solid lightblue;
 }
 
 .bg

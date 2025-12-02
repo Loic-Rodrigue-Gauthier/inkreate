@@ -62,7 +62,6 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
     <>
       <SegmentImageText
         src={segmentImage}
-        alt="Click to upload segment picture"
         img_title={isPortal ? "" : "First Segment"}
         name="paragraph"
         inputs={inputs}
