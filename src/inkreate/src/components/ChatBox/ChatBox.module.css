@@ -1,0 +1,32 @@
+.main
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat_mess
+{
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat_area
+{
+    padding: 10px;
+}
+
+.chat_area form
+{
+    display: flex;
+    gap: 5px;
+}
+
+.chat_area form textarea
+{
+    width: 100%;
+}

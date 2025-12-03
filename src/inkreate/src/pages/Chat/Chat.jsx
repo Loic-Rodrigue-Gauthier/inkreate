@@ -6,15 +6,28 @@ import ChatBox from '../../components/ChatBox/ChatBox'
 import styles from './Chat.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
+import pfp from '../../assets/pfp.svg'
 
 function Chat() {
   const online = [
     { src: viteLogo, username: "FollowedUser5"},
     { src: reactLogo, username: "FollowedUser6"},
+    { src: viteLogo, username: "FollowedUser5"},
+    { src: reactLogo, username: "FollowedUser6"},
+    { src: viteLogo, username: "FollowedUser5"},
+    { src: reactLogo, username: "FollowedUser6"},
+    { src: viteLogo, username: "FollowedUser5"},
+    { src: reactLogo, username: "FollowedUser6"},
+    { src: viteLogo, username: "FollowedUser5"},
+    { src: reactLogo, username: "FollowedUser6"},
   ]
   const [isOpen, setIsOpen] = useState(false)
   const [activeList, setActiveList] = useState([
-    { id: 72, src: viteLogo, username: "FollowedUser3", messageNumbers: 2, lastMessage: "Lorem ipsum dolor sit amet...", timestamp: "5 days"},
+    { id: 72, src: viteLogo, username: "FollowedUser3", messageNumbers: 2, lastMessage: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, eveniet minus ea, placeat nam aliquam esse dolorum inventore similique nostrum fuga ex earum minima quibusdam itaque nulla iusto. Atque, ratione!", timestamp: "5 days"},
+    { id: 63, src: reactLogo, username: "FollowedUser4", messageNumbers: 6, lastMessage: "Lorem ipsum dolor sit amet...", timestamp: "2 days"},
+    { id: 72, src: viteLogo, username: "FollowedUser3", messageNumbers: 2, lastMessage: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, eveniet minus ea, placeat nam aliquam esse dolorum inventore similique nostrum fuga ex earum minima quibusdam itaque nulla iusto. Atque, ratione!", timestamp: "5 days"},
+    { id: 63, src: reactLogo, username: "FollowedUser4", messageNumbers: 6, lastMessage: "Lorem ipsum dolor sit amet...", timestamp: "2 days"},
+    { id: 72, src: viteLogo, username: "FollowedUser3", messageNumbers: 2, lastMessage: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, eveniet minus ea, placeat nam aliquam esse dolorum inventore similique nostrum fuga ex earum minima quibusdam itaque nulla iusto. Atque, ratione!", timestamp: "5 days"},
     { id: 63, src: reactLogo, username: "FollowedUser4", messageNumbers: 6, lastMessage: "Lorem ipsum dolor sit amet...", timestamp: "2 days"},
   ])
   const [activeId, setActiveId] = useState(activeList[0].id)
@@ -29,8 +42,8 @@ function Chat() {
     setIsOpen(false)
     let s, u, i
     if (selectedContacts.length > 1) {
-      s = "group_chat.img"
-      u = "Group Chat"
+      s = pfp
+      u = "Group Chat (" + selectedContacts.length + " users)"
     }
     else {
       s = selectedContacts[0].src
@@ -45,8 +58,8 @@ function Chat() {
   }
 
   return (
-    <>
-      <section>
+    <div className={styles.main}>
+      <section className={styles.sidebar}>
         <button onClick={() => setIsOpen(true)}>New Chat</button>
         <ChatContactList
           isOpen={isOpen}
@@ -54,9 +67,9 @@ function Chat() {
           onConfirm={handleConfirm}
         />
         <ActiveChatList onSelect={setActiveId} chatList={activeList}/>
-        <div>
-          <h3>Online followers</h3>
-          <div>
+        <div className={styles.online_section}>
+          <h3>Online</h3>
+          <div className={styles.online_users}>
             {online.map((online, index) => (
               <ChatContact
                 key={index}
@@ -67,10 +80,10 @@ function Chat() {
           </div>
         </div>
       </section>
-      <section>
+      <section className={styles.chatbox}>
         <ChatBox chatId={activeId} userList={chatUserList}/>
       </section>
-    </>
+    </div>
   )
 }
 

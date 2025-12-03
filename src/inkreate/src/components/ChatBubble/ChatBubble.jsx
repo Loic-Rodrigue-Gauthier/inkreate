@@ -12,7 +12,7 @@ function ChatBubble({src = null, alt='image', username, message, timestamp}) {
       <div className={styles.text_content}>
         <div className={styles.user_date}>
           <div className={styles.user}>{username}</div>
-          <div>{timestamp}</div>
+          <div className={styles.date}>{timestamp}</div>
         </div>
         <div>{message}</div>
       </div>

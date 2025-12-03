@@ -22,14 +22,16 @@ function SearchChat() {
         onSubmit={submitForm}
         ref={formRef}
       >
-        <label>🔍
+        <div className={styles.search}>
+          <label>🔍</label>
           <input
+            placeholder='Search conversations...'
             type="text" 
             name="name" 
             value={value}
             onChange={updateValue}
           />
-        </label>
+        </div>
       </form>
     </div>
   )

@@ -1,0 +1,15 @@
+.main
+{
+    height: 40%;
+    margin-bottom: 45px;
+}
+
+.list
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 95%;
+    overflow-y: auto;
+    padding-right: 15px;
+}
