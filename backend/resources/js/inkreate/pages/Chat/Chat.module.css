@@ -1,0 +1,65 @@
+.page {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+  background: var(--bg);
+}
+
+.sidebar {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  display: grid;
+  gap: 14px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+}
+
+.newChat {
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px;
+  background: linear-gradient(90deg, #7c6ff5, #a68df8);
+  color: white;
+  font-weight: 700;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.newChat:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(124, 111, 245, 0.3);
+}
+
+.online {
+  background: var(--panel-weak);
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.online h4 {
+  margin: 0 0 8px;
+}
+
+.main {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+  min-height: 600px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 12px 0;
+}
+
+.threadList {
+  display: grid;
+  gap: 8px;
+}

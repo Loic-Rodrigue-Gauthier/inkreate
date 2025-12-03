@@ -1,0 +1,43 @@
+.main
+{
+    display: flex;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 15px;
+    height: 110px;
+}
+
+.main:hover
+{
+    cursor: pointer;
+}
+
+.main img
+{
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.date_views, .stats
+{
+    display: flex;
+    gap: 15px;
+}
+
+.text_content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 315px;
+}
+
+.text
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}

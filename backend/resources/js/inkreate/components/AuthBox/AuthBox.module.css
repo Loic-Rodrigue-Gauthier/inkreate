@@ -1,0 +1,72 @@
+.component {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  width: min(440px, 100%);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 18px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.brandIcon {
+  font-size: 22px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 6px;
+}
+
+.tab,
+.active {
+  border: none;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #374151;
+  background: transparent;
+}
+
+.active {
+  background: #ffffff;
+  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08);
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+}
+
+.form button {
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px;
+  background: #6f5cf1;
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.form button:hover {
+  background: #5b48d9;
+}

@@ -1,0 +1,44 @@
+.page {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin: 8px 0 12px;
+}
+
+.kicker {
+  color: #6b7280;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.copy {
+  color: #4b5563;
+  margin-bottom: 18px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.features strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.features p {
+  margin: 0;
+  color: #6b7280;
+}

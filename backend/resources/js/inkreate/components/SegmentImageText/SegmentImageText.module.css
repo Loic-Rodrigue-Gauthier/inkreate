@@ -1,0 +1,49 @@
+.main {
+  display: grid;
+  gap: 12px;
+}
+
+.seg_pic {
+  height: 220px;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
+  background: #f8fafc;
+  display: grid;
+  place-items: center;
+  color: #6b7280;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+}
+
+.seg_pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.seg_pic:hover .overlay {
+  opacity: 1;
+}
+
+.seg_area {
+  width: 100%;
+  min-height: 140px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f5f7fb;
+  padding: 12px;
+}

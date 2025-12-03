@@ -1,0 +1,32 @@
+.main
+{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 65%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+.pic
+{
+    width: 40px;
+}
+
+.user_date
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.user
+{
+    font-weight: bold;
+}
+
+.text_content
+{
+    width: 100%;
+}

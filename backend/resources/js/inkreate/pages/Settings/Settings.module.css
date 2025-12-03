@@ -1,0 +1,4 @@
+.page {
+  background: #f8f6ef;
+  min-height: calc(100vh - 80px);
+}

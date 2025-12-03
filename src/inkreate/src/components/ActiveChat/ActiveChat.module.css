@@ -1,60 +1,10 @@
-.main
+.box
 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: 2px solid lightgray;
-    border-radius: 10px;
-}
-
-.main img
-{
-    width: 40px;
-}
-
-.main:hover
-{
-    cursor: pointer;
+    width: 500px;
 }
 
 .selected
 {
-    composes: main;
-    border: 2px solid lightblue;
-}
-
-.content
-{
-    width: 370px;
-}
-
-.user_number
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.user
-{
-    font-weight: bold;
-}
-
-.number
-{
-    background-color: red;
-    padding: 5px;
-    border-radius: 50px;
-    width: 28px;
-    text-align: center;
-}
-
-.text
-{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    composes: box;
+    background-color: green;
 }

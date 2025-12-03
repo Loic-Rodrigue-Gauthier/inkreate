@@ -1,0 +1,22 @@
+.main
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.selected
+{
+    composes: main;
+    background-color: green;
+}
+
+.pic
+{
+    width: 40px;
+}
+
+.user
+{
+    font-weight: bold;
+}

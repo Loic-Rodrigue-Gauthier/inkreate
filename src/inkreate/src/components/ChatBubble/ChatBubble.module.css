@@ -3,8 +3,10 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    width: 65%;
     padding: 10px;
     border-radius: 10px;
+    background-color: lightblue;
 }
 
 .pic
@@ -15,20 +17,13 @@
 .user_date
 {
     display: flex;
-    gap: 15px;
-    align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
 }
 
 .user
 {
     font-weight: bold;
-}
-
-.date
-{
-    font-size: 0.8rem;
-    color: darkgray;
 }
 
 .text_content

@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import styles from './ActiveChatList.module.css'
 import SearchChat from '../SearchChat/SearchChat'
 import ActiveChat from '../ActiveChat/ActiveChat'
-import styles from './ActiveChatList.module.css'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '../../assets/vite.svg'
 
@@ -14,9 +14,9 @@ function ActiveChatList({onSelect, chatList}) {
   }
 
   return (
-    <div className={styles.main}>
+    <div>
       <SearchChat />
-      <div className={styles.list}>
+      <div>
         {chatList.map((chat, index) => (
           <ActiveChat
             key={index}
