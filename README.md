@@ -16,8 +16,6 @@ Plateforme collaborative de narration interactive. Le frontend est maintenant se
 ```bash
 cd backend
 php ../composer install          # utilise le binaire composer fourni à la racine
-cp .env.example .env             # déjà présent avec APP_KEY, vérifiez DB_DATABASE=database/database.sqlite
-php artisan migrate --seed       # crée les tables + admin de démo admin@example.com / password
 npm install
 npm run dev                      # Vite (Inertia)
 php artisan serve                # Laravel
