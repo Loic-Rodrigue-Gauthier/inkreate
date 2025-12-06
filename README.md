@@ -4,13 +4,13 @@ Plateforme collaborative de narration interactive. Le frontend est maintenant se
 
 ## Stack rapide
 - Backend : Laravel 12, Sanctum, Eloquent, SQLite par défaut.
-- Frontend : Inertia + React via Vite (entrée `resources/js/app.jsx`).
+- Frontend : Inertia + React via Vite 
 - Docs métier : voir `doc/`.
 
 ## Prérequis
-- PHP 8.2+ avec extensions `openssl`, `fileinfo`, `pdo_sqlite`.
+- PHP 8.2+ 
 - Node 18+ / npm.
-- SQLite activé (ou configurez une autre base dans `.env`).
+- SQLite activé 
 
 ## Mise en route
 ```bash
@@ -21,11 +21,6 @@ npm run dev                      # Vite (Inertia)
 php artisan serve                # Laravel
 ```
 Ouvrez http://127.0.0.1:8000 : la page est rendue via Inertia/React.
-
-## Ajouter des pages Inertia
-- Créez vos pages dans `backend/resources/js/Pages/*.jsx`.
-- Mappez-les dans `backend/routes/web.php` avec `Inertia::render('NomDePage')`.
-- Les props partagées (auth, flash) sont configurées dans `app/Http/Middleware/HandleInertiaRequests.php`.
 
 ## API
 Les routes REST restent dans `backend/routes/api.php` (auth, stories, segments, interactions sociales, chat). Configurez `VITE_API_URL` si vous appelez l’API depuis vos pages Inertia.
