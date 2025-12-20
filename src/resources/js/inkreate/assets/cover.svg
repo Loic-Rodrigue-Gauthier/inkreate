@@ -1,0 +1,16 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" rx="26" fill="url(#grad)"/>
+  <rect x="34" y="34" width="732" height="432" rx="18" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="10 12" stroke-opacity="0.8"/>
+  <g opacity="0.9">
+    <circle cx="400" cy="210" r="44" fill="#E2E8F0"/>
+    <path d="M400 188c-12.15 0-22 9.85-22 22s9.85 22 22 22 22-9.85 22-22-9.85-22-22-22zm0 10c5.52 0 10 4.48 10 10s-4.48 10-10 10-10-4.48-10-10 4.48-10 10-10zm0 64c-21.54 0-40.32 5.78-52 14.96v9.04h104v-9.04C440.32 267.78 421.54 262 400 262z" fill="#94A3B8"/>
+  </g>
+  <text x="400" y="322" text-anchor="middle" fill="#475569" font-size="26" font-family="Inter, sans-serif" font-weight="700">Add a cover image</text>
+  <text x="400" y="352" text-anchor="middle" fill="#94A3B8" font-size="16" font-family="Inter, sans-serif" font-weight="500">Recommended 1200×750 • JPG/PNG/WebP</text>
+  <defs>
+    <linearGradient id="grad" x1="120" y1="60" x2="720" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECEFF4"/>
+      <stop offset="1" stop-color="#D8DEE9"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,154 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  display: grid;
+  gap: 16px;
+  background: var(--bg);
+}
+
+.headerCard {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--panel-weak);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.bio {
+  margin: 0;
+  color: var(--muted);
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  background: var(--panel-weak);
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.tab,
+.active {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: transparent;
+  font-weight: 700;
+  color: #374151;
+}
+
+.active {
+  background: var(--panel);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+  color: var(--primary);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.04);
+}
+
+.networkHeader {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  display: grid;
+  gap: 6px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.04);
+}
+
+.networkSub {
+  margin: 0;
+  color: var(--muted);
+}
+
+.networkFilters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.relationsNav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.relationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background: var(--panel);
+}
+
+.relationInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.relationAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--panel-weak);
+}
+
+.relationName {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.relationMeta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.discover {
+  display: grid;
+  gap: 8px;
+}
+
+.discoverSearch input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-weak);
+}

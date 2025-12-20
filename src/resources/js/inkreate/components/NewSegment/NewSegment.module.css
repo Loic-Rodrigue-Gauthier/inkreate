@@ -1,0 +1,62 @@
+.main_portal
+{
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: calc(100% - 30px);
+}
+
+.bg
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.header h2
+{
+    margin: 0;
+}
+
+.header button
+{
+    border-radius: 50px;
+}
+
+.send_button
+{
+    align-self: center;
+}
+
+.choice_input
+{
+    margin-left: 10px;
+}
+
+.chips
+{
+    display: flex;
+    gap: 10px;
+    overflow-y: auto;
+    width: 100%;
+    flex-wrap: wrap;
+}

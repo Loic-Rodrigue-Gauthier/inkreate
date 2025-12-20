@@ -1,0 +1,94 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  background: var(--panel);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.threadInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.threadInfo strong {
+  font-size: 15px;
+}
+
+.messages {
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+  overflow-y: auto;
+  background: var(--panel-weak);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-height: 320px;
+  
+}
+
+.inputRow {
+  border-top: 1px solid var(--border);
+  padding: 10px 0 0 0;
+  background: transparent;
+}
+
+.inputRow form {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: 10px;
+  align-items: center;
+}
+
+.inputRow textarea {
+  min-height: 48px;
+  max-height: 120px;
+  resize: vertical;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel-weak);
+  font-family: inherit;
+}
+
+.send {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.send:hover {
+  background: var(--primary-strong);
+}
+
+.send:active {
+  transform: translateY(1px);
+}
+
+.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px 0;
+}

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink-purple: #5c56f6;
+  --ink-purple-strong: #4336d6;
+  --ink-amber: #f3c969;
+  --ink-ink: #1f1f2b;
+  --ink-muted: #4b4f63;
+  --ink-soft: #6e7390;
+  --ink-border: #e6e4f0;
+  --ink-surface: #ffffff;
+  --ink-surface-muted: #f5f3ff;
+  --ink-bg: #f7f7fb;
+  --ink-shadow: 0 18px 60px rgba(76, 71, 129, 0.12);
+  --ink-radius: 18px;
+  --ink-radius-lg: 24px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  color: var(--ink-ink);
+  background: var(--ink-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  background: var(--ink-bg);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Sora', 'Manrope', 'Segoe UI', sans-serif;
+  margin: 0;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  position: relative;
+}

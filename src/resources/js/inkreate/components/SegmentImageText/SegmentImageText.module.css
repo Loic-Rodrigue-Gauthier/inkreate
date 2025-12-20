@@ -1,0 +1,72 @@
+.main {
+  display: grid;
+  gap: 16px;
+}
+
+.seg_pic {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px;
+  border: 1px dashed #cbd5e1;
+  background: radial-gradient(circle at 10% 10%, #f8fafc, #f1f5f9 45%, #eef2ff 100%);
+  display: grid;
+  place-items: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.seg_pic:hover {
+  border-color: #a5b4fc;
+  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.12);
+  transform: translateY(-2px);
+}
+
+.seg_pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.4) 100%);
+  color: #f8fafc;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.seg_pic:hover .overlay {
+  opacity: 1;
+}
+
+.seg_area {
+  min-height: 180px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #0f172a;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.seg_area:focus {
+  outline: none;
+  border-color: #a5b4fc;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.12);
+  background: #ffffff;
+}

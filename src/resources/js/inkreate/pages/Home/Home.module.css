@@ -1,0 +1,68 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  display: grid;
+  gap: 28px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 6px 0 4px;
+  font-size: 30px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.trending .sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.trending h2,
+.activity h2 {
+  margin: 0 0 12px;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.activityList {
+  display: grid;
+  gap: 12px;
+}

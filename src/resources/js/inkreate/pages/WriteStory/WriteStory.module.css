@@ -1,0 +1,170 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  display: grid;
+  gap: 18px;
+  background: var(--bg);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+  display: grid;
+  gap: 16px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tagRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  margin-top: 6px;
+}
+
+.sectionLabel {
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.shareStatus {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.sharePanel {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel-weak);
+  display: grid;
+  gap: 8px;
+}
+
+.shareRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.shareLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-weak);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.shareLink:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.shareCredit {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.shareCredit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.modalBg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modalCard {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  width: min(620px, 90vw);
+  display: grid;
+  gap: 10px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.previewImg {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  max-height: 240px;
+}
+
+.previewMeta {
+  color: var(--muted);
+  margin: 0;
+}
+
+.previewTags {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.previewSegment {
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel-weak);
+}
