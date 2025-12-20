@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { LinkedList } from '../../utils/LinkedList'
 import DiscardableChip from '../DiscardableChip/DiscardableChip'
 import SegmentImageText from '../SegmentImageText/SegmentImageText'
 import styles from './NewSegment.module.css'
@@ -9,7 +10,7 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
   const [inputs, setInputs] = useState({})
   const [selected, setSelected] = useState({})
   const [segmentImage, setSegmentImage] = useState()
-  const [choiceList, setChoiceList] = useState([])
+  const [choiceList, setChoiceList] = useState(() => new LinkedList())
 
   const updateValue = (e) => {
     setInputs(values => ({...values, [e.target.name]: e.target.value}))
@@ -32,21 +33,34 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
       ...prev,
       paragraph: inputs.paragraph || "",
       segmentImage,
-      choices: [...choiceList],
-    }));
+      choices: choiceList.toArray(),
+    })) 
   }, [inputs, choiceList, segmentImage, isFirst])
 
   const removeChoice = (text) => {
-    setChoiceList(prev => prev.filter((choice) => choice.text != text))
+    setChoiceList(prev => {
+      const list = prev.clone()
+      list.removeByValue('text', text)
+
+      return list
+    })
   }
 
   const addChoices = () => {
-    const newChoice = { text: selected.choice }
+    const newChoice = { text: selected.choice } 
+
     setChoiceList(prev => {
-      const exists = prev.some(choice => choice.text === newChoice.text)
-      return exists ? prev : [...prev, newChoice]
-    })
-    setSelected(prev => ({...prev, choice: ""}))
+      const list = prev.clone() 
+      const exists = list.toArray().some(choice => choice.text === newChoice.text) 
+
+      if (!exists) {
+        list.addLast(newChoice)
+      }
+
+      return list 
+    }) 
+
+    setSelected(prev => ({ ...prev, choice: "" })) 
   }
 
   const createSegment = () => {
@@ -54,7 +68,7 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
 
     setInputs({})
     setSegmentImage()
-    setChoiceList([])
+    setChoiceList(new LinkedList())
     onClose()
   }
 
@@ -84,8 +98,7 @@ function NewSegment({isOpen, onClose, isPortal, isFirst, segData, setSegData, ch
         />
       </label>
       <div className={styles.chips}>
-        {choiceList
-        .map((choice, index) => (
+        {choiceList.toArray().map((choice, index) => (
           <DiscardableChip
             key={index}
             src={choice.src}

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LinkedList } from '../../utils/LinkedList'
 import SegmentImageText from '../../components/SegmentImageText/SegmentImageText'
 import DiscardableChip from '../../components/DiscardableChip/DiscardableChip'
 import ChatContactList from '../../components/ChatContactList/ChatContactList'
@@ -12,8 +13,8 @@ function WriteStory() {
   const [isFollowing, setIsFollowing] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [thumbnail, setThumbnail] = useState()
-  const [tagList, setTagList] = useState([])
-  const [userList, setUserList] = useState([])
+  const [tagList, setTagList] = useState(() => new LinkedList())
+  const [userList, setUserList] = useState(() => new LinkedList())
   const [segData, setSegData] = useState({})
 
   const updateValue = (e) => {
@@ -22,15 +23,23 @@ function WriteStory() {
   }
 
   const updateSelected = (e) => {
-    setSelected(values => ({...values, [e.target.name]: e.target.value}))
+    setSelected((values) => ({...values, [e.target.name]: e.target.value, })) 
 
     if (e.target.name === "genre") {
-      const newTag = { text: e.target.value }
-      setTagList(prev => {
-        const exists = prev.some(tag => tag.text === newTag.text)
-        return exists ? prev : [...prev, newTag]
-      })
-      setSelected(prev => ({...prev, genre: ""}))
+      const newTag = { text: e.target.value } 
+
+      setTagList((prev) => {
+        const list = prev.clone() 
+        const exists = list.toArray().some((tag) => tag.text === newTag.text) 
+
+        if (!exists) {
+          list.addLast(newTag)
+        }
+
+        return list 
+      }) 
+
+      setSelected((prev) => ({ ...prev, genre: "" })) 
     }
   }
 
@@ -41,20 +50,38 @@ function WriteStory() {
   }
 
   const removeTag = (text) => {
-    setTagList(prev => prev.filter((tag) => tag.text != text))
+    setTagList(prev => {
+      const list = prev.clone()
+      list.removeByValue('text', text)
+      return list
+    })
   }
 
   const removeUser = (username) => {
-    setUserList(prev => prev.filter((user) => user.username != username))
+    setUserList(prev => {
+      const list = prev.clone()
+      list.removeByValue('username', username)
+      return list
+    })
   }
 
   const addUsers = (selectedContacts) => {
     setUserList(prev => {
-      const updatedList = selectedContacts.filter((contact) =>
-        !prev.some(user => user.username === contact.username
-      ))
-      return [...prev, ...updatedList]
+      const list = prev.clone()
+
+      selectedContacts.forEach(contact => {
+        const exists = list
+          .toArray()
+          .some(user => user.username === contact.username)
+
+        if (!exists) {
+          list.addLast(contact)
+        }
+      })
+
+      return list
     })
+
     setIsOpen(false)
   }
 
@@ -89,12 +116,11 @@ function WriteStory() {
           </select>
         </div>
         <div className={styles.chips}>
-          {tagList
-          .map((tag, index) => (
+          {tagList.toArray().map(tag => (
             <DiscardableChip
-              key={index}
+              key={tag.text}
               text={tag.text}
-              removeChip={removeTag}
+              removeChip={() => removeTag(tag.text)}
             />
           ))}
         </div>
@@ -134,10 +160,9 @@ function WriteStory() {
                 <button onClick={() => setIsOpen(true)}>Add contributors</button>
               </div>
               <div className={styles.chips}>
-                {userList
-                .map((user, index) => (
+                {userList.toArray().map(user => (
                   <DiscardableChip
-                    key={index}
+                    key={user.username}
                     src={user.src}
                     text={user.username}
                     removeChip={removeUser}
