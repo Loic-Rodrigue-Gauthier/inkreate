@@ -81,8 +81,12 @@ function WriteStory() {
     if (!tagInput.trim()) return;
     const newTag = { text: tagInput.trim() };
     setTagList((prev) => {
-      const exists = prev.some((tag) => tag.text.toLowerCase() === newTag.text.toLowerCase());
-      return exists ? prev : [...prev, newTag];
+      const list = prev.clone();
+      const exists = list.toArray().some((tag) => tag.text.toLowerCase() === newTag.text.toLowerCase());
+      if (!exists) {
+        list.addLast(newTag);
+      }
+      return list;
     });
     setTagInput('');
   };
@@ -157,7 +161,7 @@ function WriteStory() {
         is_public: inputs.visibility !== 'Private',
         is_collaborative: true,
         allow_forks: true,
-        tags: tagList.map((t) => t.text),
+        tags: tagList.toArray().map((t) => t.text),
         cover_image_url: thumbnail === coverPlaceholder ? null : thumbnail,
         estimated_duration: Number(inputs.estimated_duration) || 10,
       });
@@ -183,7 +187,7 @@ function WriteStory() {
   };
 
   const shareMessage = useMemo(() => {
-    const tags = tagList.map((t) => t.text).join(', ');
+    const tags = tagList.toArray().map((t) => t.text).join(', ');
     const synopsis = inputs.synopsis || '';
     return `Check out my story: ${inputs.title || 'Untitled'}${synopsis ? ' — ' + synopsis : ''}${tags ? ' | Tags: ' + tags : ''} #InKreate`;
   }, [inputs.title, inputs.synopsis, tagList]);
@@ -356,7 +360,7 @@ function WriteStory() {
             <h4>{inputs.title || 'Untitled story'}</h4>
             <p className={styles.previewMeta}>{selected.genre || 'Genre not set'} • {inputs.visibility}</p>
             <p>{inputs.synopsis || 'No synopsis yet.'}</p>
-            <p className={styles.previewTags}>{tagList.map((t) => t.text).join(', ')}</p>
+            <p className={styles.previewTags}>{tagList.toArray().map((t) => t.text).join(', ')}</p>
             {segData.content && (
               <div className={styles.previewSegment}>
                 <h5>First segment</h5>

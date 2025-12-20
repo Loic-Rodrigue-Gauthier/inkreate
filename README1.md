@@ -12,6 +12,79 @@ Plateforme collaborative de narration interactive. Le frontend est servi avec **
 - Node 18+ / npm.
 - SQLite activé 
 
+## Guide de demarrage complet (backend + front)
+
+Cette section liste les etapes pour installer et lancer le projet de A a Z, base de donnees incluse.
+
+### Prerequis
+- PHP 8.2+ avec les extensions `zip`, `openssl`, `pdo_sqlite` (ou `pdo_mysql` si vous utilisez MySQL) et `mbstring`.
+- Composer global, ou utiliser le binaire local `php backend/composer.phar`.
+- Node.js 20+ et npm.
+- Git.
+
+### Installation
+1. Cloner le depot :
+   ```bash
+   git clone <url-du-repo> && cd InKreate/backend
+   ```
+2. Installer les dependances PHP :
+   ```bash
+   composer install
+   # ou si Composer n'est pas global :
+   php composer.phar install
+   ```
+3. Installer les dependances JS :
+   ```bash
+   npm install
+   ```
+
+### Configuration de l'environnement
+1. Copier le fichier d'exemple :
+   ```bash
+   cp .env.example .env
+   # Sous PowerShell : Copy-Item .env.example .env
+   ```
+2. Generer la cle applicative :
+   ```bash
+   php artisan key:generate
+   ```
+
+### Base de donnees
+- Par defaut, `.env` est configure pour SQLite :
+  - Creez le fichier : `database/database.sqlite`.
+  - Verifiez que `.env` contient :
+    ```
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/database.sqlite
+    DB_FOREIGN_KEYS=true
+    ```
+- Si vous preferez MySQL/PostgreSQL, ajustez les variables `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` dans `.env`, puis commentez/supprimez les lignes SQLite.
+- Appliquer les migrations :
+  ```bash
+  php artisan migrate
+  ```
+
+### Lancer le projet en developpement
+Dans deux terminaux separes :
+1. Backend API :
+   ```bash
+   php artisan serve
+   # ou specifier un port : php artisan serve --port=8000
+   ```
+2. Frontend Vite/React :
+   ```bash
+   npm run dev
+   ```
+   L'UI est servie par Vite (hot reload). Par defaut, Vite proxy l'API Laravel.
+
+### Build de production
+- Generer les assets :
+  ```bash
+  npm run build
+  ```
+- Les assets sont ecrits dans `public/build` (deja ignore par git).
+
+
 ## Mise en route
 ```bash
 cd backend
@@ -22,14 +95,6 @@ php artisan serve                # Laravel
 ```
 Ouvrez http://127.0.0.1:8000 : la page est rendue via Inertia/React.
 
-## API
-Les routes REST restent dans `backend/routes/api.php` (auth, stories, segments, interactions sociales, chat). Configurez `VITE_API_URL` si vous appelez l’API depuis vos pages Inertia.
-
-## Tests
-```bash
-cd backend
-php artisan test
-```
 
 ## Ressources utiles
 - Documents : `doc/Document de definition.docx`, `doc/Document de conception.docx`
@@ -74,14 +139,6 @@ php artisan test
 - **PostgreSQL** : robuste, types riches (JSON pour métadonnées), transactions fiables, aligné avec une cible prod réaliste.  
 - **SQLite** : support dev/CI ultra rapide (zéro config). Abstraction via Eloquent pour rester agnostique.
 
-### Questions fréquentes
-- Pourquoi PostgreSQL ? Robustesse, JSON, cohérence avec prod. SQLite ok pour démo.
-- Sécurité uploads ? Validation mimetype/taille dans UploadController, stockage public (contexte démo).
-- Performance ? Pagination sur `/api/stories`, relations lazy, possibilité de cache LRU si besoin.
-- Droits d’édition ? Auteur du segment ou propriétaire de l’histoire (vérifié côté front + API).
-- Navigation segments ? Historique Back/Next et choix dirigent vers les branches.
-- Chat ? Limité au réseau (followers/following) pour éviter le spam.
-- i18n ? Clés dans `resources/js/inkreate/i18n/translations.js`, switch dans Settings.
 
 ### Scripts utiles
 - Lancer API : `cd backend && php artisan serve`
@@ -89,11 +146,6 @@ php artisan test
 - Build : `cd backend && npm run build`
 - Migrer/seed : `cd backend && php artisan migrate --seed` (adapter la BDD dans `.env`)
 
-### Dépannage rapide
-- Images cassées : `php artisan storage:link`, vérifier `APP_URL`, relancer le front.
-- 500 favoris/read-later : vérifier token (login), voir console réseau.
-- Profil vide : relancer front après build et vérifier erreurs JS.
-- Graph vide : s’assurer que l’histoire a des segments/choices ; sinon la graph list sera minimale.
 
 ## Design patterns implémentés
 - **Strategy (modération de texte)**  
@@ -131,3 +183,10 @@ php artisan test
   ```
 
 - **Composite (hiérarchie de dossiers et fichiers du projet)**
+
+
+### Notes utiles
+- Si l'extension `zip` n'est pas activee, ajoutez `extension=zip` dans votre `php.ini`.
+- Les assets et le code React se trouvent dans `resources/js/inkreate`.
+- Si vous utilisez le binaire local, remplacez `composer` par `php composer.phar` dans les commandes.
+- En cas de changement de base de donnees, executez a nouveau `php artisan migrate` (et supprimez/vidangez l'ancienne base si necessaire).

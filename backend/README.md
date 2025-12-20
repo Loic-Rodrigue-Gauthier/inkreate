@@ -1,59 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+InKreate - Guide de démarrage complet
+=====================================
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Ce dépôt contient le backend Laravel + frontend Vite/React de l’application InKreate. Ce guide explique comment cloner, configurer l’environnement, préparer la base de données et lancer le projet de A à Z.
 
-## About Laravel
+Prérequis
+---------
+- PHP 8.2+ avec les extensions `zip`, `openssl`, `pdo_sqlite` (ou `pdo_mysql` si vous utilisez MySQL) et `mbstring`.
+- Composer (global) ou, à défaut, utilisez le binaire local `php composer.phar`.
+- Node.js 20+ et npm.
+- Git.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Installation
+------------
+1. Cloner le dépôt :
+   ```bash
+   git clone <url-du-repo> && cd InKreate/backend
+   ```
+2. Installer les dépendances PHP :
+   ```bash
+   composer install
+   # ou si Composer n'est pas global :
+   php composer.phar install
+   ```
+3. Installer les dépendances JS :
+   ```bash
+   npm install
+   ```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Configuration de l’environnement
+--------------------------------
+1. Copier le fichier d’exemple :
+   ```bash
+   cp .env.example .env
+   # Sous PowerShell : Copy-Item .env.example .env
+   ```
+2. Générer la clé applicative :
+   ```bash
+   php artisan key:generate
+   ```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Base de données
+---------------
+- Par défaut, `.env` est configuré pour SQLite :
+  - Créez le fichier : `database/database.sqlite`.
+  - Vérifiez que `.env` contient :
+    ```
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/database.sqlite
+    DB_FOREIGN_KEYS=true
+    ```
+- Si vous préférez MySQL/PostgreSQL, ajustez les variables `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` dans `.env` puis commentez/supprimez les lignes SQLite.
+- Appliquer les migrations :
+  ```bash
+  php artisan migrate
+  ```
 
-## Learning Laravel
+Lancer le projet en développement
+---------------------------------
+Dans deux terminaux séparés :
+1. Backend API :
+   ```bash
+   php artisan serve
+   # ou spécifier un port : php artisan serve --port=8000
+   ```
+2. Frontend Vite/React :
+   ```bash
+   npm run dev
+   ```
+   L’UI est servie par Vite (hot reload). Par défaut, Vite proxy l’API Laravel.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Build de production
+-------------------
+- Générer les assets :
+  ```bash
+  npm run build
+  ```
+- Les assets sont écrits dans `public/build` (déjà ignoré par git).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Notes utiles
+------------
+- Si l’extension `zip` n’est pas activée, ajoutez `extension=zip` dans votre `php.ini`.
+- Les assets et le code React se trouvent dans `resources/js/inkreate`.
+- Si vous utilisez le binaire local, remplacez `composer` par `php composer.phar` dans les commandes.
+- En cas de changement de base de données, exécutez à nouveau `php artisan migrate` (et supprimez/vidangez l’ancienne base si nécessaire).
