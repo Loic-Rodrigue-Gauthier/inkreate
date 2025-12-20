@@ -1,6 +1,6 @@
 # InKreate
 
-Plateforme collaborative de narration interactive. Le frontend est servi avec **Laravel + Inertia.js (React)** directement dans `src/`.
+Plateforme collaborative de narration interactive. Le frontend est servi avec **Laravel + Inertia.js (React)** directement dans `backend/`.
 
 ## Stack rapide
 - Backend : Laravel 12, Sanctum, Eloquent, SQLite par défaut.
@@ -66,6 +66,7 @@ php artisan test
 
 ### Structures de données utilisées (et pourquoi)
 - **Graphe orienté (SegmentGraph)** : modélise les segments et choix comme un graphe (listes d’adjacence). Permet de valider/visualiser les branches, et sert l’endpoint `/api/stories/{story}/graph` pour le front.
+- **Listes chaînées** : sont utilisées pour contenir les noms de collaborateurs, les genres d'histoire et les choix ajoutés dans des "chips". Pratique pour pouvoir ajouter et enlever des éléments à n'importe quel endroit dans la liste.
 - **Listes d’adjacence** (choices → next_segment_id) : sérialisables facilement, efficaces pour les parcours.
 - **Caches/états locaux** : historique de navigation (Back/Next), sets des segments éditables pour afficher rapidement les actions sans re-fetch.
 
