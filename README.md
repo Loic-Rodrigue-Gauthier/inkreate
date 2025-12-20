@@ -128,3 +128,5 @@ php artisan test
       return SegmentResource::collection($this->segments->listForStory($story, $request->integer('parent_segment_id')));
   }
   ```
+
+- **Composite (hiérarchie de dossiers et fichiers du projet)**
