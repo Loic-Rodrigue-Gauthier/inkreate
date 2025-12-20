@@ -1,6 +1,6 @@
 # InKreate
 
-Plateforme collaborative de narration interactive. Le frontend est maintenant servi avec **Laravel + Inertia.js (React)** directement dans `backend/` (plus de SPA séparée dans `src/inkreate`).
+Plateforme collaborative de narration interactive. Le frontend est servi avec **Laravel + Inertia.js (React)** directement dans `src/`.
 
 ## Stack rapide
 - Backend : Laravel 12, Sanctum, Eloquent, SQLite par défaut.
