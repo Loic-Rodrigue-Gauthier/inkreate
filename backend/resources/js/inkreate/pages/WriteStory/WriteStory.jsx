@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { LinkedList } from '../../utils/LinkedList';
 import SegmentImageText from '../../components/SegmentImageText/SegmentImageText';
 import styles from './WriteStory.module.css';
 import coverPlaceholder from '../../assets/cover.svg';
@@ -22,8 +23,8 @@ function WriteStory() {
   const [isFollowers, setIsFollowers] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [thumbnail, setThumbnail] = useState(coverPlaceholder);
-  const [tagList, setTagList] = useState([]);
-  const [userList, setUserList] = useState([]);
+  const [tagList, setTagList] = useState(() => new LinkedList());
+  const [userList, setUserList] = useState(() => new LinkedList());
   const [segData, setSegData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -37,16 +38,25 @@ function WriteStory() {
   };
 
   const updateSelected = (e) => {
-    setSelected((values) => ({ ...values, [e.target.name]: e.target.value }));
+    setSelected((values) => ({...values, [e.target.name]: e.target.value, })) 
 
-    if (e.target.name === 'genre' && e.target.value) {
-      const newTag = { text: e.target.value };
+    if (e.target.name === "genre" && e.target.value) {
+      const newTag = { text: e.target.value } 
+
       setTagList((prev) => {
-        const exists = prev.some((tag) => tag.text === newTag.text);
-        return exists ? prev : [...prev, newTag];
-      });
+        const list = prev.clone() 
+        const exists = list.toArray().some((tag) => tag.text === newTag.text) 
+
+        if (!exists) {
+          list.addLast(newTag)
+        }
+
+        return list 
+      }) 
+
+      setSelected((prev) => ({ ...prev, genre: "" })) 
     }
-  };
+  }
 
   const updateThumbnail = () => {
     const url = ensureAbsoluteUrl(inputs.cover_image_url) || inputs.cover_image_url;
@@ -78,20 +88,40 @@ function WriteStory() {
   };
 
   const removeTag = (text) => {
-    setTagList((prev) => prev.filter((tag) => tag.text !== text));
-  };
+    setTagList(prev => {
+      const list = prev.clone()
+      list.removeByValue('text', text)
+      return list
+    })
+  }
 
   const removeUser = (username) => {
-    setUserList((prev) => prev.filter((user) => user.username !== username));
-  };
+    setUserList(prev => {
+      const list = prev.clone()
+      list.removeByValue('username', username)
+      return list
+    })
+  }
 
   const addUsers = (selectedContacts) => {
-    setUserList((prev) => {
-      const updatedList = selectedContacts.filter((contact) => !prev.some((user) => user.username === contact.username));
-      return [...prev, ...updatedList];
-    });
-    setIsOpen(false);
-  };
+    setUserList(prev => {
+      const list = prev.clone()
+
+      selectedContacts.forEach(contact => {
+        const exists = list
+          .toArray()
+          .some(user => user.username === contact.username)
+
+        if (!exists) {
+          list.addLast(contact)
+        }
+      })
+
+      return list
+    })
+
+    setIsOpen(false)
+  }
 
   const createStory = async () => {
     if (!token) {
@@ -199,8 +229,12 @@ function WriteStory() {
         </div>
 
         <div className={styles.chips}>
-          {tagList.map((tag, index) => (
-            <DiscardableChip key={index} text={tag.text} removeChip={removeTag} />
+          {tagList.toArray().map(tag => (
+            <DiscardableChip
+              key={tag.text}
+              text={tag.text}
+              removeChip={() => removeTag(tag.text)}
+            />
           ))}
         </div>
         
@@ -251,8 +285,13 @@ function WriteStory() {
               Add collaborators
             </button>
             <div className={styles.chips}>
-              {userList.map((user, index) => (
-                <DiscardableChip key={index} src={user.src} text={user.username} removeChip={removeUser} />
+              {userList.toArray().map(user => (
+                <DiscardableChip
+                  key={user.username}
+                  src={user.src}
+                  text={user.username}
+                  removeChip={removeUser}
+                />
               ))}
             </div>
           </div>
