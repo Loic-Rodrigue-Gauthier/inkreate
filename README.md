@@ -17,7 +17,7 @@ Plateforme collaborative de narration interactive. Le frontend est servi avec **
 Cette section liste les etapes pour installer et lancer le projet de A a Z, base de donnees incluse.
 
 ### Prerequis
-- PHP 8.2+ avec les extensions `zip`, `openssl`, `pdo_sqlite` (ou `pdo_mysql` si vous utilisez MySQL) et `mbstring`.
+- PHP 8.2+ avec les extensions `zip`, `openssl`, `pdo_sqlite` (ou `pdo_mysql` si vous utilisez MySQL), `fileinfo` et `mbstring`.
 - Composer global, ou utiliser le binaire local `php backend/composer.phar`.
 - Node.js 20+ et npm.
 - Git.
@@ -25,7 +25,7 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
 ### Installation
 1. Cloner le depot :
    ```bash
-   git clone <url-du-repo> && cd InKreate/backend
+   git clone <url-du-repo> && cd .\backend\
    ```
 2. Installer les dependances PHP :
    ```bash
@@ -51,7 +51,7 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
 
 ### Base de donnees
 - Par defaut, `.env` est configure pour SQLite :
-  - Creez le fichier : `database/database.sqlite`.
+  - Creez le fichier : `database.sqlite` dans `database/`.
   - Verifiez que `.env` contient :
     ```
     DB_CONNECTION=sqlite
@@ -63,6 +63,13 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
   ```bash
   php artisan migrate
   ```
+
+### Build de production
+- Generer les assets :
+  ```bash
+  npm run build
+  ```
+- Les assets sont ecrits dans `public/build` (deja ignore par git).
 
 ### Lancer le projet en developpement
 Dans deux terminaux separes :
@@ -77,15 +84,7 @@ Dans deux terminaux separes :
    ```
    L'UI est servie par Vite (hot reload). Par defaut, Vite proxy l'API Laravel.
 
-### Build de production
-- Generer les assets :
-  ```bash
-  npm run build
-  ```
-- Les assets sont ecrits dans `public/build` (deja ignore par git).
-
-
-## Mise en route
+## Mise en route (résumé)
 ```bash
 cd backend
 php ../composer install          # utilise le binaire composer fourni à la racine
@@ -94,7 +93,6 @@ npm run dev                      # Vite (Inertia)
 php artisan serve                # Laravel
 ```
 Ouvrez http://127.0.0.1:8000 : la page est rendue via Inertia/React.
-
 
 ## Ressources utiles
 - Documents : `doc/Document de definition.docx`, `doc/Document de conception.docx`
