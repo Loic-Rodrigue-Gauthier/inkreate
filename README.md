@@ -5,9 +5,9 @@ InKreate est un réseau social où les utilisateurs créer et contribuent à des
 
 ## Contributions
 Développé en tant que projet synthèse pour le DEC intensif en Techniques de l'informatique du CVM par Azeddine Zidi et Loïc Rodrigue-Gauthier.
-- Laravel : Azeddine Zidi
-- React : Loïc Rodrigue-Gauthier
-- CSS : Azeddine Zidi et Loïc Rodrigue-Gauthier
+- Laravel `backend/`: Azeddine Zidi
+- React `backend/resources/js/inkreate/`: Loïc Rodrigue-Gauthier
+- CSS `backend/resources/js/inkreate/`: Azeddine Zidi et Loïc Rodrigue-Gauthier
 
 ## Stack rapide
 - Back-end : Laravel 12, Sanctum, Eloquent, SQLite par défaut.
