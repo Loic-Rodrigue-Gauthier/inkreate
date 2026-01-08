@@ -1,6 +1,6 @@
 # InKreate
-InKreate est un réseau social où les utilisateurs créer et contribuent à des histoires non-linéaires ensemble. Chaque bout d'histoire peut se continuer dans une multitude de directions dont l'une sera choisie par le lecteur.
-**La version actuelle du projet est un produit minimum viable (MVP)**
+InKreate est un réseau social où les utilisateurs créer et contribuent à des histoires non-linéaires ensemble. Chaque bout d'histoire peut se continuer dans une multitude de directions dont l'une sera choisie par le lecteur.    
+**Note: La version actuelle du projet est un produit minimum viable (MVP)**
 
 ## Contributions
 Développé en tant que projet synthèse pour le DEC intensif en Techniques de l'informatique du CVM par Azeddine Zidi et Loïc Rodrigue-Gauthier.
