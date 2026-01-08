@@ -1,18 +1,19 @@
 # InKreate
+InKreate est un réseau social où les utilisateurs créer et contribuent à des histoires non-linéaires ensemble. Chaque bout d'histoire peut se continuer dans une multitude de directions dont l'une sera choisie par le lecteur.
+**La version actuelle du projet est un produit minimum viable (MVP)**
 
-Plateforme collaborative de narration interactive. Le frontend est servi avec **Laravel + Inertia.js (React)** directement dans `backend/`.
+## Contributions
+Développé en tant que projet synthèse pour le DEC intensif en Techniques de l'informatique du CVM par Azeddine Zidi et Loïc Rodrigue-Gauthier.
+- Laravel : Azeddine Zidi
+- React : Loïc Rodrigue-Gauthier
+- CSS : Azeddine Zidi et Loïc Rodrigue-Gauthier
 
 ## Stack rapide
-- Backend : Laravel 12, Sanctum, Eloquent, SQLite par défaut.
-- Frontend : Inertia + React via Vite 
+- Back-end : Laravel 12, Sanctum, Eloquent, SQLite par défaut.
+- Front-end : Inertia + React via Vite 
 - Docs métier : voir `doc/`.
 
-## Prérequis
-- PHP 8.2+ 
-- Node 18+ / npm.
-- SQLite activé 
-
-## Guide de demarrage complet (backend + front)
+## Guide de demarrage complet (back-end + front-end)
 
 Cette section liste les etapes pour installer et lancer le projet de A a Z, base de donnees incluse.
 
@@ -20,6 +21,7 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
 - PHP 8.2+ avec les extensions `zip`, `openssl`, `pdo_sqlite` (ou `pdo_mysql` si vous utilisez MySQL), `fileinfo` et `mbstring`.
 - Composer global, ou utiliser le binaire local `php backend/composer.phar`.
 - Node.js 20+ et npm.
+- SQLite activé 
 - Git.
 
 ### Installation
@@ -73,12 +75,12 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
 
 ### Lancer le projet en developpement
 Dans deux terminaux separes :
-1. Backend API :
+1. Back-end API :
    ```bash
    php artisan serve
    # ou specifier un port : php artisan serve --port=8000
    ```
-2. Frontend Vite/React :
+2. Front-end Vite/React :
    ```bash
    npm run dev
    ```
@@ -99,10 +101,10 @@ Ouvrez http://127.0.0.1:8000 : la page est rendue via Inertia/React.
 - Contrôleurs API : `backend/app/Http/Controllers/API/*`
 - Modèles/migrations : `backend/app/Models`, `backend/database/migrations`
 
-## FAQ / Prépa présentation
+## FAQ
 
 ### Architecture & stack
-- Backend : Laravel 12 (PHP 8.3), Sanctum, Eloquent, PostgreSQL (ou SQLite pour dev rapide).
+- Back-end : Laravel 12 (PHP 8.3), Sanctum, Eloquent, PostgreSQL (ou SQLite pour dev rapide).
 - Front : Inertia + React (Vite) servi depuis `backend/`.
 - Fichiers : disque `public` (storage/app/public → public/storage), upload via `/api/uploads/images`.
 - Auth : Sanctum, profils, follow/following, chat.
