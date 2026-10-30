@@ -52,7 +52,7 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
    php artisan key:generate
    ```
 
-### Base de donnees
+### Base de données
 - Par defaut, `.env` est configure pour SQLite :
   - Creez le fichier : `database.sqlite` dans `database/`.
   - Verifiez que `.env` contient :
@@ -75,7 +75,7 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
 - Les assets sont ecrits dans `public/build` (deja ignore par git).
 
 ### Lancer le projet en développement
-Dans deux terminaux separes :
+Dans deux terminals separes :
 1. Back-end API :
    ```bash
    php artisan serve
@@ -136,7 +136,7 @@ Ouvrez http://127.0.0.1:8000 : la page est rendue via Inertia/React.
 - **Listes d’adjacence** (choices → next_segment_id) : sérialisables facilement, efficaces pour les parcours.
 - **Caches/états locaux** : historique de navigation (Back/Next), sets des segments éditables pour afficher rapidement les actions sans re-fetch.
 
-### Choix base de données (et pourquoi)
+### Choix de base de données (et pourquoi)
 - **PostgreSQL** : robuste, types riches (JSON pour métadonnées), transactions fiables, aligné avec une cible prod réaliste.  
 - **SQLite** : support dev/CI ultra rapide (zéro config). Abstraction via Eloquent pour rester agnostique.
 
