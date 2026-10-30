@@ -1,0 +1,90 @@
+.component {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  display: grid;
+  gap: 18px;
+}
+
+.component h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--panel-weak);
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.tab,
+.active {
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tab img,
+.active img {
+  width: 16px;
+  height: 16px;
+}
+
+.active {
+  background: var(--panel);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+  color: var(--primary);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+  display: grid;
+  gap: 14px;
+}
+
+.panel h4 {
+  margin: 12px 0 6px;
+}
+
+.panel form {
+  display: grid;
+  gap: 12px;
+}
+
+.panel label {
+  display: grid;
+  gap: 6px;
+  color: var(--text);
+}
+
+.actions {
+  display: grid;
+  gap: 10px;
+}
+
+.save {
+  justify-content: center;
+}
+
+.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecdd3;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  font-weight: 700;
+}
