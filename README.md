@@ -4,7 +4,7 @@ InKreate est un réseau social où les utilisateurs créer et contribuent à des
 **Note: La version actuelle du projet est un produit minimum viable (MVP)**
 
 ## Contributions
-Développé en tant que projet synthèse pour le DEC intensif en Techniques de l'informatique du CVM par Azeddine Zidi et Loïc Rodrigue-Gauthier.
+Développé en tant que projet synthèse par Azeddine Zidi et Loïc Rodrigue-Gauthier.
 - Laravel `backend/` : Azeddine Zidi
 - React `backend/resources/js/inkreate/` : Loïc Rodrigue-Gauthier
 - CSS `backend/resources/js/inkreate/` : Azeddine Zidi et Loïc Rodrigue-Gauthier
@@ -14,11 +14,11 @@ Développé en tant que projet synthèse pour le DEC intensif en Techniques de l
 - Front-end : Inertia + React via Vite 
 - Docs métier : voir `doc/`.
 
-## Guide de demarrage complet (back-end + front-end)
+## Guide de démarrage complet (back-end + front-end)
 
 Cette section liste les etapes pour installer et lancer le projet de A a Z, base de donnees incluse.
 
-### Prerequis
+### Prérequis
 - PHP 8.2+ avec les extensions `zip`, `openssl`, `pdo_sqlite` (ou `pdo_mysql` si vous utilisez MySQL), `fileinfo` et `mbstring`.
 - Composer global, ou utiliser le binaire local `php backend/composer.phar`.
 - Node.js 20+ et npm.
@@ -74,7 +74,7 @@ Cette section liste les etapes pour installer et lancer le projet de A a Z, base
   ```
 - Les assets sont ecrits dans `public/build` (deja ignore par git).
 
-### Lancer le projet en developpement
+### Lancer le projet en développement
 Dans deux terminaux separes :
 1. Back-end API :
    ```bash
@@ -125,7 +125,7 @@ Ouvrez http://127.0.0.1:8000 : la page est rendue via Inertia/React.
 - Stockage local : `storage/app/public/uploads` (symlink `public/storage`).
 - `.env` à vérifier : `APP_URL=http://127.0.0.1:8000`, `FILESYSTEM_DISK=public`.
 
-### Plugins / libs utilisés (et pourquoi)
+### Plugins / libs utilisées (et pourquoi)
 - **Inertia + React + Vite** : garde l’expérience SPA (routing client, hooks) tout en utilisant le routage Laravel côté serveur. Pas de CORS/API séparée pour les pages Inertia, session/CSRF partagés, build unifié dans `backend/`.
 - **Laravel Sanctum** : auth simple pour SPA/HTTP-only cookies.
 - CSS modules, hooks maison : pas de dépendances UI lourdes pour rester léger.
