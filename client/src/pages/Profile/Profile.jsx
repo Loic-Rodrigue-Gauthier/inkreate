@@ -8,13 +8,15 @@ import coverPlaceholder from "../../assets/cover.svg";
 import avatarPlaceholder from "../../assets/avatar.svg";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 function Profile() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("contributions");
-  const [activeSubTab, setActiveSubTab] = useState("following");
+  const [activeSubTab, setActiveSubTab] = useState("followers");
   const aut_list = [avatarPlaceholder, avatarPlaceholder];
   const tag_list = ["fantasy", "adventure", "collaboration"];
+  const { t } = useI18n();
 
   const stories = [];
   const contributions = [];
@@ -104,7 +106,7 @@ function Profile() {
           <div className={styles.avatar}>{"U"}</div>
           <div>
             <h2>{"User"}</h2>
-            <p className={styles.bio}>{"Add your bio in settings."}</p>
+            <p className={styles.bio}>{t("profile.addBio")}</p>
           </div>
         </div>
         <div className="grid-4 stats">
@@ -112,30 +114,30 @@ function Profile() {
             src={avatarPlaceholder}
             alt="image"
             number={0}
-            desc="Stories"
+            desc={t("stats.stories")}
           />
           <UserStats
             src={avatarPlaceholder}
             alt="image"
             number={0}
-            desc="Followers"
+            desc={t("stats.followers")}
           />
           <UserStats
             src={avatarPlaceholder}
             alt="image"
             number={0}
-            desc="Following"
+            desc={t("stats.following")}
           />
           <UserStats
             src={avatarPlaceholder}
             alt="image"
             number={0}
-            desc="Segments"
+            desc={t("stats.segments")}
           />
         </div>
         <div className={styles.tags}>
-          <span className="pill">Storyteller</span>
-          <span className="pill">Collaborator</span>
+          <span className="pill">{t("profile.storyteller")}</span>
+          <span className="pill">{t("profile.collaborator")}</span>
         </div>
       </section>
 
@@ -232,19 +234,19 @@ function Profile() {
             <div className={styles.relationsNav}>
               <button
                 className={
-                  activeSubTab === "following" ? styles.active : styles.tab
-                }
-                onClick={() => setActiveSubTab("following")}
-              >
-                Following
-              </button>
-              <button
-                className={
                   activeSubTab === "followers" ? styles.active : styles.tab
                 }
                 onClick={() => setActiveSubTab("followers")}
               >
                 Followers
+              </button>
+              <button
+                className={
+                  activeSubTab === "following" ? styles.active : styles.tab
+                }
+                onClick={() => setActiveSubTab("following")}
+              >
+                Following
               </button>
               <button
                 className={

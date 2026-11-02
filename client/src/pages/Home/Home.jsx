@@ -63,7 +63,7 @@ function Home() {
           alt="stories"
           number={0}
           desc={t("stats.stories")}
-          to="/search"
+          to="/profile?tab=contributions"
           state={{ owner: 1 }}
         />
         <UserStats
@@ -71,21 +71,21 @@ function Home() {
           alt="followers"
           number={0}
           desc={t("stats.followers")}
-          to="/profile"
+          to="/profile?tab=relations"
         />
         <UserStats
           src={avatarPlaceholder}
           alt="following"
           number={0}
           desc={t("stats.following")}
-          to="/profile"
+          to="/profile?tab=relations"
         />
         <UserStats
           src={avatarPlaceholder}
           alt="segments"
           number={0}
           desc={t("stats.segments")}
-          to="/read-story"
+          to="/profile?tab=contributions"
         />
       </section>
 

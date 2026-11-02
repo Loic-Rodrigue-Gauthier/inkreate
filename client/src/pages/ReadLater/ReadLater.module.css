@@ -1,11 +1,16 @@
 .page {
-  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 1100px;
   background: var(--bg);
   padding: 2.4rem 1.6rem 3rem;
 }
 
 .hero {
-  background: linear-gradient(120deg, rgba(116, 128, 255, 0.14), rgba(124, 242, 255, 0.14));
+  background: linear-gradient(
+    120deg,
+    rgba(116, 128, 255, 0.14),
+    rgba(124, 242, 255, 0.14)
+  );
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 1.6rem;

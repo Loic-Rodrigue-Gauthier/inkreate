@@ -13,13 +13,18 @@
   --warn: #f59e0b;
   --danger: #e11d48;
   --radius: 16px;
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
   color: var(--text);
   line-height: 1.6;
   background-color: var(--bg);
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --bg: #0b1222;
   --panel: #111827;
   --panel-weak: #1f2433;
@@ -95,7 +100,6 @@ label {
   border-radius: 12px;
   padding: 12px 18px;
   font-weight: 600;
-  display: inline-flex;
   align-items: center;
   gap: 8px;
   border: 1px solid transparent;
@@ -164,22 +168,22 @@ label {
 }
 
 /* Dark mode surface alignment */
-[data-theme='dark'] body,
-[data-theme='dark'] .navbar,
-[data-theme='dark'] .card,
-[data-theme='dark'] .heroCard,
-[data-theme='dark'] .panel,
-[data-theme='dark'] .sidebar,
-[data-theme='dark'] .main,
-[data-theme='dark'] .box {
+[data-theme="dark"] body,
+[data-theme="dark"] .navbar,
+[data-theme="dark"] .card,
+[data-theme="dark"] .heroCard,
+[data-theme="dark"] .panel,
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .main,
+[data-theme="dark"] .box {
   background: var(--panel);
   color: var(--text);
   border-color: var(--border);
 }
 
-[data-theme='dark'] input,
-[data-theme='dark'] select,
-[data-theme='dark'] textarea {
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
   background: var(--panel-weak);
   color: var(--text);
   border-color: var(--border);

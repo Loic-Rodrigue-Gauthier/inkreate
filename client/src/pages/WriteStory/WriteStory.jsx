@@ -214,14 +214,14 @@ function WriteStory() {
             name="synopsis"
             value={inputs.synopsis ?? ""}
             onChange={updateValue}
-            placeholder="Describe your story premise..."
+            placeholder="Describe your story's premise..."
             rows={3}
           />
         </label>
 
         <SegmentImageText
           src={thumbnail}
-          img_title="Book Cover Images"
+          img_title="Story Cover"
           txt_title="Synopsis"
           name="synopsis"
           inputs={inputs}
@@ -235,6 +235,7 @@ function WriteStory() {
             name="visibility"
             value={inputs.visibility}
             onChange={updateValue}
+            className={styles.whoCan}
           >
             <option value="Only Me">Only Me</option>
             <option value="Followers">Followers</option>
@@ -299,7 +300,6 @@ function WriteStory() {
         </div>
         {showShareOptions && (
           <div className={styles.sharePanel}>
-            <h4>Share your story</h4>
             <div className={styles.shareRow}>
               <a
                 className={styles.shareLink}
@@ -389,7 +389,6 @@ function WriteStory() {
           >
             <div className={styles.modalHeader}>
               <h3>Preview</h3>
-              <button onClick={() => setPreviewOpen(false)}>✕</button>
             </div>
             <img
               src={thumbnail || coverPlaceholder}
@@ -397,20 +396,25 @@ function WriteStory() {
               className={styles.previewImg}
             />
             <h4>{inputs.title || "Untitled story"}</h4>
-            <p className={styles.previewMeta}>
-              {selected.genre || "Genre not set"} • {inputs.visibility}
-            </p>
-            <p>{inputs.synopsis || "No synopsis yet."}</p>
             <p className={styles.previewTags}>
               {tagList
                 .toArray()
                 .map((t) => t.text)
                 .join(", ")}
             </p>
+            <p>{inputs.synopsis || "No synopsis yet."}</p>
+            <p className={styles.previewMeta}>
+              Permissions: {inputs.visibility}
+            </p>
             {segData.content && (
               <div className={styles.previewSegment}>
-                <h5>First segment</h5>
+                <h4>First segment</h4>
                 <p>{segData.content}</p>
+                <div className={styles.previewChoices}>
+                  {segData.choices.map((choice) => (
+                    <div>{choice}</div>
+                  ))}
+                </div>
               </div>
             )}
             <button

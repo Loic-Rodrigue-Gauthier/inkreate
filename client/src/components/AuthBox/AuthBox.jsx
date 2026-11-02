@@ -87,8 +87,9 @@ function Login() {
           type="password"
           name="password"
           value={inputs.password ?? ""}
+          minLength={12}
           onChange={updateValue}
-          placeholder="••••••••"
+          placeholder="••••••••••••"
           required
         />
       </label>

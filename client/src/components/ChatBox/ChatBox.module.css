@@ -33,15 +33,11 @@
   gap: 10px;
   overflow-y: auto;
   background: var(--panel-weak);
-  border: 1px solid var(--border);
-  border-radius: 12px;
   min-height: 320px;
-  
 }
 
 .inputRow {
   border-top: 1px solid var(--border);
-  padding: 10px 0 0 0;
   background: transparent;
 }
 
@@ -50,12 +46,13 @@
   grid-template-columns: 1fr 110px;
   gap: 10px;
   align-items: center;
+  margin: 10px;
 }
 
 .inputRow textarea {
   min-height: 48px;
   max-height: 120px;
-  resize: vertical;
+  resize: none;
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -64,6 +61,7 @@
 }
 
 .send {
+  height: 100%;
   border: none;
   border-radius: 12px;
   padding: 12px 14px;
@@ -71,7 +69,9 @@
   color: #fff;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.1s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
 }
 
 .send:hover {

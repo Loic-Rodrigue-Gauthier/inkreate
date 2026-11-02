@@ -1,14 +1,25 @@
-import { useEffect, useState } from 'react';
-import styles from './SearchBox.module.css';
-import { useI18n } from '../../context/I18nContext.jsx';
+import { useEffect, useState } from "react";
+import styles from "./SearchBox.module.css";
+import { useI18n } from "../../context/I18nContext.jsx";
 
-const GENRES = ['Any', 'Fantasy', 'Romance', 'Mystery', 'Science Fiction', 'Adventure', 'Thriller', 'Horror', 'Comedy', 'Drama'];
+const GENRES = [
+  "Any",
+  "Fantasy",
+  "Romance",
+  "Mystery",
+  "Science Fiction",
+  "Adventure",
+  "Thriller",
+  "Horror",
+  "Comedy",
+  "Drama",
+];
 const SORTS = [
-  { value: 'popular', label: 'Popular' },
-  { value: 'rated', label: 'Top Rated' },
-  { value: 'favorites', label: 'Most Favorited' },
-  { value: 'recent', label: 'Recent' },
-  { value: 'default', label: 'Default' },
+  { value: "popular", label: "Popular" },
+  { value: "rated", label: "Top Rated" },
+  { value: "favorites", label: "Most Favorited" },
+  { value: "recent", label: "Recent" },
+  { value: "default", label: "Default" },
 ];
 
 function SearchBox({ initialFilters, onSearch, currentUserId }) {
@@ -25,7 +36,7 @@ function SearchBox({ initialFilters, onSearch, currentUserId }) {
 
   const toggleOwner = (e) => {
     const checked = e.target.checked;
-    setInputs((values) => ({ ...values, owner: checked ? currentUserId : '' }));
+    setInputs((values) => ({ ...values, owner: checked ? currentUserId : "" }));
   };
 
   function submitForm(e) {
@@ -40,12 +51,12 @@ function SearchBox({ initialFilters, onSearch, currentUserId }) {
         name="search"
         value={inputs.search}
         onChange={updateValue}
-        placeholder={t('search.placeholder')}
+        placeholder={t("search.placeholder")}
         className={styles.searchInput}
       />
       <div className={styles.filters}>
         <label>
-          {t('search.order')}
+          {t("search.order")}
           <select name="sort" value={inputs.sort} onChange={updateValue}>
             {SORTS.map((s) => (
               <option key={s.value} value={s.value}>
@@ -55,7 +66,7 @@ function SearchBox({ initialFilters, onSearch, currentUserId }) {
           </select>
         </label>
         <label>
-          {t('search.genre')}
+          {t("search.genre")}
           <select name="genre" value={inputs.genre} onChange={updateValue}>
             {GENRES.map((g) => (
               <option key={g} value={g}>
@@ -65,7 +76,7 @@ function SearchBox({ initialFilters, onSearch, currentUserId }) {
           </select>
         </label>
         <label>
-          {t('search.status')}
+          {t("search.status")}
           <select name="status" value={inputs.status} onChange={updateValue}>
             <option value="Any">Any</option>
             <option value="draft">Draft</option>
@@ -75,18 +86,18 @@ function SearchBox({ initialFilters, onSearch, currentUserId }) {
         </label>
         {currentUserId && (
           <label className={styles.checkbox}>
+            {t("search.myStories")}
             <input
               type="checkbox"
               checked={!!inputs.owner}
               onChange={toggleOwner}
             />
-            {t('search.myStories')}
           </label>
         )}
       </div>
       <div className={styles.actions}>
         <button type="submit" className="btn primary">
-          {t('search.button')}
+          {t("search.button")}
         </button>
       </div>
     </form>

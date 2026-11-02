@@ -13,13 +13,9 @@ function Appearance() {
   useEffect(() => {
     setInputs((prev) => ({
       ...prev,
-      language: language === "fr" ? "French" : "English",
+      language: language === "fr" ? "Français" : "English",
     }));
   }, [language]);
-
-  useEffect(() => {
-    setLanguage("en");
-  }, [setLanguage]);
 
   const updateValue = (e) => {
     const { name, value } = e.target;
@@ -27,14 +23,14 @@ function Appearance() {
       setTheme(value.toLowerCase());
     } else {
       setInputs((values) => ({ ...values, [name]: value }));
-      setLanguage(value === "French" ? "fr" : "en");
+      setLanguage(value === "Français" ? "fr" : "en");
     }
     formRef.current.requestSubmit();
   };
 
   function submitForm(e) {
     e.preventDefault();
-    const langCode = inputs.language === "French" ? "fr" : "en";
+    const langCode = inputs.language === "Français" ? "fr" : "en";
   }
 
   return (
@@ -59,7 +55,7 @@ function Appearance() {
             onChange={updateValue}
           >
             <option value="English">English</option>
-            <option value="French">French</option>
+            <option value="Français">Français</option>
           </select>
         </label>
       </form>
@@ -132,12 +128,7 @@ function Profile() {
         </label>
         <label>
           {t("profile.bio")}
-          <textarea
-            name="bio"
-            value={inputs.bio}
-            onChange={updateValue}
-            placeholder="Tell collaborators about you..."
-          />
+          <textarea name="bio" value={inputs.bio} onChange={updateValue} />
         </label>
         <label>
           {t("profile.genres")}

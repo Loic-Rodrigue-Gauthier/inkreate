@@ -1,6 +1,6 @@
 .box {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background-color: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 18px;
   text-align: center;
@@ -9,7 +9,9 @@
   gap: 10px;
   align-items: center;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .box:hover {
@@ -28,7 +30,7 @@
   justify-content: center;
   font-weight: 800;
   font-size: 18px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
 }
 
 .box h3 {

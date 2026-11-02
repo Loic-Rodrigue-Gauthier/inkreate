@@ -21,7 +21,7 @@ function Header() {
         className={styles.brand}
       >
         <span className={styles.brandIcon}>🪶</span>
-        <span>InKreate</span>
+        <span className={styles.brandName}>InKreate</span>
       </div>
 
       <nav className={styles.links}>
@@ -61,23 +61,15 @@ function Header() {
         >
           <span className={styles.icon}>🕒</span> {t("nav.readLater")}
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/profile?tab=network"
           className={({ isActive }) => (isActive ? styles.active : styles.link)}
         >
           <span className={styles.icon}>📡</span> {t("nav.network")}
-        </NavLink>
+        </NavLink> */}
       </nav>
 
       <div className={styles.actions}>
-        <NavLink
-          to="/settings"
-          className={({ isActive }) =>
-            isActive ? styles.activeIcon : styles.iconButton
-          }
-        >
-          ⚙️
-        </NavLink>
         <>
           <NavLink
             to="/profile"
@@ -86,6 +78,14 @@ function Header() {
             }
           >
             <span>{avatarLetter}</span>
+          </NavLink>
+          <NavLink
+            to="/settings"
+            className={({ isActive }) =>
+              isActive ? styles.activeIcon : styles.iconButton
+            }
+          >
+            ⚙️
           </NavLink>
           <button className={styles.logout} onClick={handleLogout}>
             {t("nav.logout")}

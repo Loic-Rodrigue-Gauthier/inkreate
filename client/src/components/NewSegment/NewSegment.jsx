@@ -5,11 +5,12 @@ import DiscardableChip from "../DiscardableChip/DiscardableChip";
 import SegmentImageText from "../SegmentImageText/SegmentImageText";
 import styles from "./NewSegment.module.css";
 import bliss from "../../assets/bliss.jpg";
+import coverPlaceholder from "../../assets/cover.svg";
 
 function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
   const [inputs, setInputs] = useState({});
   const [selected, setSelected] = useState({});
-  const [segmentImage, setSegmentImage] = useState();
+  const [segmentImage, setSegmentImage] = useState(coverPlaceholder);
   const [choiceList, setChoiceList] = useState(() => new LinkedList());
 
   const updateValue = (e) => {

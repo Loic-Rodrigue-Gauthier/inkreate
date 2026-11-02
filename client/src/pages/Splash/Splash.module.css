@@ -16,16 +16,10 @@
   align-items: center;
   padding: 48px;
   border-radius: 28px;
-  background-image:
-    linear-gradient(
-      125deg,
-      rgba(255, 255, 255, 0.97),
-      rgba(247, 248, 255, 0.94)
-    ),
-    var(--hero-bg);
+  background-color: var(--bg);
   background-size: cover;
   background-position: center;
-  border: 1px solid #e6e9f2;
+  border: 1px solid var(--border);
   box-shadow: 0 26px 60px rgba(15, 23, 42, 0.1);
   overflow: hidden;
 }
@@ -105,15 +99,15 @@
 
 .statsRow > div {
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.07);
-  border: 1px solid #e7eaf3;
-  background: #fff;
+  border: 1px solid var(--border);
+  background-color: var(--panel);
 }
 
 .heroCard {
   position: relative;
   z-index: 1;
-  background: #ffffff;
-  border: 1px solid #e7eaf3;
+  background-color: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 24px;
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
@@ -126,7 +120,7 @@
   margin: 6px 0 0;
   font-size: 18px;
   line-height: 1.5;
-  color: #1f2937;
+  color: var(--text);
 }
 
 .heroCard p {
@@ -184,21 +178,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
-  background: #f7f8fb;
+  background: var(--bg);
   padding: 18px;
   border-radius: 16px;
-  border: 1px solid #e7eaf3;
+  border: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
 }
 
 .testimonials {
-  background: #f7f8fb;
+  background: var(--bg);
   padding: 26px;
   border-radius: 18px;
-  border: 1px solid #e7eaf3;
-  box-shadow:
+  border: 1px solid var(--border);
+  /* box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    0 10px 30px rgba(15, 23, 42, 0.06);
+    0 10px 30px rgba(15, 23, 42, 0.06); */
 }
 
 .testimonialGrid {
@@ -208,8 +202,8 @@
 }
 
 .testimonialCard {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
@@ -224,7 +218,7 @@
 
 .quote {
   margin: 0;
-  color: #111827;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -240,8 +234,8 @@
 }
 
 .footerCta {
-  background: linear-gradient(135deg, #f5f0ff, #eef2ff);
-  border: 1px solid #e0e7ff;
+  background: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 26px;
   display: flex;

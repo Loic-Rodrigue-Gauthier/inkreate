@@ -55,7 +55,9 @@ function Splash() {
             <button className="btn primary" onClick={goToPage}>
               Start Writing Together
             </button>
-            <button className="btn ghost">Explore Features</button>
+            <button className="btn ghost">
+              <a href="#featuresSection">Explore Features</a>
+            </button>
           </div>
           <div className={styles.statsRow}>
             <GlobalStats number="10k+" desc="Active Writers" />
@@ -73,12 +75,14 @@ function Splash() {
             <button className="btn primary" onClick={goToPage}>
               Join the Community
             </button>
-            <button className="btn ghost">See Stories</button>
+            <button className="btn ghost" onClick={goToPage}>
+              See Stories
+            </button>
           </div>
         </div>
       </section>
 
-      <section className={styles.features}>
+      <section id="featuresSection" className={styles.features}>
         <div className={styles.sectionHeader}>
           <h3>Why Choose InKreate</h3>
           <p className={styles.subtext}>
