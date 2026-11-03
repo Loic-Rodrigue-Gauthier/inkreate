@@ -75,6 +75,7 @@
   transition:
     border-color 150ms ease,
     box-shadow 150ms ease;
+  margin-bottom: 15px;
 }
 
 .seg_area:focus {

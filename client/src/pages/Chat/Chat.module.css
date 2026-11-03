@@ -128,7 +128,6 @@
   min-height: 600px;
   display: flex;
   flex-direction: column;
-  min-height: 0;
   overflow: hidden;
   padding: 12px;
   gap: 12px;

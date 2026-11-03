@@ -148,12 +148,12 @@ function Profile() {
         >
           Contributions
         </button>
-        <button
+        {/* <button
           className={activeTab === "favs" ? styles.active : styles.tab}
           onClick={() => setActiveTab("favs")}
         >
           Favorites
-        </button>
+        </button> */}
         <button
           className={activeTab === "activity" ? styles.active : styles.tab}
           onClick={() => setActiveTab("activity")}

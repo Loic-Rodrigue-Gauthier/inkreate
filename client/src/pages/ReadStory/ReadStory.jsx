@@ -379,7 +379,7 @@ function ReadStory() {
             className="btn primary"
             disabled={isSubmitting || !commentInput.trim()}
           >
-            {isSubmitting ? "Sending..." : "Send Comment"}
+            {isSubmitting ? "Sending..." : "Submit"}
           </button>
         </form>
 

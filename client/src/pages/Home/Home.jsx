@@ -14,8 +14,34 @@ function Home() {
   const aut_list = [avatarPlaceholder, avatarPlaceholder];
   const tag_list = ["fantasy", "adventure", "collaboration"];
 
-  const [stories, setStories] = useState([]);
-  const [activities, setActivities] = useState([]);
+  const [stories, setStories] = useState([
+    {
+      storyId: 1,
+      src: "",
+      alt: "image",
+      title: "The Best Story Title Ever",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, excepturi!",
+      tags: ["Mystery", "Fantasy", "Romance"],
+      authors: ["User"],
+      segments: "97",
+      views: "1051",
+      comments: "0",
+      rating: "4.7",
+      updated: "Today",
+      favorited: "942",
+      bookmarked: "526",
+    },
+  ]);
+
+  const [activities, setActivities] = useState([
+    {
+      src: "",
+      alt: "image",
+      username: "User",
+      desc: `created a new segment in "The Best Story Title Ever"`,
+      updated: "Today",
+    },
+  ]);
 
   const timeAgo = (value) => {
     if (!value) return "—";
@@ -61,7 +87,7 @@ function Home() {
         <UserStats
           src={avatarPlaceholder}
           alt="stories"
-          number={0}
+          number={stories.length}
           desc={t("stats.stories")}
           to="/profile?tab=contributions"
           state={{ owner: 1 }}
@@ -83,7 +109,7 @@ function Home() {
         <UserStats
           src={avatarPlaceholder}
           alt="segments"
-          number={0}
+          number={stories[0].segments}
           desc={t("stats.segments")}
           to="/profile?tab=contributions"
         />

@@ -11,7 +11,7 @@
   padding: 2.2rem 2.2rem 2.6rem;
   border-radius: 16px;
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
-  display: grid;
+  display: block;
   gap: 1.4rem;
   border: 1px solid var(--border);
 }
@@ -136,6 +136,7 @@
 
 .author_rating {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 8px;
   align-items: center;
@@ -185,7 +186,7 @@
 }
 
 .comment_area {
-  margin-top: 10px;
+  margin: 10px 0;
   width: 100%;
   min-height: 90px;
   border-radius: 12px;
@@ -197,7 +198,7 @@
 }
 
 .commentsTitle {
-  margin: 10px 0 0;
+  margin: 20px 0 0;
 }
 
 .comment_bubbles {
@@ -307,6 +308,16 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+}
+
+@media (min-width: 426px) {
+  .main {
+    display: grid;
+  }
+
+  .author_rating {
+    flex-direction: row;
+  }
 }
 
 @media (max-width: 720px) {

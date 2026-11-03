@@ -19,7 +19,7 @@ export const translations = {
     "home.trending": "Trending Stories",
     "home.noStories": "No stories yet. Create your first story!",
 
-    "stats.stories": "Stories",
+    "stats.stories": "Story",
     "stats.followers": "Followers",
     "stats.following": "Following",
     "stats.segments": "Segments",
@@ -35,7 +35,7 @@ export const translations = {
     "search.myStories": "My stories only",
     "search.button": "Search",
     "search.trending": "Trending",
-    "search.results": "{count} stories found",
+    "search.results": "{count} story found",
     "search.none": "No stories found",
 
     "home.activity": "Recent Activity",
@@ -98,7 +98,7 @@ export const translations = {
     "home.noStories":
       "Aucune histoire pour l’instant. Crée ta première histoire !",
 
-    "stats.stories": "Histoires",
+    "stats.stories": "Histoire",
     "stats.followers": "Abonnés",
     "stats.following": "Abonnements",
     "stats.segments": "Segments",
@@ -114,7 +114,7 @@ export const translations = {
     "search.myStories": "Mes histoires uniquement",
     "search.button": "Rechercher",
     "search.trending": "Tendance",
-    "search.results": "{count} histoires trouvées",
+    "search.results": "{count} histoire trouvée",
     "search.none": "Aucune histoire trouvée",
 
     "home.activity": "Activité récente",

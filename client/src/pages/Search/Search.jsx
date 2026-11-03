@@ -26,7 +26,24 @@ function Search() {
     ...initialFilters,
     owner: initialOwner,
   });
-  const [stories, setStories] = useState([]);
+  const [stories, setStories] = useState([
+    {
+      storyId: 1,
+      src: "",
+      alt: "image",
+      title: "The Best Story Title Ever",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, excepturi!",
+      tags: ["Mystery", "Fantasy", "Romance"],
+      authors: ["User"],
+      segments: "97",
+      views: "1051",
+      comments: "0",
+      rating: "4.7",
+      updated: "Today",
+      favorited: "942",
+      bookmarked: "526",
+    },
+  ]);
 
   const loadStories = (params) => {
     const query = { ...params };
@@ -64,10 +81,12 @@ function Search() {
           )}
         </span>
       </div>
-      <StoryThumbnailList stories={stories} />
-      {!stories.length && (
-        <p style={{ color: "var(--muted)" }}>{t("search.none")}</p>
-      )}
+      <div>
+        <StoryThumbnailList stories={stories} />
+        {!stories.length && (
+          <p style={{ color: "var(--muted)" }}>{t("search.none")}</p>
+        )}
+      </div>
     </div>
   );
 }

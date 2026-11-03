@@ -235,7 +235,7 @@ function WriteStory() {
             name="visibility"
             value={inputs.visibility}
             onChange={updateValue}
-            className={styles.whoCan}
+            className={styles.whoCanSelect}
           >
             <option value="Only Me">Only Me</option>
             <option value="Followers">Followers</option>

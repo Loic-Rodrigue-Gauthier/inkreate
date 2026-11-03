@@ -4,6 +4,7 @@
   padding: 72px 24px 120px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 96px;
   color: var(--heading);
 }
@@ -176,7 +177,7 @@
 
 .stepGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(216px, 1fr));
   gap: 18px;
   background: var(--bg);
   padding: 18px;
@@ -197,7 +198,7 @@
 
 .testimonialGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(216px, 1fr));
   gap: 16px;
 }
 
@@ -251,6 +252,12 @@
 
 .footerCta .subtext {
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  .page {
+    align-items: normal;
+  }
 }
 
 @media (max-width: 1024px) {

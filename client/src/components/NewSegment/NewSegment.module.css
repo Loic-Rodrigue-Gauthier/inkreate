@@ -42,7 +42,7 @@
 }
 
 .choice_input {
-  margin: 15px 10px;
+  margin: 15px 0;
 }
 
 .chips {
@@ -51,4 +51,11 @@
   overflow-y: auto;
   width: 100%;
   flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+@media (min-width: 426px) {
+  .choice_input {
+    margin: 15px 10px;
+  }
 }

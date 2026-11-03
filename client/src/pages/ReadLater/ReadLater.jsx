@@ -5,7 +5,24 @@ import coverPlaceholder from "../../assets/cover.svg";
 import avatarPlaceholder from "../../assets/avatar.svg";
 
 function ReadLater() {
-  const [stories, setStories] = useState([]);
+  const [stories, setStories] = useState([
+    {
+      storyId: 1,
+      src: "",
+      alt: "image",
+      title: "The Best Story Title Ever",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, excepturi!",
+      tags: ["Mystery", "Fantasy", "Romance"],
+      authors: ["User"],
+      segments: "97",
+      views: "1051",
+      comments: "0",
+      rating: "4.7",
+      updated: "Today",
+      favorited: "942",
+      bookmarked: "526",
+    },
+  ]);
 
   return (
     <div className={styles.page}>

@@ -2,18 +2,19 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 32px 24px 80px;
-  display: grid;
   gap: 18px;
   background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 20px;
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
-  display: grid;
+  padding: 20px;
   gap: 16px;
 }
 
@@ -24,23 +25,23 @@
 
 .formGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 14px;
-}
-
-.field {
-  display: grid;
-  gap: 6px;
 }
 
 .full {
   grid-column: 1 / -1;
 }
 
+.field select {
+  margin: 0 10px;
+}
+
 .chips {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin: 20px 0;
 }
 
 .tagRow {
@@ -52,6 +53,7 @@
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: flex-start;
   margin-top: 6px;
@@ -136,6 +138,9 @@
   display: grid;
   gap: 10px;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+  max-height: calc(100vh - 20px);
+  margin: 10px 0;
+  overflow-y: scroll;
 }
 
 .modalHeader {
@@ -176,6 +181,33 @@
   gap: 15px;
 }
 
-.whoCan {
-  margin-left: 10px;
+.whoCanSelect {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 426px) {
+  .page {
+    display: grid;
+    align-items: normal;
+  }
+
+  .field {
+    display: grid;
+    gap: 6px;
+  }
+
+  .card {
+    display: grid;
+  }
+
+  .whoCanSelect {
+    margin-top: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .modalCard {
+    overflow-y: auto;
+  }
 }

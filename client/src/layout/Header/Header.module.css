@@ -1,14 +1,22 @@
-.navbar {
+.header {
   position: sticky;
   top: 0;
   z-index: 10;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 32px;
-  background: var(--panel);
-  border-bottom: 1px solid var(--border);
-  color: var(--text);
+}
+
+.navBarSmall {
+  display: flex;
+  justify-content: center;
 }
 
 .brand {
@@ -37,9 +45,20 @@
 }
 
 .links {
-  display: flex;
-  align-items: center;
+  width: fit-content;
+  height: 60px;
   gap: 14px;
+}
+
+.linksLarge {
+  display: none;
+}
+
+.linksSmall {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  margin: 0 32px 14px 32px;
 }
 
 .link,
@@ -52,6 +71,7 @@
   font-weight: 600;
   color: var(--text);
   transition: all 0.16s ease;
+  min-width: fit-content;
 }
 
 .link:hover {
@@ -124,6 +144,14 @@
   cursor: pointer;
 }
 
+.logoutMedium {
+  display: none;
+}
+
+.logoutSmall {
+  display: block;
+}
+
 .login {
   padding: 10px 14px;
   border-radius: 12px;
@@ -132,5 +160,22 @@
   font-weight: 700;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 375px) {
+  .logoutMedium {
+    display: block;
+  }
+
+  .logoutSmall {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .linksLarge {
+    display: flex;
+  }
+
+  .linksSmall {
+    display: none;
+  }
 }
