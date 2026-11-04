@@ -8,20 +8,61 @@ import { useMemo } from "react";
 
 function Chat() {
   const [isOpen, setIsOpen] = useState(false);
-  const [threads, setThreads] = useState([]);
+  const [threads, setThreads] = useState([
+    {
+      id: 1,
+      avatar: "",
+      displayName: "Mysterious-Alex",
+      messages: [
+        "Lorem ipsum dolor sit amet.",
+        "Lorem ipsum dolor sit amet.",
+        "Lorem ipsum dolor sit amet.",
+      ],
+      lastMessage: "Lorem ipsum dolor sit amet.",
+      timestamp: "Today",
+      unread_count: 1,
+    },
+  ]);
   const [selectedThread, setSelectedThread] = useState(null);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      author: "",
+      username: "Mysterious-Alex",
+      body: "Lorem ipsum dolor sit amet.",
+    },
+  ]);
   const [isLoading, setIsLoading] = useState(false);
   const [chatError, setChatError] = useState(null);
   const [online] = useState([
-    { src: null, username: "wordsmith_alex" },
-    { src: null, username: "fantasy_circle" },
+    { src: null, username: "Mysterious-Alex" },
+    { src: null, username: "Fantastic-Anna" },
+    { src: null, username: "Romantic-Amelia" },
   ]);
 
   const unreadTotal = useMemo(
     () => threads.reduce((sum, t) => sum + (t.unread_count || 0), 0),
     [threads],
   );
+
+  const handleSelect = () => {
+    setSelectedThread({
+      title: "Mysterious-Alex",
+      participants: ["Mysterious-Alex", "User"],
+    });
+  };
+
+  // const addMessage = (value) => {
+  //   setMessages((prev) => {
+  //     [
+  //       ...prev,
+  //       {
+  //         author: "",
+  //         username: "User",
+  //         body: value,
+  //       },
+  //     ];
+  //   });
+  // };
 
   return (
     <div className={styles.shell}>
@@ -78,7 +119,11 @@ function Chat() {
           </div>
         </section>
         <section className={styles.main}>
-          <ChatBox thread={selectedThread} messages={messages} />
+          <ChatBox
+            thread={selectedThread}
+            messages={messages}
+            // onSend={addMessage}
+          />
         </section>
       </div>
     </div>

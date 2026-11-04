@@ -16,7 +16,7 @@ function Bookmarked() {
       authors: ["User"],
       segments: "97",
       views: "1051",
-      comments: "0",
+      comments: "1",
       rating: "4.7",
       updated: "Today",
       favorited: "942",

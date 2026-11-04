@@ -1,18 +1,14 @@
+import ActivityBox from "../ActivityBox/ActivityBox";
+import styles from "./ActivityBoxList.module.css";
 
-import ActivityBox from '../ActivityBox/ActivityBox'
-import styles from './ActivityBoxList.module.css'
-
-function ActivityBoxList({activity}) {
+function ActivityBoxList({ activity }) {
   return (
-    <div>
+    <div className={styles.main}>
       {activity.map((activity, index) => (
-        <ActivityBox
-          key={index}
-          {...activity}
-        />
+        <ActivityBox key={index} {...activity} />
       ))}
     </div>
-  )
+  );
 }
 
-export default ActivityBoxList
+export default ActivityBoxList;

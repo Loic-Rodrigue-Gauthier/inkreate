@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  color: var(--text);
+}
+
+.main h2 {
+  margin-top: 0;
+}
+
+.choiceTitle {
+  margin-bottom: 15px;
+}
+
+.bubble {
+  border: 2px solid var(--border);
+  background-color: var(--panel-weak);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 5px 10px;
+  font-weight: 600;
+  margin-left: 5px;
+}

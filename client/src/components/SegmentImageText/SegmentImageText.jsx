@@ -1,20 +1,28 @@
+import styles from "./SegmentImageText.module.css";
+import { useRef } from "react";
 
-import styles from './SegmentImageText.module.css'
-import { useRef } from 'react'
-
-function SegmentImageText({ src, alt = 'image', img_title, txt_title, name, inputs, updateValue, onFileSelect }) {
-  const fileInputRef = useRef(null)
+function SegmentImageText({
+  src,
+  alt = "image",
+  img_title,
+  txt_title,
+  name,
+  inputs,
+  updateValue,
+  onFileSelect,
+}) {
+  const fileInputRef = useRef(null);
 
   const handleClick = () => {
-    fileInputRef.current?.click()
-  }
+    fileInputRef.current?.click();
+  };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      onFileSelect?.(file)
-    }
-  }
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     onFileSelect?.(file);
+  //   }
+  // };
 
   return (
     <div className={styles.main}>
@@ -27,19 +35,19 @@ function SegmentImageText({ src, alt = 'image', img_title, txt_title, name, inpu
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        style={{ display: 'none' }}
-        onChange={handleFileChange}
+        style={{ display: "none" }}
+        // onChange={handleFileChange}
       />
       <h3>{txt_title}</h3>
       <textarea
         className={styles.seg_area}
-        placeholder='Write here!'
+        placeholder="Write here!"
         name={name}
-        value={inputs[name] || ''}
+        value={inputs[name] || ""}
         onChange={updateValue}
       />
     </div>
-  )
+  );
 }
 
-export default SegmentImageText
+export default SegmentImageText;

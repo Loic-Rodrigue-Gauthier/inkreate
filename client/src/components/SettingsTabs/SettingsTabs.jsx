@@ -98,9 +98,9 @@ function Profile() {
             type="file"
             accept="image/*"
             style={{ display: "none" }}
-            onChange={(e) =>
-              e.target.files?.[0] && handleFile(e.target.files[0])
-            }
+            // onChange={(e) =>
+            //   e.target.files?.[0] && handleFile(e.target.files[0])
+            // }
           />
           <img
             src={image}

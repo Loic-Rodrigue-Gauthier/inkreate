@@ -10,6 +10,8 @@
 
 .header {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 14px;
@@ -29,7 +31,7 @@
 
 .messages {
   padding: 10px;
-  display: grid;
+  /* display: grid; */
   gap: 10px;
   overflow-y: auto;
   background: var(--panel-weak);
@@ -90,6 +92,12 @@
   text-align: center;
   color: var(--muted);
   padding: 20px 0;
+}
+
+@media (min-width: 426px) {
+  .header {
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 768px) {

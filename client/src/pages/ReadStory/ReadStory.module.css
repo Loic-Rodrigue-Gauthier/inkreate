@@ -37,13 +37,15 @@
   color: var(--primary);
   border-radius: 12px;
   font-weight: 700;
+  align-self: flex-start;
 }
 
 .seg_pic {
   border-radius: 14px;
   width: 100%;
   object-fit: cover;
-  border: 1px solid var(--border);
+  margin: 30px 0 20px 0;
+  /* border: 1px solid var(--border); */
 }
 
 .paragraph {
@@ -61,10 +63,12 @@
 }
 
 .choiceItem {
-  display: grid;
+  display: flex;
   gap: 6px;
   justify-items: center;
   align-content: start;
+  flex-direction: column;
+  margin: 20px 0;
 }
 
 .choice_button {
@@ -77,11 +81,12 @@
   transition: all 120ms ease;
   min-width: 140px;
   text-align: center;
+  color: var(--text);
 }
 
 .choice_button:hover {
   border-color: #cbcfe6;
-  background: #eef1fb;
+  background: var(--panel);
 }
 
 .choiceMeta {
@@ -147,6 +152,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: -6px;
 }
 
 .followBtn {
@@ -165,6 +171,20 @@
   border: 1px solid var(--border);
   cursor: pointer;
   font-weight: 700;
+  color: var(--text);
+}
+
+.rate_fave_book:hover {
+  border-color: #cbcfe6;
+  background: var(--panel);
+}
+
+.rateSelect {
+  width: 83px;
+}
+
+.ratingStat {
+  margin-left: 10px;
 }
 
 .seg_stats {
@@ -172,6 +192,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  margin-top: 20px;
 }
 
 .date_views {
@@ -186,7 +207,7 @@
 }
 
 .comment_area {
-  margin: 10px 0;
+  margin: 30px 0 10px 0;
   width: 100%;
   min-height: 90px;
   border-radius: 12px;
@@ -198,7 +219,7 @@
 }
 
 .commentsTitle {
-  margin: 20px 0 0;
+  margin: 30px 0 20px 0;
 }
 
 .comment_bubbles {
@@ -317,6 +338,27 @@
 
   .author_rating {
     flex-direction: row;
+  }
+
+  .seg_pic {
+    margin: auto;
+  }
+
+  .commentsTitle {
+    margin: 20px 0 0 0;
+  }
+
+  .seg_stats {
+    margin-top: 0;
+  }
+
+  .choiceItem {
+    flex-direction: row;
+    margin: auto;
+  }
+
+  .comment_area {
+    margin: 10px 0;
   }
 }
 

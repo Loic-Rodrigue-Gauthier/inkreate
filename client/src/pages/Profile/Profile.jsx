@@ -19,21 +19,104 @@ function Profile() {
   const { t } = useI18n();
 
   const stories = [];
-  const contributions = [];
-  const [followers, setFollowers] = useState([]);
-  const [following, setFollowing] = useState([]);
+  const contributions = [
+    {
+      title: "The Best Story Title Ever",
+      segment: "97",
+      choice: "Continue Forward",
+      paragraph:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ducimus neque, accusantium veniam totam ea commodi nisi eveniet est perspiciatis illum quo earum maiores sapiente adipisci a quae. Praesentium nihil quo fuga excepturi molestiae, optio dolor aliquam numqu...",
+    },
+  ];
+
+  const [followers, setFollowers] = useState([
+    {
+      id: 101,
+      avatar_url: "",
+      username: "Mysterious-Alex",
+      display_name: "Mysterious-Alex",
+      followers_count: 153,
+    },
+    {
+      id: 102,
+      avatar_url: "",
+      username: "Fantastic-Anna",
+      display_name: "Fantastic-Anna",
+      followers_count: 461,
+    },
+    {
+      id: 103,
+      avatar_url: "",
+      username: "Romantic-Amelia",
+      display_name: "Romantic-Amelia",
+      followers_count: 296,
+    },
+  ]);
+  const [following, setFollowing] = useState([
+    {
+      id: 101,
+      avatar_url: "",
+      username: "Mysterious-Alex",
+      display_name: "Mysterious-Alex",
+      followers_count: 153,
+    },
+    {
+      id: 102,
+      avatar_url: "",
+      username: "Fantastic-Anna",
+      display_name: "Fantastic-Anna",
+      followers_count: 461,
+    },
+    {
+      id: 103,
+      avatar_url: "",
+      username: "Romantic-Amelia",
+      display_name: "Romantic-Amelia",
+      followers_count: 296,
+    },
+  ]);
   const [isLoadingRelations, setIsLoadingRelations] = useState(false);
   const [relationsError, setRelationsError] = useState(null);
   const [discover, setDiscover] = useState([]);
   const [isLoadingDiscover, setIsLoadingDiscover] = useState(false);
   const [discoverQuery, setDiscoverQuery] = useState("");
-  const [activity, setActivity] = useState([]);
+  const [activity, setActivity] = useState([
+    {
+      src: "",
+      alt: "image",
+      username: "User",
+      desc: `created 📄 a new segment in "The Best Story Title Ever"`,
+      updated: "Today",
+    },
+  ]);
   const [isLoadingActivity, setIsLoadingActivity] = useState(false);
   const [activityError, setActivityError] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [isLoadingFavorites, setIsLoadingFavorites] = useState(false);
   const [favoritesError, setFavoritesError] = useState(null);
-  const [networkActivity, setNetworkActivity] = useState([]);
+  const [networkActivity, setNetworkActivity] = useState([
+    {
+      src: "",
+      alt: "image",
+      username: "Mysterious-Alex",
+      desc: `favorited 🩷 "The Best Story Title Ever"`,
+      updated: "Today",
+    },
+    {
+      src: "",
+      alt: "image",
+      username: "Fantastic-Anna",
+      desc: `bookmarked 🔖 "The Best Story Title Ever"`,
+      updated: "Today",
+    },
+    {
+      src: "",
+      alt: "image",
+      username: "Romantic-Amelia",
+      desc: `rated ⭐ "The Best Story Title Ever" 4.5`,
+      updated: "Today",
+    },
+  ]);
   const [isLoadingNetwork, setIsLoadingNetwork] = useState(false);
   const [networkError, setNetworkError] = useState(null);
   const [networkFilter, setNetworkFilter] = useState("followers"); // followers | following
@@ -103,36 +186,30 @@ function Profile() {
     <div className={styles.page}>
       <section className={styles.headerCard}>
         <div className={styles.headerTop}>
-          <div className={styles.avatar}>{"U"}</div>
+          <div className={styles.avatar}>
+            <img src={avatarPlaceholder} alt="avatar" />
+          </div>
           <div>
             <h2>{"User"}</h2>
-            <p className={styles.bio}>{t("profile.addBio")}</p>
+            <p className={styles.bio}>{t("profile.addedBio")}</p>
           </div>
         </div>
         <div className="grid-4 stats">
           <UserStats
-            src={avatarPlaceholder}
             alt="image"
-            number={0}
+            number={contributions.length}
             desc={t("stats.stories")}
           />
+          <UserStats alt="image" number={1} desc={t("stats.segments")} />
           <UserStats
-            src={avatarPlaceholder}
             alt="image"
-            number={0}
+            number={followers.length}
             desc={t("stats.followers")}
           />
           <UserStats
-            src={avatarPlaceholder}
             alt="image"
-            number={0}
+            number={following.length}
             desc={t("stats.following")}
-          />
-          <UserStats
-            src={avatarPlaceholder}
-            alt="image"
-            number={0}
-            desc={t("stats.segments")}
           />
         </div>
         <div className={styles.tags}>
@@ -284,7 +361,7 @@ function Profile() {
                   </div>
                   <button
                     className="btn ghost"
-                    onClick={() => handleUnfollow(rel.id)}
+                    // onClick={() => handleUnfollow(rel.id)}
                   >
                     Unfollow
                   </button>
@@ -312,14 +389,14 @@ function Profile() {
                   {isFollowingUser(rel.id) ? (
                     <button
                       className="btn ghost"
-                      onClick={() => handleUnfollow(rel.id)}
+                      // onClick={() => handleUnfollow(rel.id)}
                     >
                       Unfollow
                     </button>
                   ) : (
                     <button
                       className="btn primary"
-                      onClick={() => handleFollow(rel.id)}
+                      // onClick={() => handleFollow(rel.id)}
                     >
                       Follow back
                     </button>
@@ -356,23 +433,23 @@ function Profile() {
                     {isFollowingUser(rel.id) ? (
                       <button
                         className="btn ghost"
-                        onClick={() => handleUnfollow(rel.id)}
+                        // onClick={() => handleUnfollow(rel.id)}
                       >
                         Unfollow
                       </button>
                     ) : (
                       <button
                         className="btn primary"
-                        onClick={() => handleFollow(rel.id)}
+                        // onClick={() => handleFollow(rel.id)}
                       >
                         Follow
                       </button>
                     )}
                   </div>
                 ))}
-                {!isLoadingDiscover && discover.length === 0 && (
+                {/* {!isLoadingDiscover && discover.length === 0 && (
                   <p style={{ color: "var(--muted)" }}>No users found.</p>
-                )}
+                )} */}
               </div>
             )}
             {!isLoadingRelations &&

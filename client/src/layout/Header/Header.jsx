@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useI18n } from "../../context/I18nContext.jsx";
+import avatarPlaceholder from "../../assets/avatar.svg";
 
 function Header() {
   const navigate = useNavigate();
@@ -9,8 +10,6 @@ function Header() {
   const handleLogout = () => {
     navigate("/authentication");
   };
-
-  const avatarLetter = "U";
 
   return (
     <header className={styles.header}>
@@ -90,7 +89,9 @@ function Header() {
                 isActive ? styles.activeAvatar : styles.avatar
               }
             >
-              <span>{avatarLetter}</span>
+              <span>
+                <img src={avatarPlaceholder} alt="avatar" />
+              </span>
             </NavLink>
             <NavLink
               to="/settings"

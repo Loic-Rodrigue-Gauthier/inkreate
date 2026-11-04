@@ -8,12 +8,13 @@
   height: 320px;
   border-radius: 14px;
   border: 1px dashed #cbd5e1;
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle at 10% 10%,
     #f8fafc,
     #f1f5f9 45%,
     #eef2ff 100%
-  );
+  ); */
+  background-color: var(--panel-weak);
   display: grid;
   place-items: center;
   position: relative;

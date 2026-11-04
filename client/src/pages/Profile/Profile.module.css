@@ -23,6 +23,10 @@
   gap: 14px;
 }
 
+.headerTop h2 {
+  margin: 0;
+}
+
 .avatar {
   width: 72px;
   height: 72px;
@@ -52,6 +56,13 @@
   padding: 6px;
   border-radius: 14px;
   border: 1px solid var(--border);
+  height: 60px;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+}
+
+.tabs button {
+  min-width: fit-content;
 }
 
 .tab,
@@ -108,6 +119,7 @@
 
 .relationRow {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
@@ -115,6 +127,7 @@
   border-radius: 10px;
   margin-bottom: 8px;
   background: var(--panel);
+  gap: 10px;
 }
 
 .relationInfo {
@@ -152,4 +165,16 @@
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--panel-weak);
+}
+
+@media (min-width: 426px) {
+  .relationRow {
+    flex-direction: row;
+    gap: 0px;
+  }
+
+  .tabs {
+    height: auto;
+    overflow: auto;
+  }
 }

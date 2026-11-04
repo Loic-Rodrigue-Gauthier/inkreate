@@ -3,8 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import ChatContact from "../../components/ChatContact/ChatContact.jsx";
 import ChatBubble from "../../components/ChatBubble/ChatBubble.jsx";
 import styles from "./ReadStory.module.css";
-import bliss from "../../assets/bliss.jpg";
-import pfp from "../../assets/pfp.svg";
+import cover from "../../assets/cover.svg";
+import avatar from "../../assets/avatar.svg";
 
 function ReadStory() {
   const { storyId, segmentId } = useParams();
@@ -12,7 +12,13 @@ function ReadStory() {
 
   const [story, setStory] = useState(null);
   const [segment, setSegment] = useState(null);
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([
+    {
+      author: "",
+      username: "Comedic-Andrew",
+      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium autem voluptatum eius quasi accusantium fuga voluptatem magnam molestiae delectus assumenda!",
+    },
+  ]);
   const [rating, setRating] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -45,7 +51,7 @@ function ReadStory() {
 
   const coverImage = useMemo(() => {
     const val = segment?.image_url || story?.cover_image_url;
-    if (!val) return bliss;
+    if (!val) return cover;
     if (typeof val === "string" && val.startsWith("http")) return val;
     const trimmed = (val || "").replace(/^\/+/, "");
     if (trimmed.startsWith("storage/"))
@@ -183,14 +189,16 @@ function ReadStory() {
         <div className={styles.headerRow}>
           <div>
             <p className={styles.kicker}>Currently Reading</p>
-            <h2>{segment?.title || "Segment"}</h2>
-            {story?.title && (
-              <p className={styles.subtitle}>Story: {story.title}</p>
-            )}
+            <h2>{segment?.title || "Continue Forward"}</h2>
+            {/* {story?.title && (
+            )} */}
+            <p className={styles.subtitle}>
+              <strong>Story:</strong> The Best Story Title Ever
+            </p>
           </div>
-          {segment?.id && (
-            <div className={styles.badge}>Segment #{segment.id}</div>
-          )}
+          {/* {segment?.id && (
+          )} */}
+          <div className={styles.badge}>Segment #97</div>
         </div>
 
         <img
@@ -200,11 +208,33 @@ function ReadStory() {
         />
 
         <p className={styles.paragraph}>
-          {segment?.content || "No content available."}
+          {segment?.content ||
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet labore dolor corporis, laudantium est dicta, possimus eligendi ut nam unde necessitatibus error sapiente quos suscipit asperiores nobis a tempora fugiat beatae numquam fuga. Repellat cum nulla omnis quisquam architecto? Recusandae, iure quibusdam excepturi reiciendis cumque voluptas quae distinctio officiis corrupti ut accusantium debitis voluptatibus alias sunt inventore! Rem, accusantium! Accusamus iure et nam dolorum labore commodi vitae officiis debitis enim. Quasi, minima officiis. Molestias quia omnis recusandae libero pariatur quos sequi obcaecati commodi similique esse quaerat reiciendis consequatur distinctio, in quidem, molestiae deserunt adipisci eos minima. Enim perferendis quod, temporibus repellat laborum suscipit totam. Maiores soluta incidunt distinctio ad itaque consectetur, repudiandae odio debitis? Quasi cumque magnam, facilis adipisci commodi ad architecto quam non aliquid, enim soluta rerum eligendi incidunt id? Explicabo maiores voluptatum molestiae natus ratione aperiam eaque nobis temporibus! Culpa necessitatibus magni vel adipisci distinctio quaerat labore rerum. Optio, quam exercitationem. Perspiciatis perferendis maxime, obcaecati eos consequatur, magni minima modi id officia amet in tempore harum rem cupiditate ad temporibus fuga nostrum corrupti veritatis mollitia eaque quaerat, repellendus maiores? Officiis maiores architecto, consectetur deserunt, alias numquam, eaque molestias necessitatibus incidunt iure velit. Perspiciatis quidem aspernatur deserunt quaerat velit."}
         </p>
 
         <div className={styles.choices}>
-          {segment?.choices?.map((choice) => (
+          <div className={styles.choiceItem}>
+            <button
+              className={styles.choice_button}
+              // onClick={() => handleChoice(choice)}
+            >
+              Go Back
+            </button>
+            <button
+              className={styles.choice_button}
+              // onClick={() => handleChoice(choice)}
+            >
+              Descend Ladder
+            </button>
+            <button
+              className={styles.choice_button}
+              // onClick={() => handleChoice(choice)}
+            >
+              Examine Panel
+            </button>
+          </div>
+
+          {/* {segment?.choices?.map((choice) => (
             <div key={choice.id} className={styles.choiceItem}>
               <button
                 className={styles.choice_button}
@@ -237,7 +267,7 @@ function ReadStory() {
                 </div>
               )}
             </div>
-          ))}
+          ))} */}
           {canContribute && (
             <div className={styles.choiceItem}>
               <button
@@ -256,82 +286,87 @@ function ReadStory() {
               </div>
             </div>
           )}
-          {!segment?.choices?.length && (
+          {/* {!segment?.choices?.length && (
             <p style={{ color: "var(--muted)" }}>
               No choices for this segment.
             </p>
-          )}
+          )} */}
         </div>
 
         <div className={styles.author_rating}>
           <div className={styles.authorBlock}>
             <ChatContact
-              src={segment?.author?.avatar_url || pfp}
+              src={segment?.author?.avatar_url || avatar}
               username={
                 segment?.author?.display_name ||
                 segment?.author?.username ||
-                "Unknown"
+                "User"
               }
             />
             {story?.owner?.id && story?.owner?.id !== 1 && (
               <button
                 className={styles.followBtn}
-                onClick={() =>
-                  isFollowingAuthor
-                    ? handleUnfollowAuthor(story.owner.id)
-                    : handleFollowAuthor(story.owner.id)
-                }
-                disabled={isSubmitting}
+                // onClick={() =>
+                //   isFollowingAuthor
+                //     ? handleUnfollowAuthor(story.owner.id)
+                //     : handleFollowAuthor(story.owner.id)
+                // }
+                // disabled={isSubmitting}
               >
                 {isFollowingAuthor ? "Unfollow author" : "Follow author"}
               </button>
             )}
           </div>
-          <select
-            name="rating"
-            value={rating}
-            onChange={(e) => handleRating(e.target.value)}
-            disabled={!canInteract || isSubmitting || isLoading}
-          >
-            <option value="" disabled hidden>
-              Rate this segment
-            </option>
-            <option value="1">⭐ 1 Star</option>
-            <option value="2">⭐ 2 Stars</option>
-            <option value="3">⭐ 3 Stars</option>
-            <option value="4">⭐ 4 Stars</option>
-            <option value="5">⭐ 5 Stars</option>
-          </select>
-          <span className={styles.ratingStat}>
-            {segment?.rating?.average ?? "—"} ({segment?.rating?.count ?? 0})
-          </span>
+          <div>
+            {" "}
+            <select
+              name="rating"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+              className={styles.rateSelect}
+              // disabled={!canInteract || isSubmitting || isLoading}
+            >
+              <option value="" disabled hidden>
+                Rate this segment
+              </option>
+              <option value="1">1 ⭐</option>
+              <option value="2">2 ⭐</option>
+              <option value="3">3 ⭐</option>
+              <option value="4">4 ⭐</option>
+              <option value="5">5 ⭐</option>
+            </select>
+            <span className={styles.ratingStat}>
+              ⭐ {segment?.rating?.average ?? "4.7"} (
+              {segment?.rating?.count ?? 894})
+            </span>
+          </div>
         </div>
 
         <div className={styles.seg_stats}>
           <div className={styles.date_views}>
             <div>
-              Date{" "}
+              <strong>Date:</strong>{" "}
               {segment?.created_at
                 ? new Date(segment.created_at).toLocaleDateString()
-                : "—"}
+                : "Today"}
             </div>
             <div>
-              Author{" "}
+              <strong>Author:</strong>{" "}
               {segment?.author?.display_name ||
                 segment?.author?.username ||
-                "—"}
+                "User"}
             </div>
           </div>
           <div className={styles.actions}>
             <button
               className={styles.rate_fave_book}
-              disabled={!canInteract || isSubmitting || isLoading}
+              // disabled={!canInteract || isSubmitting || isLoading}
             >
               {isFavorited ? "💔 Unfavorite" : "❤️ Favorite"}
             </button>
             <button
               className={styles.rate_fave_book}
-              disabled={!canInteract || isSubmitting || isLoading}
+              // disabled={!canInteract || isSubmitting || isLoading}
             >
               {isBookmarked ? "🔖 Bookmarked" : "🔖 Bookmark"}
             </button>
@@ -375,7 +410,7 @@ function ReadStory() {
             disabled={isSubmitting}
           />
           <button
-            type="submit"
+            type="button"
             className="btn primary"
             disabled={isSubmitting || !commentInput.trim()}
           >
@@ -392,12 +427,10 @@ function ReadStory() {
             return (
               <ChatBubble
                 key={c.id || index}
-                src={author.avatar_url || pfp}
-                username={"User"}
+                src={author.avatar_url || avatar}
+                username={c.username}
                 message={c.body}
-                timestamp={
-                  c.created_at ? new Date(c.created_at).toLocaleString() : ""
-                }
+                timestamp={new Date(Date.now()).toLocaleTimeString()}
               />
             );
           })}

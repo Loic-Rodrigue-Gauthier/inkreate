@@ -10,9 +10,9 @@ function ChatBox({ thread, messages = [], onSend }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!value.trim() || isDisabled) return;
-    onSend(value);
-    setValue("");
+    // if (!value.trim() || isDisabled) return;
+    // onSend(value);
+    // setValue("");
   };
 
   return (
@@ -25,7 +25,7 @@ function ChatBox({ thread, messages = [], onSend }) {
               username={thread.title || "Conversation"}
             />
             <div className={styles.threadInfo}>
-              <strong>{thread.title || "Chat"}</strong>
+              {/* <strong>{thread.title || "Chat"}</strong> */}
               <span style={{ color: "var(--muted)", fontSize: "13px" }}>
                 {thread.participants?.length || 0} participants
               </span>
@@ -52,7 +52,7 @@ function ChatBox({ thread, messages = [], onSend }) {
             <ChatBubble
               key={index}
               src={message.author?.avatar_url || avatarPlaceholder}
-              username={"User"}
+              username={message.username}
               message={message.body}
               timestamp={new Date(
                 message.created_at || Date.now(),

@@ -34,7 +34,7 @@
 }
 
 .features div {
-  background-color: var(--bg);
+  background-color: var(--panel-weak);
   border: 1px solid var(--border);
   border-radius: 15px;
   padding: 15px 20px;

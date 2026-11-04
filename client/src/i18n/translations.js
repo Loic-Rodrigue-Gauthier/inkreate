@@ -22,7 +22,7 @@ export const translations = {
     "stats.stories": "Story",
     "stats.followers": "Followers",
     "stats.following": "Following",
-    "stats.segments": "Segments",
+    "stats.segments": "Segment",
     "stats.views": "Views",
     "stats.comments": "Comments",
     "stats.updated": "Updated",
@@ -44,8 +44,8 @@ export const translations = {
     "thumbnail.by": "By",
     "thumbnail.segments": "segments",
     "thumbnail.views": "views",
-    "thumbnail.comments": "comments",
-    "thumbnail.rating": "rating",
+    "thumbnail.comments": "comment",
+    "thumbnail.rating": "avg.",
     "thumbnail.updated": "Updated",
 
     "time.justNow": "Just now",
@@ -74,8 +74,34 @@ export const translations = {
     "profile.updated": "Profile updated",
 
     "profile.addBio": "Add your bio in settings.",
+    "profile.addedBio": "Welcome to my page!",
     "profile.storyteller": "Storyteller",
     "profile.collaborator": "Collaborator",
+
+    //
+    "common.": "",
+
+    "splash.": "",
+
+    "auth.": "",
+
+    "home.": "",
+
+    "search.": "",
+
+    "writeStory.": "",
+
+    "readStory.": "",
+
+    "chat.": "",
+
+    "bookmarked.": "",
+
+    "readLater.": "",
+
+    "profile.": "",
+
+    "settings.": "",
   },
   fr: {
     "nav.home": "Accueil",
@@ -101,7 +127,7 @@ export const translations = {
     "stats.stories": "Histoire",
     "stats.followers": "Abonnés",
     "stats.following": "Abonnements",
-    "stats.segments": "Segments",
+    "stats.segments": "Segment",
     "stats.views": "Vues",
     "stats.comments": "Commentaires",
     "stats.updated": "Mis à jour",
@@ -123,8 +149,8 @@ export const translations = {
     "thumbnail.by": "Par",
     "thumbnail.segments": "segments",
     "thumbnail.views": "vues",
-    "thumbnail.comments": "commentaires",
-    "thumbnail.rating": "note",
+    "thumbnail.comments": "commentaire",
+    "thumbnail.rating": "moy.",
     "thumbnail.updated": "Mis à jour",
 
     "time.justNow": "À l’instant",
@@ -153,7 +179,10 @@ export const translations = {
     "profile.updated": "Profil mis à jour",
 
     "profile.addBio": "Ajouter votre bio dans les paramètres.",
+    "profile.addedBio": "Bienvenue sur ma page!",
     "profile.storyteller": "Conteur.se d'histoires",
     "profile.collaborator": "Collaborateur.se",
+
+    //
   },
 };

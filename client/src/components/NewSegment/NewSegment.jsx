@@ -25,16 +25,16 @@ function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
     setSegmentImage(bliss);
   };
 
-  const handleSegmentFile = (file) => {
-    if (!file) return;
-    // The parent can optionally pass setSegData to store the URL; we handle upload there.
-    if (typeof setSegData === "function") {
-      setSegData((prev) => ({ ...prev, _uploadFile: file }));
-    }
-    const reader = new FileReader();
-    reader.onload = () => setSegmentImage(reader.result);
-    reader.readAsDataURL(file);
-  };
+  // const handleSegmentFile = (file) => {
+  //   if (!file) return;
+  //   // The parent can optionally pass setSegData to store the URL; we handle upload there.
+  //   if (typeof setSegData === "function") {
+  //     setSegData((prev) => ({ ...prev, _uploadFile: file }));
+  //   }
+  //   const reader = new FileReader();
+  //   reader.onload = () => setSegmentImage(reader.result);
+  //   reader.readAsDataURL(file);
+  // };
 
   useEffect(() => {
     if (!isFirst) return;
@@ -93,7 +93,7 @@ function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
         inputs={inputs}
         updateValue={updateValue}
         updateImage={updateSegmentImage}
-        onFileSelect={handleSegmentFile}
+        // onFileSelect={handleSegmentFile}
       />
       <label>
         Add choice:

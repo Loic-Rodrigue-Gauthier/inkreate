@@ -25,7 +25,7 @@ function Home() {
       authors: ["User"],
       segments: "97",
       views: "1051",
-      comments: "0",
+      comments: "1",
       rating: "4.7",
       updated: "Today",
       favorited: "942",
@@ -38,7 +38,7 @@ function Home() {
       src: "",
       alt: "image",
       username: "User",
-      desc: `created a new segment in "The Best Story Title Ever"`,
+      desc: `created 📄 a new segment in "The Best Story Title Ever"`,
       updated: "Today",
     },
   ]);
@@ -66,7 +66,7 @@ function Home() {
         <div>
           <p className={styles.kicker}>{t("home.welcomeBack")}</p>
           <h1>
-            {t("home.welcomeBack")}, {"storyteller"}!
+            {t("home.welcomeBack")}, {"User"}!
           </h1>
           <p className={styles.subtitle}>{t("home.ready")}</p>
         </div>
@@ -85,7 +85,6 @@ function Home() {
 
       <section className={styles.stats}>
         <UserStats
-          src={avatarPlaceholder}
           alt="stories"
           number={stories.length}
           desc={t("stats.stories")}
@@ -93,25 +92,22 @@ function Home() {
           state={{ owner: 1 }}
         />
         <UserStats
-          src={avatarPlaceholder}
+          alt="segments"
+          number={1}
+          desc={t("stats.segments")}
+          to="/profile?tab=contributions"
+        />
+        <UserStats
           alt="followers"
-          number={0}
+          number={3}
           desc={t("stats.followers")}
           to="/profile?tab=relations"
         />
         <UserStats
-          src={avatarPlaceholder}
           alt="following"
-          number={0}
+          number={3}
           desc={t("stats.following")}
           to="/profile?tab=relations"
-        />
-        <UserStats
-          src={avatarPlaceholder}
-          alt="segments"
-          number={stories[0].segments}
-          desc={t("stats.segments")}
-          to="/profile?tab=contributions"
         />
       </section>
 
