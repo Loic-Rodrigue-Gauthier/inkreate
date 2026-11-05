@@ -77,11 +77,12 @@
     border-color 150ms ease,
     box-shadow 150ms ease;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
-.seg_area:focus {
+/* .seg_area:focus {
   outline: none;
   border-color: #a5b4fc;
   box-shadow: 0 8px 24px rgba(79, 70, 229, 0.12);
-  background: #ffffff;
-}
+  background: var(--panel);
+} */

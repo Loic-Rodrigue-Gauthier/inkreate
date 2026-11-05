@@ -5,9 +5,11 @@ import NumberedTitleText from "../../components/NumberedTitleText/NumberedTitleT
 import GlobalStats from "../../components/GlobalStats/GlobalStats";
 import avatarPlaceholder from "../../assets/avatar.svg";
 import heroTexture from "../../assets/bliss.jpg";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 function Splash() {
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   const goToPage = () => {
     navigate("/authentication");

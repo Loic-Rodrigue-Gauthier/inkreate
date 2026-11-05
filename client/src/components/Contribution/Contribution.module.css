@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 25px;
   color: var(--text);
 }
 
@@ -15,8 +15,9 @@
 
 .bubble {
   border: 2px solid var(--border);
-  background-color: var(--panel-weak);
-  border-radius: 10px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-radius: 999px;
   width: fit-content;
   padding: 5px 10px;
   font-weight: 600;

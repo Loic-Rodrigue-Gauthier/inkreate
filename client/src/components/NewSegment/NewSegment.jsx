@@ -102,6 +102,7 @@ function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
           type="text"
           name="choice"
           value={selected.choice || ""}
+          placeholder="e"
           onChange={updateSelected}
           onKeyDown={(e) => {
             if (e.key === "Enter") {

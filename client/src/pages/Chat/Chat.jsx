@@ -5,8 +5,11 @@ import ChatContact from "../../components/ChatContact/ChatContact.jsx";
 import ChatBox from "../../components/ChatBox/ChatBox.jsx";
 import styles from "./Chat.module.css";
 import { useMemo } from "react";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 function Chat() {
+  const { t } = useI18n();
+
   const [isOpen, setIsOpen] = useState(false);
   const [threads, setThreads] = useState([
     {

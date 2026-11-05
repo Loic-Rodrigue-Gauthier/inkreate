@@ -60,10 +60,10 @@ function App() {
               <Route path="/bookmarked" element={<Bookmarked />} />
               <Route path="/readLater" element={<ReadLater />} />
               <Route path="/writeStory" element={<WriteStory />} />
-              <Route path="/activity" element={<Activity />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<Activity />} />
             </Route>
           </Routes>
         </BrowserRouter>

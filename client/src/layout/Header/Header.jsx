@@ -63,7 +63,7 @@ function Header() {
               isActive ? styles.active : styles.link
             }
           >
-            <span className={styles.icon}>⭐</span> {t("nav.favorites")}
+            <span className={styles.icon}>🩷</span> {t("nav.favorites")}
           </NavLink>
           <NavLink
             to="/readLater"
@@ -71,7 +71,7 @@ function Header() {
               isActive ? styles.active : styles.link
             }
           >
-            <span className={styles.icon}>🕒</span> {t("nav.readLater")}
+            <span className={styles.icon}>🔖</span> {t("nav.readLater")}
           </NavLink>
           {/* <NavLink
           to="/profile?tab=network"

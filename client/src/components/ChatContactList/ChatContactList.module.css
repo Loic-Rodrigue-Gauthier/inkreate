@@ -37,4 +37,5 @@
   padding: 10px;
   background: var(--panel-weak);
   color: var(--text);
+  font-weight: 600;
 }

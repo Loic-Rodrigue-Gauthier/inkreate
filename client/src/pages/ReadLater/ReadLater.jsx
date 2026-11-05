@@ -3,8 +3,11 @@ import StoryThumbnailList from "../../components/StoryThumbnailList/StoryThumbna
 import styles from "./ReadLater.module.css";
 import coverPlaceholder from "../../assets/cover.svg";
 import avatarPlaceholder from "../../assets/avatar.svg";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 function ReadLater() {
+  const { t } = useI18n();
+
   const [stories, setStories] = useState([
     {
       storyId: 1,

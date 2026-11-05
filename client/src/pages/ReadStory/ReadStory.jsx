@@ -5,10 +5,12 @@ import ChatBubble from "../../components/ChatBubble/ChatBubble.jsx";
 import styles from "./ReadStory.module.css";
 import cover from "../../assets/cover.svg";
 import avatar from "../../assets/avatar.svg";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 function ReadStory() {
   const { storyId, segmentId } = useParams();
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   const [story, setStory] = useState(null);
   const [segment, setSegment] = useState(null);
@@ -406,6 +408,7 @@ function ReadStory() {
             className={styles.comment_area}
             name="comment"
             value={commentInput}
+            placeholder="d"
             onChange={(e) => setCommentInput(e.target.value)}
             disabled={isSubmitting}
           />

@@ -123,12 +123,18 @@ function Profile() {
             type="text"
             name="display_name"
             value={inputs.display_name}
+            placeholder="a"
             onChange={updateValue}
           />
         </label>
         <label>
           {t("profile.bio")}
-          <textarea name="bio" value={inputs.bio} onChange={updateValue} />
+          <textarea
+            name="bio"
+            value={inputs.bio}
+            placeholder="b"
+            onChange={updateValue}
+          />
         </label>
         <label>
           {t("profile.genres")}
@@ -136,6 +142,7 @@ function Profile() {
             type="text"
             name="preferred_genres"
             value={inputs.preferred_genres}
+            placeholder="c"
             onChange={updateValue}
           />
         </label>

@@ -18,14 +18,17 @@ const initialFilters = {
 function Search() {
   const location = useLocation();
   const { t } = useI18n();
+
   const initialOwner =
     location.state?.owner ||
     new URLSearchParams(location.search).get("owner") ||
     "";
+
   const [filters, setFilters] = useState({
     ...initialFilters,
     owner: initialOwner,
   });
+
   const [stories, setStories] = useState([
     {
       storyId: 1,

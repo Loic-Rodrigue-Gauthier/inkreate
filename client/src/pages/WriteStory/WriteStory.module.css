@@ -33,6 +33,11 @@
   grid-column: 1 / -1;
 }
 
+.field input,
+.field textarea {
+  margin-top: 15px;
+}
+
 .field select {
   margin: 0 10px;
 }
@@ -195,6 +200,15 @@
   .field {
     display: grid;
     gap: 6px;
+  }
+
+  .field input,
+  .field textarea {
+    margin-top: 0;
+  }
+
+  .field select {
+    margin: 0;
   }
 
   .card {

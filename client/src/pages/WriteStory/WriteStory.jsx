@@ -10,6 +10,7 @@ import facebookIcon from "../../assets/facebook.svg";
 import DiscardableChip from "../../components/DiscardableChip/DiscardableChip.jsx";
 import ChatContactList from "../../components/ChatContactList/ChatContactList.jsx";
 import NewSegment from "../../components/NewSegment/NewSegment.jsx";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 const GENRES = [
   "Fantasy",
@@ -24,6 +25,8 @@ const GENRES = [
 ];
 
 function WriteStory() {
+  const { t } = useI18n();
+
   const [inputs, setInputs] = useState({
     visibility: "Anyone",
     cover_image_url: coverPlaceholder,
@@ -169,7 +172,7 @@ function WriteStory() {
             />
           </label>
           <label className={styles.field}>
-            Genre
+            Genre(s)
             <select
               name="genre"
               value={selected.genre}
@@ -185,7 +188,7 @@ function WriteStory() {
               ))}
             </select>
           </label>
-          <label className={styles.field}>
+          {/* <label className={styles.field}>
             Estimated duration (min)
             <input
               type="number"
@@ -195,7 +198,7 @@ function WriteStory() {
               min="1"
               max="240"
             />
-          </label>
+          </label> */}
         </div>
 
         <div className={styles.chips}>
@@ -357,7 +360,7 @@ function WriteStory() {
                 ✉️ Email
               </a>
             </div>
-            <div className={styles.shareCredit}>
+            {/* <div className={styles.shareCredit}>
               <a
                 href="https://www.flaticon.com/free-icons/instagram"
                 title="instagram icons"
@@ -366,7 +369,7 @@ function WriteStory() {
               >
                 Instagram icon by Freepik - Flaticon
               </a>
-            </div>
+            </div> */}
           </div>
         )}
       </section>
