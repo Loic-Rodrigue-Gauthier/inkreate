@@ -2,29 +2,30 @@ import { useEffect, useState } from "react";
 import styles from "./SearchBox.module.css";
 import { useI18n } from "../../context/I18nContext.jsx";
 
-const GENRES = [
-  "Any",
-  "Fantasy",
-  "Romance",
-  "Mystery",
-  "Science Fiction",
-  "Adventure",
-  "Thriller",
-  "Horror",
-  "Comedy",
-  "Drama",
-];
-const SORTS = [
-  { value: "popular", label: "Popular" },
-  { value: "rated", label: "Top Rated" },
-  { value: "favorites", label: "Most Favorited" },
-  { value: "recent", label: "Recent" },
-  { value: "default", label: "Default" },
-];
-
 function SearchBox({ initialFilters, onSearch, currentUserId }) {
   const [inputs, setInputs] = useState(initialFilters);
   const { t } = useI18n();
+
+  const GENRES = [
+    `${t("search.any")}`,
+    `${t("common.tagsFantasy")}`,
+    "Romance",
+    `${t("common.tagsMystery")}`,
+    "Science Fiction",
+    `${t("common.tagsAdventure")}`,
+    "Thriller",
+    `${t("common.tagsHorror")}`,
+    `${t("common.tagsComedy")}`,
+    `${t("common.tagsDrama")}`,
+  ];
+
+  const SORTS = [
+    { value: "popular", label: `${t("search.popular")}` },
+    { value: "rated", label: `${t("search.topRated")}` },
+    { value: "favorites", label: `${t("search.favorited")}` },
+    { value: "recent", label: `${t("search.recent")}` },
+    { value: "default", label: `${t("search.default")}` },
+  ];
 
   useEffect(() => {
     setInputs(initialFilters);
@@ -78,10 +79,10 @@ function SearchBox({ initialFilters, onSearch, currentUserId }) {
         <label>
           {t("search.status")}
           <select name="status" value={inputs.status} onChange={updateValue}>
-            <option value="Any">Any</option>
-            <option value="draft">Draft</option>
-            <option value="published">Published</option>
-            <option value="completed">Completed</option>
+            <option value="Any">{t("search.any")}</option>
+            <option value="draft">{t("search.draft")}</option>
+            <option value="published">{t("search.published")}</option>
+            <option value="completed">{t("search.completed")}</option>
           </select>
         </label>
         {currentUserId && (

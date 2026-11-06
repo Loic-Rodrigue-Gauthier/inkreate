@@ -190,12 +190,12 @@ function ReadStory() {
       <div className={styles.main}>
         <div className={styles.headerRow}>
           <div>
-            <p className={styles.kicker}>Currently Reading</p>
-            <h2>{segment?.title || "Continue Forward"}</h2>
+            <p className={styles.kicker}>{t("readStory.heading")}</p>
+            <h2>{t("common.segmentTitle")}</h2>
             {/* {story?.title && (
             )} */}
             <p className={styles.subtitle}>
-              <strong>Story:</strong> The Best Story Title Ever
+              <strong>{t("readStory.story")}:</strong> {t("common.storyTitle")}
             </p>
           </div>
           {/* {segment?.id && (
@@ -220,19 +220,19 @@ function ReadStory() {
               className={styles.choice_button}
               // onClick={() => handleChoice(choice)}
             >
-              Go Back
+              {t("readStory.choice1")}
             </button>
             <button
               className={styles.choice_button}
               // onClick={() => handleChoice(choice)}
             >
-              Descend Ladder
+              {t("readStory.choice2")}
             </button>
             <button
               className={styles.choice_button}
               // onClick={() => handleChoice(choice)}
             >
-              Examine Panel
+              {t("readStory.choice3")}
             </button>
           </div>
 
@@ -329,7 +329,7 @@ function ReadStory() {
               // disabled={!canInteract || isSubmitting || isLoading}
             >
               <option value="" disabled hidden>
-                Rate this segment
+                {t("readStory.rate")}
               </option>
               <option value="1">1 ⭐</option>
               <option value="2">2 ⭐</option>
@@ -347,13 +347,13 @@ function ReadStory() {
         <div className={styles.seg_stats}>
           <div className={styles.date_views}>
             <div>
-              <strong>Date:</strong>{" "}
+              <strong>{t("readStory.written")}:</strong>{" "}
               {segment?.created_at
                 ? new Date(segment.created_at).toLocaleDateString()
-                : "Today"}
+                : `${t("common.dateToday")}`}
             </div>
             <div>
-              <strong>Author:</strong>{" "}
+              <strong>{t("readStory.author")}:</strong>{" "}
               {segment?.author?.display_name ||
                 segment?.author?.username ||
                 "User"}
@@ -364,13 +364,13 @@ function ReadStory() {
               className={styles.rate_fave_book}
               // disabled={!canInteract || isSubmitting || isLoading}
             >
-              {isFavorited ? "💔 Unfavorite" : "❤️ Favorite"}
+              {isFavorited ? "💔 Unfavorite" : `❤️ ${t("readStory.favorite")}`}
             </button>
             <button
               className={styles.rate_fave_book}
               // disabled={!canInteract || isSubmitting || isLoading}
             >
-              {isBookmarked ? "🔖 Bookmarked" : "🔖 Bookmark"}
+              {isBookmarked ? "🔖 Bookmarked" : `🔖 ${t("readStory.bookmark")}`}
             </button>
             {canEdit && (
               <>
@@ -408,7 +408,7 @@ function ReadStory() {
             className={styles.comment_area}
             name="comment"
             value={commentInput}
-            placeholder="d"
+            placeholder={t("readStory.commentBoxPlaceholder")}
             onChange={(e) => setCommentInput(e.target.value)}
             disabled={isSubmitting}
           />
@@ -417,12 +417,12 @@ function ReadStory() {
             className="btn primary"
             disabled={isSubmitting || !commentInput.trim()}
           >
-            {isSubmitting ? "Sending..." : "Submit"}
+            {t("readStory.submit")}
           </button>
         </form>
 
         <h3 className={styles.commentsTitle}>
-          Comments ({comments?.length ?? 0})
+          {t("readStory.comments")} ({comments?.length ?? 0})
         </h3>
         <div className={styles.comment_bubbles}>
           {comments?.map((c, index) => {

@@ -1,6 +1,9 @@
+import { useI18n } from "../../context/I18nContext";
 import styles from "./Contribution.module.css";
 
 function Contribution({ title, segment, choice, paragraph }) {
+  const { t } = useI18n();
+
   return (
     <div className={styles.main}>
       <div>
@@ -11,7 +14,8 @@ function Contribution({ title, segment, choice, paragraph }) {
       </div>
       <div>
         <div className={styles.choiceTitle}>
-          Choice: <span className={styles.bubble}>{choice}</span>
+          <span>{t("profile.choice")}:</span>{" "}
+          <span className={styles.bubble}>{choice}</span>
         </div>
         <div>{paragraph}</div>
       </div>

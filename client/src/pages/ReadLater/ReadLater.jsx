@@ -13,15 +13,19 @@ function ReadLater() {
       storyId: 1,
       src: "",
       alt: "image",
-      title: "The Best Story Title Ever",
+      title: `${t("common.storyTitle")}`,
       desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, excepturi!",
-      tags: ["Mystery", "Fantasy", "Romance"],
+      tags: [
+        `${t("common.tagsMystery")}`,
+        `${t("common.tagsFantasy")}`,
+        "Romance",
+      ],
       authors: ["User"],
       segments: "97",
       views: "1051",
       comments: "1",
       rating: "4.7",
-      updated: "Today",
+      updated: `${t("common.dateToday")}`,
       favorited: "942",
       bookmarked: "526",
     },
@@ -31,15 +35,13 @@ function ReadLater() {
     <div className={styles.page}>
       <div className={styles.hero}>
         <div>
-          <p className={styles.kicker}>Read Later</p>
-          <h1>Your queue to revisit</h1>
-          <p className={styles.subtitle}>
-            Save stories and come back when you’re ready.
-          </p>
+          <p className={styles.kicker}>{t("readLater.heading")}</p>
+          <h1>{t("readLater.title")}</h1>
+          <p className={styles.subtitle}>{t("readLater.desc")}</p>
         </div>
         <div className={styles.countCard}>
           <span className={styles.count}>{stories.length}</span>
-          <span className={styles.countLabel}>queued</span>
+          <span className={styles.countLabel}>{t("readLater.queued")}</span>
         </div>
       </div>
 

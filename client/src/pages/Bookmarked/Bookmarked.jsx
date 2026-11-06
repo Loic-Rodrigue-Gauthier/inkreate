@@ -13,15 +13,19 @@ function Bookmarked() {
       storyId: 1,
       src: "",
       alt: "image",
-      title: "The Best Story Title Ever",
+      title: `${t("common.storyTitle")}`,
       desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, excepturi!",
-      tags: ["Mystery", "Fantasy", "Romance"],
+      tags: [
+        `${t("common.tagsMystery")}`,
+        `${t("common.tagsFantasy")}`,
+        "Romance",
+      ],
       authors: ["User"],
       segments: "97",
       views: "1051",
       comments: "1",
       rating: "4.7",
-      updated: "Today",
+      updated: `${t("common.dateToday")}`,
       favorited: "942",
       bookmarked: "526",
     },
@@ -31,15 +35,13 @@ function Bookmarked() {
     <div className={styles.page}>
       <div className={styles.hero}>
         <div>
-          <p className={styles.kicker}>Favorites</p>
-          <h1>Your bookmarked stories</h1>
-          <p className={styles.subtitle}>
-            All the stories you loved, in one place.
-          </p>
+          <p className={styles.kicker}>{t("bookmarked.heading")}</p>
+          <h1>{t("bookmarked.title")}</h1>
+          <p className={styles.subtitle}>{t("bookmarked.desc")}</p>
         </div>
         <div className={styles.countCard}>
           <span className={styles.count}>{stories.length}</span>
-          <span className={styles.countLabel}>saved</span>
+          <span className={styles.countLabel}>{t("bookmarked.saved")}</span>
         </div>
       </div>
 

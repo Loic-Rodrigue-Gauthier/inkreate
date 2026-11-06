@@ -39,7 +39,7 @@
 }
 
 .field select {
-  margin: 0 10px;
+  margin: 10px 0;
 }
 
 .chips {
@@ -157,9 +157,9 @@
 .previewImg {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   object-fit: cover;
-  max-height: 240px;
+  /* max-height: 240px; */
 }
 
 .previewMeta {
@@ -183,7 +183,18 @@
   font-weight: 600;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
+}
+
+.previewChoice {
+  background-color: var(--panel);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-weight: 600;
+  color: white;
 }
 
 .whoCanSelect {

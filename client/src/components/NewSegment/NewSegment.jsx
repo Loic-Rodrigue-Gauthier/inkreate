@@ -6,8 +6,11 @@ import SegmentImageText from "../SegmentImageText/SegmentImageText";
 import styles from "./NewSegment.module.css";
 import bliss from "../../assets/bliss.jpg";
 import coverPlaceholder from "../../assets/cover.svg";
+import { useI18n } from "../../context/I18nContext";
 
 function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
+  const { t } = useI18n();
+
   const [inputs, setInputs] = useState({});
   const [selected, setSelected] = useState({});
   const [segmentImage, setSegmentImage] = useState(coverPlaceholder);
@@ -88,7 +91,7 @@ function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
       <SegmentImageText
         src={segmentImage}
         alt="Click to upload segment picture"
-        img_title={isPortal ? "" : "First Segment"}
+        img_title={isPortal ? "" : `${t("writeStory.segmentSubTitle")}`}
         name="paragraph"
         inputs={inputs}
         updateValue={updateValue}
@@ -96,13 +99,13 @@ function NewSegment({ isOpen, onClose, isPortal, isFirst, setSegData }) {
         // onFileSelect={handleSegmentFile}
       />
       <label>
-        Add choice:
+        {t("writeStory.addChoice")}:
         <input
           className={styles.choice_input}
           type="text"
           name="choice"
           value={selected.choice || ""}
-          placeholder="e"
+          placeholder={t("writeStory.choicePlaceholder")}
           onChange={updateSelected}
           onKeyDown={(e) => {
             if (e.key === "Enter") {

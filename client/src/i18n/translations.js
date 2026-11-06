@@ -105,7 +105,7 @@ export const translations = {
     "splash.statsActiveCount": "10k+",
     "splash.statsActive": "Active Writers",
     "splash.statsStory1Count": "25k+",
-    "splash.statsStory1": "Story Creations",
+    "splash.statsStory1": "Story Created",
     "splash.statsStory2Count": "500k+",
     "splash.statsStory2": "Story Segments",
     "splash.joinHeader": "Collaborate, share, discover.",
@@ -221,6 +221,7 @@ export const translations = {
     "readStory.choice2": "Descend Ladder",
     "readStory.choice3": "Examine Panel",
     "readStory.rate": "Rate",
+    "readStory.written": "Written",
     "readStory.author": "Author",
     "readStory.favorite": "Favorite",
     "readStory.bookmark": "Bookmark",
@@ -239,6 +240,7 @@ export const translations = {
     "chat.chatboxDesc": "Click “New Chat” to begin",
     "chat.chatboxEmpty": "No conversation selected.",
     "chat.chatboxPlaceholder": "Select or start a conversation to type...",
+    "chat.chatboxType": "Type a message...",
     "chat.send": "Send",
 
     "bookmarked.heading": "Favorites",
@@ -373,7 +375,7 @@ export const translations = {
     "splash.statsActiveCount": "10000+",
     "splash.statsActive": "Écrivains actifs",
     "splash.statsStory1Count": "25000+",
-    "splash.statsStory1": "Créations d'histoires",
+    "splash.statsStory1": "Histoires créées",
     "splash.statsStory2Count": "500000+",
     "splash.statsStory2": "Segments d'histoire",
     "splash.joinHeader": "Collaborer, partager, découvrir.",
@@ -483,7 +485,7 @@ export const translations = {
     "writeStory.segmentTitle": "Ajouter un nouveau segment",
     "writeStory.segmentSubTitle": "Premier segment",
     "writeStory.addChoice": "Ajouter un choix",
-    "writeStory.choicePlaceholder": "ex: Entrez dans le manoir",
+    "writeStory.choicePlaceholder": "ex: Entrer dans le manoir",
     "writeStory.publish": "Publier",
 
     "readStory.heading": "Lecture en cours",
@@ -492,6 +494,7 @@ export const translations = {
     "readStory.choice2": "Descendre l'échelle",
     "readStory.choice3": "Examiner le panneau",
     "readStory.rate": "Noter",
+    "readStory.written": "Écrit",
     "readStory.author": "Auteur.e",
     "readStory.favorite": "Mettre en favoris",
     "readStory.bookmark": "Mettre un signet",
@@ -501,8 +504,8 @@ export const translations = {
 
     "chat.title": "Clavardage",
     "chat.desc": "Restez en contact avec vos collaborateurs.trices et amis.",
-    "chat.threads": "Fils",
-    "chat.unread": "Non lus",
+    "chat.threads": "Fil",
+    "chat.unread": "Non lu",
     "chat.newChat": "Nouvelle conversation",
     "chat.searchPlaceholder": "Chercher des conversations...",
     "chat.onlineFriends": "Amis en ligne",
@@ -511,13 +514,14 @@ export const translations = {
     "chat.chatboxEmpty": "Aucune conversation sélectionnée.",
     "chat.chatboxPlaceholder":
       "Sélectionnez ou démarrez une conversation pour saisir du texte...",
+    "chat.chatboxType": "Entrez un message...",
     "chat.send": "Envoyer",
 
     "bookmarked.heading": "Favoris",
     "bookmarked.title": "Vos histoires en favoris",
     "bookmarked.desc":
       "Toutes les histoires que vous avez aimées, réunies au même endroit.",
-    "bookmarked.saved": "sauvegardées",
+    "bookmarked.saved": "sauvegardée",
 
     "readLater.heading": "À lire plus tard",
     "readLater.title": "Votre file d'attente à revisiter",

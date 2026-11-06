@@ -4,8 +4,11 @@ import SearchContact from "../SearchContact/SearchContact.jsx";
 import ChatContact from "../ChatContact/ChatContact.jsx";
 import styles from "./ChatContactList.module.css";
 import avatarPlaceholder from "../../assets/avatar.svg";
+import { useI18n } from "../../context/I18nContext.jsx";
 
 function ChatContactList({ isOpen, onClose, onConfirm }) {
+  const { t } = useI18n();
+
   const [selectedContacts, setSelectedContacts] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [query, setQuery] = useState("");
@@ -47,7 +50,7 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
         <div style={{ marginBottom: "8px" }}>
           <input
             type="text"
-            placeholder="Search users..."
+            placeholder={t("common.addUsersPlaceholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className={styles.search}
@@ -67,9 +70,9 @@ function ChatContactList({ isOpen, onClose, onConfirm }) {
           ))}
         </div>
         <div className={styles.actions}>
-          <button className="btn primary">Confirm</button>
+          <button className="btn primary">{t("common.confirm")}</button>
           <button className="btn ghost" onClick={onClose}>
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
       </div>

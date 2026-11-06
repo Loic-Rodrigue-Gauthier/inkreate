@@ -1,9 +1,11 @@
-import { useState, useRef } from 'react';
-import styles from './SearchChat.module.css';
+import { useState, useRef } from "react";
+import styles from "./SearchChat.module.css";
+import { useI18n } from "../../context/I18nContext";
 
 function SearchChat() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const formRef = useRef(null);
+  const { t } = useI18n();
 
   const updateValue = (e) => {
     setValue(e.target.value);
@@ -24,7 +26,7 @@ function SearchChat() {
           name="name"
           value={value}
           onChange={updateValue}
-          placeholder="Search chats..."
+          placeholder={t("chat.searchPlaceholder")}
         />
       </form>
     </div>

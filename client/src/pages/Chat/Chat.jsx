@@ -22,7 +22,7 @@ function Chat() {
         "Lorem ipsum dolor sit amet.",
       ],
       lastMessage: "Lorem ipsum dolor sit amet.",
-      timestamp: "Today",
+      timestamp: `${t("common.dateToday")}`,
       unread_count: 1,
     },
   ]);
@@ -72,19 +72,17 @@ function Chat() {
       <div className={styles.hero}>
         <div>
           <p className={styles.kicker}>Messages</p>
-          <h1 className={styles.title}>Chat</h1>
-          <p className={styles.subtitle}>
-            Stay in sync with collaborators and friends.
-          </p>
+          <h1 className={styles.title}>{t("chat.title")}</h1>
+          <p className={styles.subtitle}>{t("chat.desc")}</p>
         </div>
         <div className={styles.statsRow}>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{threads.length}</span>
-            <span className={styles.statLabel}>Threads</span>
+            <span className={styles.statLabel}>{t("chat.threads")}</span>
           </div>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{unreadTotal}</span>
-            <span className={styles.statLabel}>Unread</span>
+            <span className={styles.statLabel}>{t("chat.unread")}</span>
           </div>
         </div>
       </div>
@@ -92,7 +90,7 @@ function Chat() {
       <div className={styles.page}>
         <section className={styles.sidebar}>
           <button className={styles.newChat} onClick={() => setIsOpen(true)}>
-            + New Chat
+            + {t("chat.newChat")}
           </button>
           <ChatContactList isOpen={isOpen} onClose={() => setIsOpen(false)} />
           {chatError && (
@@ -113,7 +111,7 @@ function Chat() {
             )}
           </div>
           <div className={styles.online}>
-            <h4>Online Friends</h4>
+            <h4>{t("chat.onlineFriends")}</h4>
             <div>
               {online.map((onlineUser, index) => (
                 <ChatContact key={index} {...onlineUser} />

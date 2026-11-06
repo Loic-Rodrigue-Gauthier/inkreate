@@ -1,3 +1,4 @@
+import { useI18n } from "../../context/I18nContext";
 import styles from "./SegmentImageText.module.css";
 import { useRef } from "react";
 
@@ -12,6 +13,7 @@ function SegmentImageText({
   onFileSelect,
 }) {
   const fileInputRef = useRef(null);
+  const { t } = useI18n();
 
   const handleClick = () => {
     fileInputRef.current?.click();
@@ -29,7 +31,7 @@ function SegmentImageText({
       <h3>{img_title}</h3>
       <div className={styles.seg_pic} onClick={handleClick}>
         <img src={src} alt={alt} />
-        <div className={styles.overlay}>Click to upload</div>
+        <div className={styles.overlay}>{t("writeStory.coverPlaceholder")}</div>
       </div>
       <input
         ref={fileInputRef}
@@ -41,7 +43,7 @@ function SegmentImageText({
       <h3>{txt_title}</h3>
       <textarea
         className={styles.seg_area}
-        placeholder="Write here!"
+        placeholder={t("writeStory.synopsisPlaceholder")}
         name={name}
         value={inputs[name] || ""}
         onChange={updateValue}

@@ -3,10 +3,12 @@ import ChatBubble from "../ChatBubble/ChatBubble";
 import ChatContact from "../ChatContact/ChatContact";
 import styles from "./ChatBox.module.css";
 import avatarPlaceholder from "../../assets/avatar.svg";
+import { useI18n } from "../../context/I18nContext";
 
 function ChatBox({ thread, messages = [], onSend }) {
   const [value, setValue] = useState("");
   const isDisabled = !thread;
+  const { t } = useI18n();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,16 +35,16 @@ function ChatBox({ thread, messages = [], onSend }) {
           </>
         ) : (
           <div className={styles.threadInfo}>
-            <strong>Select or start a chat</strong>
+            <strong>{t("chat.chatboxTitle")}</strong>
             <span style={{ color: "var(--muted)", fontSize: "13px" }}>
-              Use “New Chat” to begin
+              {t("chat.chatboxDesc")}
             </span>
           </div>
         )}
       </div>
       <div className={styles.messages}>
         {!thread && (
-          <div className={styles.empty}>No conversation selected.</div>
+          <div className={styles.empty}>{t("chat.chatboxEmpty")}</div>
         )}
         {thread && messages.length === 0 && (
           <div className={styles.empty}>No messages yet.</div>
@@ -68,8 +70,8 @@ function ChatBox({ thread, messages = [], onSend }) {
             onChange={(e) => setValue(e.target.value)}
             placeholder={
               isDisabled
-                ? "Select or start a conversation to type..."
-                : "Type a message..."
+                ? `${t("chat.chatboxPlaceholder")}`
+                : `${t("chat.chatboxType")}`
             }
             disabled={isDisabled}
             className={isDisabled ? styles.disabled : ""}
@@ -79,7 +81,7 @@ function ChatBox({ thread, messages = [], onSend }) {
             type="submit"
             disabled={isDisabled}
           >
-            Send
+            {t("chat.send")}
           </button>
         </form>
       </div>

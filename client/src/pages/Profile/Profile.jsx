@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useI18n } from "../../context/I18nContext.jsx";
 
+const STORAGE_KEY = "inkreate_lang";
+
 function Profile() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("contributions");
@@ -17,13 +19,14 @@ function Profile() {
   const aut_list = [avatarPlaceholder, avatarPlaceholder];
   const tag_list = ["fantasy", "adventure", "collaboration"];
   const { t } = useI18n();
+  const currentLang = localStorage.getItem(STORAGE_KEY);
 
   const stories = [];
   const contributions = [
     {
-      title: "The Best Story Title Ever",
+      title: `${t("common.storyTitle")}`,
       segment: "97",
-      choice: "Continue Forward",
+      choice: `${t("common.segmentTitle")}`,
       paragraph:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ducimus neque, accusantium veniam totam ea commodi nisi eveniet est perspiciatis illum quo earum maiores sapiente adipisci a quae. Praesentium nihil quo fuga excepturi molestiae, optio dolor aliquam numqu...",
     },
@@ -85,8 +88,8 @@ function Profile() {
       src: "",
       alt: "image",
       username: "User",
-      desc: `created 📄 a new segment in "The Best Story Title Ever"`,
-      updated: "Today",
+      desc: `${t("common.activityCreated")} "${t("common.storyTitle")}"`,
+      updated: `${t("common.dateToday")}`,
     },
   ]);
   const [isLoadingActivity, setIsLoadingActivity] = useState(false);
@@ -99,22 +102,22 @@ function Profile() {
       src: "",
       alt: "image",
       username: "Mysterious-Alex",
-      desc: `favorited 🩷 "The Best Story Title Ever"`,
-      updated: "Today",
+      desc: `${t("profile.activityFavorited")} "${t("common.storyTitle")}" ${currentLang === "fr" ? "dans ses favoris" : ""}`,
+      updated: `${t("common.dateToday")}`,
     },
     {
       src: "",
       alt: "image",
       username: "Fantastic-Anna",
-      desc: `bookmarked 🔖 "The Best Story Title Ever"`,
-      updated: "Today",
+      desc: `${t("profile.activityBookmarked")} "${t("common.storyTitle")}" ${currentLang === "fr" ? "à lire plus tard" : ""}`,
+      updated: `${t("common.dateToday")}`,
     },
     {
       src: "",
       alt: "image",
       username: "Romantic-Amelia",
-      desc: `rated ⭐ "The Best Story Title Ever" 4.5`,
-      updated: "Today",
+      desc: `${t("profile.activityRated1")} "${t("common.storyTitle")}" 4.5 ${t("profile.activityRated2")}`,
+      updated: `${t("common.dateToday")}`,
     },
   ]);
   const [isLoadingNetwork, setIsLoadingNetwork] = useState(false);
@@ -235,13 +238,13 @@ function Profile() {
           className={activeTab === "activity" ? styles.active : styles.tab}
           onClick={() => setActiveTab("activity")}
         >
-          Activity
+          {t("profile.activity")}
         </button>
         <button
           className={activeTab === "network" ? styles.active : styles.tab}
           onClick={() => setActiveTab("network")}
         >
-          Network Activity
+          {t("profile.network")}
         </button>
         <button
           className={activeTab === "relations" ? styles.active : styles.tab}
@@ -286,7 +289,7 @@ function Profile() {
                 }
                 onClick={() => setNetworkFilter("followers")}
               >
-                Followers
+                {t("stats.followers")}
               </button>
               <button
                 className={
@@ -294,7 +297,7 @@ function Profile() {
                 }
                 onClick={() => setNetworkFilter("following")}
               >
-                Following
+                {t("stats.following")}
               </button>
             </div>
             {isLoadingNetwork && <div>Loading network activity...</div>}
@@ -315,7 +318,7 @@ function Profile() {
                 }
                 onClick={() => setActiveSubTab("followers")}
               >
-                Followers
+                {t("stats.followers")}
               </button>
               <button
                 className={
@@ -323,7 +326,7 @@ function Profile() {
                 }
                 onClick={() => setActiveSubTab("following")}
               >
-                Following
+                {t("stats.following")}
               </button>
               <button
                 className={
@@ -331,7 +334,7 @@ function Profile() {
                 }
                 onClick={() => setActiveSubTab("discover")}
               >
-                Discover
+                {t("profile.discover")}
               </button>
             </div>
             {relationsError && (
@@ -355,7 +358,7 @@ function Profile() {
                         {rel.display_name || rel.username}
                       </div>
                       <div className={styles.relationMeta}>
-                        {rel.followers_count ?? 0} followers
+                        {rel.followers_count ?? 0} {t("profile.lowerFollowers")}
                       </div>
                     </div>
                   </div>
@@ -363,7 +366,7 @@ function Profile() {
                     className="btn ghost"
                     // onClick={() => handleUnfollow(rel.id)}
                   >
-                    Unfollow
+                    {t("profile.unfollow")}
                   </button>
                 </div>
               ))}
@@ -382,7 +385,7 @@ function Profile() {
                         {rel.display_name || rel.username}
                       </div>
                       <div className={styles.relationMeta}>
-                        {rel.followers_count ?? 0} followers
+                        {rel.followers_count ?? 0} {t("profile.lowerFollowers")}
                       </div>
                     </div>
                   </div>
@@ -391,7 +394,7 @@ function Profile() {
                       className="btn ghost"
                       // onClick={() => handleUnfollow(rel.id)}
                     >
-                      Unfollow
+                      {t("profile.unfollow")}
                     </button>
                   ) : (
                     <button
@@ -408,7 +411,7 @@ function Profile() {
                 <div className={styles.discoverSearch}>
                   <input
                     type="text"
-                    placeholder="Search users..."
+                    placeholder={t("common.addUsersPlaceholder")}
                     value={discoverQuery}
                     onChange={(e) => setDiscoverQuery(e.target.value)}
                   />
@@ -426,7 +429,8 @@ function Profile() {
                           {rel.display_name || rel.username}
                         </div>
                         <div className={styles.relationMeta}>
-                          {rel.followers_count ?? 0} followers
+                          {rel.followers_count ?? 0}{" "}
+                          {t("profile.lowerFollowers")}
                         </div>
                       </div>
                     </div>
@@ -435,7 +439,7 @@ function Profile() {
                         className="btn ghost"
                         // onClick={() => handleUnfollow(rel.id)}
                       >
-                        Unfollow
+                        {t("profile.unfollow")}
                       </button>
                     ) : (
                       <button

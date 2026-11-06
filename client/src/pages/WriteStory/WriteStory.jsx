@@ -12,20 +12,20 @@ import ChatContactList from "../../components/ChatContactList/ChatContactList.js
 import NewSegment from "../../components/NewSegment/NewSegment.jsx";
 import { useI18n } from "../../context/I18nContext.jsx";
 
-const GENRES = [
-  "Fantasy",
-  "Romance",
-  "Mystery",
-  "Science Fiction",
-  "Adventure",
-  "Thriller",
-  "Horror",
-  "Comedy",
-  "Drama",
-];
-
 function WriteStory() {
   const { t } = useI18n();
+
+  const GENRES = [
+    `${t("common.tagsFantasy")}`,
+    "Romance",
+    `${t("common.tagsMystery")}`,
+    "Science Fiction",
+    `${t("common.tagsAdventure")}`,
+    "Thriller",
+    `${t("common.tagsHorror")}`,
+    `${t("common.tagsComedy")}`,
+    `${t("common.tagsDrama")}`,
+  ];
 
   const [inputs, setInputs] = useState({
     visibility: "Anyone",
@@ -156,19 +156,19 @@ function WriteStory() {
   return (
     <div className={styles.page}>
       <section className={styles.card}>
-        <h2>Create New Story</h2>
-        <p>Start a new collaborative story and invite others to contribute</p>
+        <h2>{t("writeStory.title")}</h2>
+        <p>{t("writeStory.desc")}</p>
         {error && <div style={{ color: "red" }}>{error}</div>}
 
         <div className={styles.formGrid}>
           <label className={styles.field}>
-            Story Title
+            {t("writeStory.storyTitle")}
             <input
               type="text"
               name="title"
               value={inputs.title ?? ""}
               onChange={updateValue}
-              placeholder="Enter your story title..."
+              placeholder={t("writeStory.storyTitlePlaceholder")}
             />
           </label>
           <label className={styles.field}>
@@ -179,7 +179,7 @@ function WriteStory() {
               onChange={updateSelected}
             >
               <option value="" disabled hidden>
-                Select a genre...
+                {t("writeStory.genreSelect")}
               </option>
               {GENRES.map((g) => (
                 <option key={g} value={g}>
@@ -217,14 +217,14 @@ function WriteStory() {
             name="synopsis"
             value={inputs.synopsis ?? ""}
             onChange={updateValue}
-            placeholder="Describe your story's premise..."
+            placeholder={t("writeStory.descPlaceholder")}
             rows={3}
           />
         </label>
 
         <SegmentImageText
           src={thumbnail}
-          img_title="Story Cover"
+          img_title={t("writeStory.cover")}
           txt_title="Synopsis"
           name="synopsis"
           inputs={inputs}
@@ -233,16 +233,16 @@ function WriteStory() {
         />
 
         <label>
-          Who can create segments?
+          {t("writeStory.whoCan")}
           <select
             name="visibility"
             value={inputs.visibility}
             onChange={updateValue}
             className={styles.whoCanSelect}
           >
-            <option value="Only Me">Only Me</option>
-            <option value="Followers">Followers</option>
-            <option value="Anyone">Anyone</option>
+            <option value="Only Me">{t("writeStory.onlyMe")}</option>
+            <option value="Followers">{t("stats.followers")}</option>
+            <option value="Anyone">{t("writeStory.anyone")}</option>
           </select>
         </label>
 
@@ -260,14 +260,16 @@ function WriteStory() {
 
         {isFollowers && (
           <div className="stack">
-            <span className={styles.sectionLabel}>Contributors</span>
+            <span className={styles.sectionLabel}>
+              {t("writeStory.contributors")}
+            </span>
             <ChatContactList
               isOpen={isOpen}
               onClose={() => setIsOpen(false)}
               onConfirm={addUsers}
             />
             <button className="btn ghost" onClick={() => setIsOpen(true)}>
-              Add collaborators
+              {t("writeStory.add")}
             </button>
             <div className={styles.chips}>
               {userList.toArray().map((user) => (
@@ -284,23 +286,24 @@ function WriteStory() {
 
         <div className={styles.actions}>
           <button className="btn primary" disabled={isSubmitting}>
-            {isSubmitting ? "Saving..." : "Save Story"}
+            {isSubmitting ? "Saving..." : `${t("writeStory.saveButton")}`}
           </button>
           <button
             className="btn ghost"
             onClick={handleShare}
             disabled={isSubmitting}
           >
-            Share
+            {t("writeStory.shareButton")}
           </button>
           <button
             className="btn ghost"
             onClick={openPreview}
             disabled={isSubmitting}
           >
-            Preview
+            {t("writeStory.previewButton")}
           </button>
         </div>
+
         {showShareOptions && (
           <div className={styles.sharePanel}>
             <div className={styles.shareRow}>
@@ -357,7 +360,7 @@ function WriteStory() {
                 target="_blank"
                 rel="noreferrer"
               >
-                ✉️ Email
+                ✉️ {t("auth.email")}
               </a>
             </div>
             {/* <div className={styles.shareCredit}>
@@ -375,11 +378,11 @@ function WriteStory() {
       </section>
 
       <section className={styles.card}>
-        <h3>Add New Segment</h3>
+        <h3>{t("writeStory.segmentTitle")}</h3>
         <NewSegment isPortal={false} isFirst={true} setSegData={setSegData} />
         <div className={styles.actions}>
           <button className="btn primary" disabled={isSubmitting}>
-            {isSubmitting ? "Publishing..." : "Publish Story"}
+            {isSubmitting ? "Publishing..." : t("writeStory.publish")}
           </button>
         </div>
       </section>
@@ -391,31 +394,35 @@ function WriteStory() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.modalHeader}>
-              <h3>Preview</h3>
+              <h3>{t("writeStory.previewButton")}</h3>
             </div>
             <img
               src={thumbnail || coverPlaceholder}
               alt="cover"
               className={styles.previewImg}
             />
-            <h4>{inputs.title || "Untitled story"}</h4>
+            <h4>{inputs.title || t("writeStory.previewTitle")}</h4>
             <p className={styles.previewTags}>
               {tagList
                 .toArray()
                 .map((t) => t.text)
                 .join(", ")}
             </p>
-            <p>{inputs.synopsis || "No synopsis yet."}</p>
+            <p>{inputs.synopsis || t("writeStory.previewSynopsis")}</p>
             <p className={styles.previewMeta}>
-              Permissions: {inputs.visibility}
+              Permissions:{" "}
+              {inputs.visibility === "Only Me" && t("writeStory.onlyMe")}
+              {inputs.visibility === "Followers" && t("stats.followers")}
+              {inputs.visibility === "Anyone" && t("writeStory.anyone")}
             </p>
             {segData.content && (
               <div className={styles.previewSegment}>
-                <h4>First segment</h4>
+                <h4>{t("writeStory.segmentSubTitle")}</h4>
+                <img src={coverPlaceholder} alt="cover" />
                 <p>{segData.content}</p>
                 <div className={styles.previewChoices}>
                   {segData.choices.map((choice) => (
-                    <div>{choice}</div>
+                    <div className={styles.previewChoice}>{choice}</div>
                   ))}
                 </div>
               </div>
@@ -424,7 +431,7 @@ function WriteStory() {
               className="btn primary"
               onClick={() => setPreviewOpen(false)}
             >
-              Close
+              {t("writeStory.close")}
             </button>
           </div>
         </div>
